@@ -1,0 +1,1 @@
+This is the collaborative repository to work on the paper on schema mechanisms
