@@ -90,13 +90,16 @@ Ziemke \cite{ziemke_construction_2001} examined how these views apply to robotic
 
 \section{Schema mechanisms}
 
-Drescher \cite{drescher_made-up_1991} proposed the foundational schema mechanism by modeling schemas as depicted in Fig. \ref{fig:drescher}.
+Drescher \cite{drescher_made-up_1991} proposed the foundational schema mechanism by modeling schemas as depicted in Fig. \ref{fig:drescher}. 
+A schema's context is satisfied when all the positively included items are On and all the negatively included items are Off. 
+The activation is a schema consists of initiating its action. An activated schema is said to \textit{succeed} if its predicted results are all in fact obtained, and to \textit{fail} otherwise. The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
+Schemas can be chained to achieve goals. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_2_schema_drescher.png}
 	\caption{Schema from \cite{drescher_made-up_1991} Fig. 3.2.
-	The schema noted $p \!\sim\! qr/a/xy$ asserts that if action $a$ is taken in the context where $p$ is true, $q$ is false, and $r$ is true then the resulting conditions $x$ and $y$ will be true.} 
+	The schema noted $p \!\sim\! qr/a/xy$ asserts that if action $a$ is taken in the context where item $p$ is On, $q$ is Off, and $r$ is On then the items $x$ and $y$ will be turned On.} 
 	\label{fig:drescher}
 \end{figure}
 
