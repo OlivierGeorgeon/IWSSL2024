@@ -21,7 +21,7 @@
 %
 \begin{document}
 %
-\title{Schema Mechanisms as an Attempt to Implement Genetic Epistemology}
+\title{New Schema Mechanisms to Implement Genetic Epistemology}
 %
 \titlerunning{Schema Mechanisms}
 % If the paper title is too long for the running head, you can set
@@ -51,6 +51,8 @@ We review schema mechanisms as they have been used to account for a \textit{gene
 %
 %
 \section{Introduction}
+
+
 
 \section{Genetic epistemology}
 
@@ -103,15 +105,82 @@ Schemas can be chained to achieve goals.
 	\label{fig:drescher}
 \end{figure}
 
-Bettoni  has criticized this model in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
-He describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
- 
 \cite{drescher_made-up_1991}
 \cite{chaput_constructivist_2004}
-\cite{georgeon_intrinsically-motivated_2012} 
 \cite{perotto_computational_nodate} 
 \cite{guerin_piagetian_2008}
 \cite{wang_new_2012}
+
+\section{Benchmarks}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
+	\caption{Drescher's experimental settings. From \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
+	\label{fig:drescher2}
+\end{figure}
+
+
+
+\section{Autocatalytic enactive learning}
+
+Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
+Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
+Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
+
+
+The game of Mastermind provides an emblematic example in which the observation is not representational. 
+Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'') by proposing guesses (``actions''), which Player 1 responds to with feedback pegs (``observation''). Black pegs indicate a correct color in the correct position, while white pegs indicate a correct color in the wrong position.
+Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
+The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
+
+Software to play mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
+They, however require that the semantics of the feedback is known beforehand. 
+The radical constructivist Mastermind analogy likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
+The player may never find the hidden combination but may find a \textit{knowledge niche} in which to survive for some time.
+
+Most schema mechanisms have been tested in settings in which the sensory signal is representational.
+The fact that they have not been tested with non-representational sensory data does not mean that they would not work or could not be adapted to such settings. 
+
+Georgeon and Ritter \cite{georgeon_intrinsically-motivated_2012} proposed an experimental settings where the sensory data is feedback from action rather than beeing representational. 
+Fig. \ref{fig:agent8} illustrates the learning process that occurs in such settings. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{Figure_3_agent8.pdf}
+	\caption{Autocatatalytic enactive schema learning and selection.
+	Schemas are nested tuples: (pre-schema, decision, post-schema).
+	Over time, new decisions and new schemas are learned from the bottom up. 
+	Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-schema they match.
+	Activated schemas propose their post-schemas with a proclivity value calculated from the activation weight and the expected valence.
+	The schema with the highest proclivity is selected to try to enact.} 
+	\label{fig:agent8}
+\end{figure}
+
+A schema is recorded as tuple (pre-condition, decision, post-condition), similar to Drescher's schemas.
+The pre-condition and post-condition, however, are not a representational description of the agent's situation but are just other schemas. 
+The schemas are learned from the bottom up and nested hierarchically, with higher-level schemas made of a sequence of two previously-learned lower-level schemas. 
+The system is initialized with a predefined set of primitive schemas that define the agent's basic possibilities of interaction. 
+In a robot, primitive schemas are hard-coded control loops involving actuators end sensory feedback. 
+
+At the end of time step $t$, the agent records or reinforces the schemas: 
+\begin{itemize}
+	\item[$\bullet$] $(i_{t-2}, d_{t-1}, i_{t-1})$
+	\item[$\bullet$] $((i_{t-3}, d_{t-2}, i_{t-2}), d_{t-1}, i_{t-1})$
+	\item[$\bullet$] $(i_{t-3}, d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
+	\item[$\bullet$] $((i_{t-4}, d_{t-3}, i_{t-3}), d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
+\end{itemize}
+
+If it does not yet exist, the new decision $d^2$ is constructed different from the decision $d_{t-2}$ that was actually made at time $t-2$. 
+for example, if the agent made decision $d_{t-2} = a0$ and enacted interaction $i_{t-2}=i00$, and then made decision $d_{t-1} = a0$, and enacted interaction $i_{t-1}=i01$, the agent learns the new decision $d^2=i00a0$ consisting of trying to enact the interaction $i_t=i00$ and then do action $a_{t+1}=a0$. 
+When decision $d^2$ has been selected and successfully enacted, the mechanism learns higher-level schemas on top of it. 
+The rate of schema construction being constant, the number of schemas grows linearly with time. 
+Older and unused schemas can be forgotten.
+
+Notably is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the valence expectation of each decision. 
+The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
+
+
 \section{Conclusion}
 
 The problem of abstraction. 
