@@ -113,16 +113,29 @@ Schemas can be chained to achieve goals.
 
 \section{Benchmarks}
 
+Fig. \ref{fig:drescher2} shows Drescher's experimental settings.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
-	\caption{Drescher's experimental settings. From \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
+	\caption{Drescher's benchmark. From \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
 	\label{fig:drescher2}
 \end{figure}
 
 
+Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
 
-\section{Autocatalytic enactive learning}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{Figure_grid_plot.pdf}
+	\caption{Georgeon's benchmark. Adapted from \cite{georgeon_intrinsically-motivated_2012} .} 
+	\label{fig:georgeon}
+\end{figure}
+
+
+\section{Enactive learning with a schema mechanism}
 
 Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
 Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
@@ -159,6 +172,7 @@ Fig. \ref{fig:agent8} illustrates the learning process that occurs in such setti
 
 A schema is recorded as tuple (pre-condition, decision, post-condition), similar to Drescher's schemas.
 The pre-condition and post-condition, however, are not a representational description of the agent's situation but are just other schemas. 
+In essence, the current context is described by possibilities of interaction rather than representational data. 
 The schemas are learned from the bottom up and nested hierarchically, with higher-level schemas made of a sequence of two previously-learned lower-level schemas. 
 The system is initialized with a predefined set of primitive schemas that define the agent's basic possibilities of interaction. 
 In a robot, primitive schemas are hard-coded control loops involving actuators end sensory feedback. 
@@ -172,13 +186,16 @@ At the end of time step $t$, the agent records or reinforces the schemas:
 \end{itemize}
 
 If it does not yet exist, the new decision $d^2$ is constructed different from the decision $d_{t-2}$ that was actually made at time $t-2$. 
-for example, if the agent made decision $d_{t-2} = a0$ and enacted interaction $i_{t-2}=i00$, and then made decision $d_{t-1} = a0$, and enacted interaction $i_{t-1}=i01$, the agent learns the new decision $d^2=i00a0$ consisting of trying to enact the interaction $i_t=i00$ and then do action $a_{t+1}=a0$. 
+For example, if the agent made decision $d_{t-2} = a0$ and enacted interaction $i_{t-2}=i00$, and then made decision $d_{t-1} = a0$, and enacted interaction $i_{t-1}=i01$, the agent learns the new decision $d^2=i00a0$ consisting of trying to enact the interaction $i_t=i00$ and then do action $a_{t+1}=a0$. 
 When decision $d^2$ has been selected and successfully enacted, the mechanism learns higher-level schemas on top of it. 
 The rate of schema construction being constant, the number of schemas grows linearly with time. 
 Older and unused schemas can be forgotten.
 
 Notably is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the valence expectation of each decision. 
 The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
+
+\section{Genetic epistemology with a schema mechanism}
+
 
 
 \section{Conclusion}
