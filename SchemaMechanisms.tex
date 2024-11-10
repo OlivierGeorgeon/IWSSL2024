@@ -125,6 +125,7 @@ Schemas can be chained to achieve goals.
 \cite{chaput_constructivist_2004}
 \cite{guerin_piagetian_2008}
 \cite{wang_new_2012}
+\cite{miller_building_2018}
 
 \subsection{Perotto's}
 
@@ -196,9 +197,11 @@ When decision $d^2$ has been selected and successfully enacted, the mechanism le
 The rate of schema construction being constant, the number of schemas grows linearly with time. 
 Older and unused schemas can be forgotten.
 
-
+In essence, the agent learns habits of interaction that are organized hierarchically, with shorter sequential habits learned first, and longer sequences of habits made of sequences of shorter habits later learned on top of them. 
+Such habit learning relates to Woolford's \textit{sensorimotor sequence reiterator} \cite{woolford_precarious_2020}.
 
 \section{Benchmarks}
+\label{sec:benchmarks}
 
 Fig. \ref{fig:drescher2} shows Drescher's experimental settings.
 
@@ -241,7 +244,7 @@ Video Demo \cite{georgeon_video_2012}.
 \section{Genetic epistemology with a schema mechanism}
 
 Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
-Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
+Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of `original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
 Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
 
 
@@ -250,13 +253,13 @@ Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'
 Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
 The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
 
-Software to play mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
+Software to play Mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
 They, however require that the semantics of the feedback is known beforehand. 
-The radical constructivist Mastermind analogy likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
-The player may never find the hidden combination or goal but may survive and develop for some time in a satisfactory \textit{knowledge niche}.
+We propose the \textit{constructivist Mastermind analogy} that likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
+The player may never find the hidden combination or goal but may survive and strive for some time in a satisfactory \textit{knowledge niche}.
 
-Most schema mechanisms have been tested in settings in which the sensory signal is representational.
-The fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
+As reviewed in Section \ref{sec:benchmarks}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
+The fact that they have not been tested with non-representational sensory signal, however, does not mean that they would not work or could not be adapted to such settings. 
 Georgeon's mechanism may constitute an illustration of that.  
 In Georgeon's schemas, the sensory data is feedback from action rather than beeing representational. 
 The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
@@ -268,7 +271,19 @@ The calculation of expected valence may incorporate predefined preferences for s
 
 \section{Conclusion}
 
-The problem of abstraction. 
+Beyond the first stage called by Piaget the \textit{sensorimotor level}, comes a second stage he calls the \textit{first level of pre-operative thought} (\cite{piaget_lepistemologie_2011}, p. 30). 
+It is at this second stage that the subject begins to differentiate itself from the objects. 
+The subject becomes able to manipulate the schemas by thought. 
+Piaget formulates this process as follows: 
+\\
+
+\begin{adjustwidth}{1cm}{1cm}
+``On top of simple actions that ensure direct interdependence between the subject and objects, in certain cases, a new type of action is superimposed, one that is internalized and more precisely conceptualized: for example, in addition to being able to move from A to B, the subject acquires the ability to mentally represent this movement from A to B and to evoke, through thought, other movements'' (translated from \cite{piaget_lepistemologie_2011}, p. 30).\\
+
+\end{adjustwidth}
+
+Future studies on schema mechanisms will have to address this second stage to tackle fundamental questions of knowledge abstraction. 
+We expect this will involve a cognitive architecture \cite{georgeon_artificial_2024}. 
 
 
 \begin{credits}
