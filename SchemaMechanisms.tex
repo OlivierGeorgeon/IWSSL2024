@@ -166,7 +166,7 @@ The mechanism learns new schemas from the bottom up, with higher-level schemas m
 as illustrated in Fig. \ref{fig:agent8}. 
 The mechanism is not initialized with a top-level goal. 
 Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
-In a robot, primitive schemas are hard-coded control loops involving actuators end sensory feedback. 
+In a robot, primitive schemas are hard-coded control loops involving actuators and sensory feedback. 
 
 
 \begin{figure}
@@ -254,18 +254,18 @@ Since the observation depends on the action, there exist no function or stochast
 The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
 
 Software to play Mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
-They, however require that the semantics of the feedback is known beforehand. 
+These techniques, however, require that the semantics of the feedback is known beforehand. 
 We propose the \textit{constructivist Mastermind analogy} that likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
 The player may never find the hidden combination or goal but may survive and strive for some time in a satisfactory \textit{knowledge niche}.
 
 As reviewed in Section \ref{sec:benchmarks}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
-The fact that they have not been tested with non-representational sensory signal, however, does not mean that they would not work or could not be adapted to such settings. 
+Nonetheless, the fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
 Georgeon's mechanism may constitute an illustration of that.  
 In Georgeon's schemas, the sensory data is feedback from action rather than beeing representational. 
 The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
 In essence, the agent knows its current context by possibilities of interaction rather than by representational data. 
 
-Georgeon's schema mechanism is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the valence expectation of each decision. 
+Georgeon's schema mechanism is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the expected valence of each decision. 
 The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
 
 
@@ -283,7 +283,7 @@ Piaget formulates this process as follows:
 \end{adjustwidth}
 
 Future studies on schema mechanisms will have to address this second stage to tackle fundamental questions of knowledge abstraction. 
-We expect this will involve a cognitive architecture \cite{georgeon_artificial_2024}. 
+We expect this will involve a cognitive architecture that has the capacity to represent spatial properties of schemas, and to simulate the enaction of schema in different spatial frames of reference \cite{georgeon_artificial_2024}. 
 
 
 \begin{credits}
