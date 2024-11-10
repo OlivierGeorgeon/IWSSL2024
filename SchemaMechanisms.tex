@@ -19,6 +19,10 @@
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %\urlstyle{rm}
 %
+
+% Olivier
+\usepackage{changepage}
+
 \begin{document}
 %
 \title{New Schema Mechanisms to Implement Genetic Epistemology}
@@ -53,14 +57,23 @@ We review schema mechanisms as they have been used to account for a \textit{gene
 \section{Introduction}
 
 
+Drawing from the earlier work of James Baldwin, Jean Piaget developed and popularized the theory of \textit{genetic epistemology} \cite{piaget_principles_1997} throughout his life to account for the genesis of intelligence and knowledge. 
+In the end of his life, he connected genetic epistemology with constructivist epistemology and the work of Ernst von Glasersfeld \cite{glasersfeld_radical_1997}. 
+Genetic epistemology rests on the key concept of ``scheme'' which Piaget defines as follows: 
+\\
 
-\section{Genetic epistemology}
+\begin{adjustwidth}{1cm}{1cm}
+``A scheme is a structure or organization of actions as they transfer or generalize in similar or analogous circumstances.'' 
+(\cite{piaget_naissance_1998}, p. 23).
+\\ 
+\end{adjustwidth}
 
-The notion of \textit{sensori-motor scheme} proposed by Piaget \cite{piaget_principles_1997}. 
-Related to constructivist epistemology by \cite{glasersfeld_radical_1997}.
+In this paper, we translate \textit{scheme} with the English term \textit{schema} and its plural \textit{schemas}. 
+A schema is the basic unit of knowledge that encapsulates the action and its circumstances, that is, a \textit{pattern of interaction}. 
+Genetic epistemology insists on the primacy of interaction as a condition for the emergence of perception and knowledge:
+\\
 
-
-Piaget's genetic epistemology : 
+\begin{adjustwidth}{1cm}{1cm}
 ``Knowledge does not originally arise either from a subject conscious of itself or from objects already constituted (from the subject's point of view) that would impose themselves on the subject. 
 Knowledge results from interactions occurring halfway between the subject and the objects, and thus involving both, but due to a complete un-differentiation and not from exchanges between distinct forms.
 
@@ -70,9 +83,12 @@ It is from this dual progressive construction that the joint elaboration of both
 
 The initial instrument of exchange is not perception, as rationalists too easily conceded to empiricism, but rather action itself, with its much greater plasticity. 
 Certainly, perceptions play an essential role, but they partly depend on action as a whole, and some perceptual mechanisms that one might have thought to be innate or very primitive only emerge at a certain level of object construction.'' (translated from \cite{piaget_lepistemologie_2011}, p14-15)
+\\
+
+\end{adjustwidth}
 
 
-Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation in Fig. \ref{fig:general}.
+Guerin and McKenzie \cite{guerin_survey_2013} proposed Fig. \ref{fig:general} to picture the progressive organization of schemas as the infant develops.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{Figure_1_guerin.pdf}
@@ -92,8 +108,8 @@ Ziemke \cite{ziemke_construction_2001} examined how these views apply to robotic
 
 \section{Schema mechanisms}
 
-Drescher \cite{drescher_made-up_1991} proposed the foundational schema mechanism by modeling schemas as depicted in Fig. \ref{fig:drescher}. 
-A schema's context is satisfied when all the positively included items are On and all the negatively included items are Off. 
+Drescher \cite{drescher_made-up_1991} pioneered the first schema mechanism by modeling schemas as a tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
+A schema's context is satisfied when all the positively included items are \textit{On} and all the negatively included items are \textit{Off}. 
 The activation is a schema consists of initiating its action. An activated schema is said to \textit{succeed} if its predicted results are all in fact obtained, and to \textit{fail} otherwise. The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
 Schemas can be chained to achieve goals. 
 
@@ -107,76 +123,65 @@ Schemas can be chained to achieve goals.
 
 \cite{drescher_made-up_1991}
 \cite{chaput_constructivist_2004}
-\cite{perotto_computational_nodate} 
 \cite{guerin_piagetian_2008}
 \cite{wang_new_2012}
 
-\section{Benchmarks}
+\subsection{Perotto's}
 
-Fig. \ref{fig:drescher2} shows Drescher's experimental settings.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
-	\caption{Drescher's benchmark. From \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
-	\label{fig:drescher2}
-\end{figure}
-
-
-Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
-
+Similar to Drescher's, Perotto's schemas \cite{perotto_computational_nodate} are tuples that associate a context, an action, and an expected result. 
+Perotto, however, introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in  Fig. \ref{fig:perotto}.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\textwidth]{Figure_grid_plot.pdf}
-	\caption{Georgeon's benchmark. Adapted from \cite{georgeon_intrinsically-motivated_2012} .} 
-	\label{fig:georgeon}
+	\includegraphics[width=0.6\textwidth]{Figure_perotto.png}
+	\caption{Perotto's schema from \cite{perotto_computational_nodate} Fig. 2.
+		A schema is composed of three vectors: context containing hidden variables and observable properties $(h_1, h_2, p_1, p_2, p_3)$, action $(c_1)$, and expected result $(e)$. } 
+	\label{fig:perotto}
+\end{figure}
+
+Perotto also introduced a hierarchy of schemas called the \textit{anticipatory tree} represented in Fig. \ref{fig:perotto_tree}. 
+Schema are organized in the \textit{anticipatory tree} whose top-level schema describes the agent's highest-level goal and leaf schemas are deciders of actions in the environment.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
+	\caption{Example of Perotto's anticipatory tree from \cite{perotto_computational_nodate} Fig. 10: ``Final schematic tree for solving the flip problem.''.
+ } 
+	\label{fig:perotto_tree}
 \end{figure}
 
 
-\section{Enactive learning with a schema mechanism}
 
-Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
-Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
-Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
+\subsection{The Icelandic team}
 
+e.g. \cite{thorisson_seed-programmed_2020}.
 
-The game of Mastermind provides an emblematic example in which the observation is not representational. 
-Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'') by proposing guesses (``actions''), which Player 1 responds to with feedback pegs (``observation''). Black pegs indicate a correct color in the correct position, while white pegs indicate a correct color in the wrong position.
-Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
-The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
+\subsection{Georgeon's}
 
-Software to play mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
-They, however require that the semantics of the feedback is known beforehand. 
-The radical constructivist Mastermind analogy likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
-The player may never find the hidden combination but may find a \textit{knowledge niche} in which to survive for some time.
+Similar to Perotto, Georgeon modeled schemas as tuples (pre-condition, decision, post-condition), and organized them  hierarchically. 
 
-Most schema mechanisms have been tested in settings in which the sensory signal is representational.
-The fact that they have not been tested with non-representational sensory data does not mean that they would not work or could not be adapted to such settings. 
+In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
+The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned lower-level schemas, 
+as illustrated in Fig. \ref{fig:agent8}. 
+The mechanism is not initialized with a top-level goal. 
+Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
+In a robot, primitive schemas are hard-coded control loops involving actuators end sensory feedback. 
 
-Georgeon and Ritter \cite{georgeon_intrinsically-motivated_2012} proposed an experimental settings where the sensory data is feedback from action rather than beeing representational. 
-Fig. \ref{fig:agent8} illustrates the learning process that occurs in such settings. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\textwidth]{Figure_3_agent8.pdf}
-	\caption{Autocatatalytic enactive schema learning and selection.
-	Schemas are nested tuples: (pre-schema, decision, post-schema).
-	Over time, new decisions and new schemas are learned from the bottom up. 
-	Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-schema they match.
-	Activated schemas propose their post-schemas with a proclivity value calculated from the activation weight and the expected valence.
-	The schema with the highest proclivity is selected to try to enact.} 
+	\caption{Schema learning and selection.
+		Schemas are nested tuples: (pre-schema, decision, post-schema).
+		Over time, new decisions and new schemas are learned from the bottom up. 
+		Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-schema they match.
+		Activated schemas propose their post-schemas with a proclivity value calculated from the activation weight and the expected valence.
+		The schema with the highest proclivity is selected to try to enact.} 
 	\label{fig:agent8}
 \end{figure}
 
-A schema is recorded as tuple (pre-condition, decision, post-condition), similar to Drescher's schemas.
-The pre-condition and post-condition, however, are not a representational description of the agent's situation but are just other schemas. 
-In essence, the current context is described by possibilities of interaction rather than representational data. 
-The schemas are learned from the bottom up and nested hierarchically, with higher-level schemas made of a sequence of two previously-learned lower-level schemas. 
-The system is initialized with a predefined set of primitive schemas that define the agent's basic possibilities of interaction. 
-In a robot, primitive schemas are hard-coded control loops involving actuators end sensory feedback. 
 
+The schema learning mechanism and selection works as follows.
 At the end of time step $t$, the agent records or reinforces the schemas: 
 \begin{itemize}
 	\item[$\bullet$] $(i_{t-2}, d_{t-1}, i_{t-1})$
@@ -191,11 +196,74 @@ When decision $d^2$ has been selected and successfully enacted, the mechanism le
 The rate of schema construction being constant, the number of schemas grows linearly with time. 
 Older and unused schemas can be forgotten.
 
-Notably is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the valence expectation of each decision. 
-The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
+
+
+\section{Benchmarks}
+
+Fig. \ref{fig:drescher2} shows Drescher's experimental settings.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
+	\caption{Drescher's benchmark from \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
+	\label{fig:drescher2}
+\end{figure}
+
+Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_computational_nodate}.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
+	\caption{Perotto's benchmark from \cite{perotto_computational_nodate} Fig.9 ``The hyper-flip problem''.} 
+	\label{fig:perotto_ben}
+\end{figure}
+
+
+
+
+Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
+Video Demo \cite{georgeon_video_2012}.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{Figure_grid_plot.pdf}
+	\caption{Georgeon's benchmark (Adapted from \cite{georgeon_intrinsically-motivated_2012}).
+	The agent can move forward to an empty cell, bump into a wall (green cell), turn to the left or to right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
+	Sensory signal is a single-bit feedback from the action. 	
+} 
+	\label{fig:georgeon}
+\end{figure}
+
 
 \section{Genetic epistemology with a schema mechanism}
 
+Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
+Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of 'original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
+Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
+
+
+The game of Mastermind provides an emblematic example in which the observation is not representational. 
+Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'') by proposing guesses (``actions''), which Player 1 responds to with feedback pegs (``observation''). Black pegs indicate a correct color in the correct position, while white pegs indicate a correct color in the wrong position.
+Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
+The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
+
+Software to play mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
+They, however require that the semantics of the feedback is known beforehand. 
+The radical constructivist Mastermind analogy likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
+The player may never find the hidden combination or goal but may survive and develop for some time in a satisfactory \textit{knowledge niche}.
+
+Most schema mechanisms have been tested in settings in which the sensory signal is representational.
+The fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
+Georgeon's mechanism may constitute an illustration of that.  
+In Georgeon's schemas, the sensory data is feedback from action rather than beeing representational. 
+The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
+In essence, the agent knows its current context by possibilities of interaction rather than by representational data. 
+
+Georgeon's schema mechanism is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the valence expectation of each decision. 
+The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
 
 
 \section{Conclusion}
