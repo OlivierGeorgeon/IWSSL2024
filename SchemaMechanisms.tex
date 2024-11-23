@@ -25,7 +25,7 @@
 
 \begin{document}
 %
-\title{New Schema Mechanisms to Implement Genetic Epistemology}
+\title{New Schema Mechanisms for Developmental Artificial Intelligence}
 %
 \titlerunning{Schema Mechanisms}
 % If the paper title is too long for the running head, you can set
@@ -47,7 +47,10 @@ Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-We review schema mechanisms as they have been used to account for a \textit{genetic} or \textit{constructivist} theory of learning.
+Schema mechanisms are software implementations that attempt to account for the learning theories that are designated under vocable such as genetic epistemology, constructivist epistemology, and developmental learning.  
+The works of Jean Piaget constitute the central body of reference of these theories ranging from child psychology to philosophy of mind.
+Gary Drescher coined the term schema mechanism in 1991 and laid the ground to identify the core challenges: open-ended learning, intrinsic motivation, incremental hierarchical abstraction, sensorimotor grounding, reflexivity, individuation. 
+This paper reviews a selection of the latest schema mechanisms and highlights their contributions to these key challenges, with the goal of unifying their different contributions toward a comprehensive theory of developmental artificial intelligence.
 
 \keywords{Schema mechanism  \and Genetic epistemology \and Constructivist learning.}
 \end{abstract}
@@ -104,6 +107,7 @@ Guerin and McKenzie \cite{guerin_survey_2013} proposed Fig. \ref{fig:general} to
 \end{figure}
 
 Ziemke \cite{ziemke_construction_2001} examined how these views apply to robotics.
+Oudeyer \cite{oudeyer_intrinsic_2007} stressed the importance of intrinsic motivation. 
 
 
 \section{Schema mechanisms}
@@ -156,6 +160,26 @@ Schema are organized in the \textit{anticipatory tree} whose top-level schema de
 \subsection{The Icelandic team}
 
 e.g. \cite{thorisson_seed-programmed_2020}.
+
+
+\subsection{The LIDA cognitive architecture}
+
+The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms on top of a perceptual memory module called the Perceptual Associative Memory (PAM). Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_LIDA1.png}
+	\caption{Initiation of LIDA's procedural learning process (\cite{kugele_learning_2021} Fig. 10)} 
+	\label{fig:lida1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_LIDA2.png}
+	\caption{Continuing process of selectionist and instructionalist procedural learning that was initiated by Action Selection (\cite{kugele_learning_2021} Fig. 11)} 
+	\label{fig:lida2}
+\end{figure}
+
 
 \subsection{Georgeon's}
 
@@ -224,6 +248,13 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_c
 \end{figure}
 
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_LIDA_bench.png}
+	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms (\cite{kugele_constructivist_nodate} Fig. 5)} 
+	\label{fig:lida_bench}
+\end{figure}
+
 
 
 Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
@@ -241,7 +272,7 @@ Video Demo \cite{georgeon_video_2012}.
 \end{figure}
 
 
-\section{Genetic epistemology with a schema mechanism}
+\section{Schema mechanisms and theory of knowledge}
 
 Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
 Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of `original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
@@ -283,7 +314,7 @@ Piaget formulates this process as follows:
 \end{adjustwidth}
 
 Future studies on schema mechanisms will have to address this second stage to tackle fundamental questions of knowledge abstraction. 
-We expect this will involve a cognitive architecture that has the capacity to represent spatial properties of schemas, and to simulate the enaction of schema in different spatial frames of reference \cite{georgeon_artificial_2024}. 
+We expect this will involve a cognitive architecture that has the capacity to represent spatial properties of schemas, and to simulate the enaction of schema in different spatial frames of reference. LIDA and ECA \cite{georgeon_artificial_2024} constitute initial attempts in this direction . 
 
 
 \begin{credits}
