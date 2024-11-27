@@ -157,9 +157,35 @@ Schema are organized in the \textit{anticipatory tree} whose top-level schema de
 
 
 
-\subsection{The Icelandic team}
+\subsection{AERA}
 
-e.g. \cite{thorisson_seed-programmed_2020}.
+AERA is a causality-based general machine intelligence aspiring system with the following components \cite{sheikhlar2024causal,nivel2013replicode}: 
+
+\noindent \textbf{Facts}: Facts are statements that represent an entity’s property and property’s value at a time step.
+
+\noindent \textbf{Composite state ($CST$)}: A composite state represents a set of simultaneous facts the AERA system considers to be significant for predicting an event’s consequences.
+
+\noindent \textbf{Command model ($CoM$)}: A command model represents a causal influence of an event on the state of the AERA agent’s environment, i.e., a change in the value of an entity’s property at a later time step.
+
+\noindent \textbf{Requirement model ($M_{req}$)}: A requirement model allows a $CoM$ to be instantiated after its relevant CST is instantiated.
+
+Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some observation facts match all the components of a $CST$, the $CST$ will be instantiated through a $M_{req}$ which itself leads to the instantiation of a $CoM$. As the $CoM$ predicts a future state after an event’s occurrence, the AERA agent verifies if the observation facts in the following time step match the predicted state.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.99\textwidth]{AERAblockdiagram.png}
+	\caption{ The connection between a $CST$, a $CoM$, and a $M_{req}$ in AERA. } 
+	\label{fig:AERA}
+\end{figure}
+
+The differences between AERA’s knowledge representation and Drecher’s schemas have to do with AERA following the rules of non-axiomatic logic and its support for higher-order logic. In other words,
+\begin{itemize}
+    \item The models in AERA are falsifiable, have degrees of confidence, and can be related to specific groups with certain attributes specifying their context.
+    \item The choice of models and reasoning in AERA is based on the extent of available resources (models and time).
+    \item The knowledge representation in AERA is compositional, meaning that AERA can create hierarchies of models and composite states.
+\end{itemize}
+
+Yet, both AERA models and schemas represent knowledge in a similar manner, they contextualize the statements representing an action/event's consequences. 
 
 
 \subsection{The LIDA cognitive architecture}
