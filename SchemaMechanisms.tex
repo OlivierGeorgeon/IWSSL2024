@@ -44,7 +44,7 @@ Paul~Robertson\inst{4}\orcidID{0000-0002-4477-0379}
 %
 \institute{UR CONFLUENCE: Sciences et Humanites (EA 1598), UCLy, France \email{ogeorgeon@univ-catholyon.fr}\\
 \and ONERA -- The French Aerospace Lab -- DTIS, Toulouse, France \email{filipo.perotto@onera.fr}
-\and Center for Analysis and Design of Intelligent Agents, Reykjavik University, Iceland \email{arashs@ru.is}
+\and Center for Analysis and Design of Intelligent Agents, Reykjavik University, Iceland \email{arash@iiim.is}
 \and DOLL Labs, Lexington, MA, USA\\ \email{paulr@dollabs.com}
  }
 %
@@ -167,33 +167,47 @@ Schema are organized in the \textit{anticipatory tree} whose top-level schema de
 
 \subsection{AERA}
 
-AERA is a causality-based general machine intelligence aspiring system with the following components \cite{sheikhlar2024causal,nivel2013replicode}: 
+AERA\footnote{Autocatalytic Endogenous Reflective Architecture; see www.openaera.org – accessed Dec. 6th, 2024.} is a unified system that can learn about causal relations cumulatively, from experience \cite{thorisson2019cumulative,thorisson2014autonomous,nivel2013autocatalytic}. The system’s knowledge representation uniquely combines ampliative reasoning, autonomous resource management, explanation-driven compositional knowledge representation and reflection in a synergetic architecture that can grow its knowledge from a small “bootstrapping seed” \cite{thorisson2020seed}. Its compositional knowledge contains numerous peewee-size “micro-models” that can be combined in explainable ways to model experience \cite{thorisson2021explanation}. 
 
-\noindent \textbf{Facts}: Facts are statements that represent an entity’s property and property’s value at a time step.
+The methodology behind AERA rests on three fundamental principles \cite{thorisson_seed-programmed_2020,thorisson2012new,nivel2009self}: 1. During learning, a learner autonomously creates new knowledge through a variety of methods including hypothesis generation and testing; 2. autonomous learning must create models of causal relations through situated goal-driven reasoning, and 3. self-programming is based on transparent operational semantics based on peewee-size uniform knowledge models. Those familiar with Piaget’s \cite{berlyne2003psychology} fundamental insight that human learning requires creation of new information will recognize the first principle. For this principle, Piaget proposed the idea of schemas – information structures that mediate between perception and action, capturing and controlling experience. An important difference between AERA’s knowledge representation and other proposals based on this idea (cf. \cite{arbib2003handbook,drescher_made-up_1991}) is its emphasis on non-axiomatic worlds and the resulting strong requirement for transversal defeasibility of acquired knowledge (cf. \cite{pollock1987defeasible}) – in other words, that since no certainty about anything learned can be guaranteed, the methods for knowledge creation cannot be based on the assumption of knowledge of a “ground truth”. The methodology behind AERA unifies this, and the above listed assumptions, in a coherent theoretical approach, with deep implications for knowledge creation in light of novelty: AERA starts out with only a tiny amount of “bootstrap” (seed) knowledge – the remainder of its knowledge, which soon vastly outsizes the seed\footnote{In our implementation of S1 – an AERA agent that learns to do TV-style interviews, the ratio of the learned knowledge over the seed knowledge, after 20 hours of learning, was ~53 \cite{thorisson2014autonomous}.}, is then generated autonomously by the system itself, based on hypotheses that are inspired and verified through experience, using ampliative reasoning mechanisms. 
 
-\noindent \textbf{Composite state ($CST$)}: A composite state represents a set of simultaneous facts the AERA system considers to be significant for predicting an event’s consequences.
+\begin{itemize}
+    \item The knowledge representation in AERA is peewee (relatively small) and compositional; AERA can inspect, deconstruct, and reconstruct its models, as well as create hierarchies of models of its experience.
+    \item The models in AERA are falsifiable, have degrees of confidence, and can be related to specific groups with certain attributes specifying their context.
+    \item The choice of models and reasoning methods at any point in time is dynamic, based among other things on the extent of available resources (models and time).
 
-\noindent \textbf{Command model ($CoM$)}: A command model represents a causal influence of an event on the state of the AERA agent’s environment, i.e., a change in the value of an entity’s property at a later time step.
+\end{itemize}
 
-\noindent \textbf{Requirement model ($M_{req}$)}: A requirement model allows a $CoM$ to be instantiated after its relevant CST is instantiated.
 
-Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some observation facts match all the components of a $CST$, the $CST$ will be instantiated through a $M_{req}$ which itself leads to the instantiation of a $CoM$. As the $CoM$ predicts a future state after an event’s occurrence, the AERA agent verifies if the observation facts in the following time step match the predicted state.
+
+AERA’s peewee-size models, similar to e.g. Drescher’s \cite{drescher_made-up_1991} schemas and the neuro-symbolic approach presented in \cite{komrusch_symbolic_2022}, represent knowledge by contextualized programs that capture antecedental and successional states of important relationships (e.g. the relationship between a hand and an object that one wants to pick up). Unlike these, AERA places explicit representation of cause-effect relations at its core \cite{thorisson2018cumulative}. During its continuous learning, driven by a self-maintained dynamic goal hierarchy, the most useful (effective and efficient) models of cause-effect relations encountered in the environment are retained, while others are discarded. Based on predictions, informed experimentation, and strategic induction, the system autonomously creates new knowledge cumulatively, effortlessly unifying new information with old, even in light of contradictions. Further separating AERA from other approaches are its atomic elements for knowledge creation, whose operational semantics are transparent to the system’s own reasoning, meaning that they can be inspected and learned by the same explicit, defeasible unified reasoning mechanisms as used for learning about the world. 
+
+The approach uniquely unifies cognition and meta-cognition in a single, coherent architecture, enabling efficient and effective self-reflection that lays a foundation for a capacity for cognitive growth. The result is a system that can dynamically employ ampliative reasoning, at any point in time, to predict both the immediate and far future, including its own cognitive resource use (“think time”). 
+
+Key representational components of this approach include \cite{sheikhlar2024autonomous,sheikhlar2024causal}: 
+\begin{itemize}
+    \item \textbf{Facts} are statements that represent a cognitive event, e.g. operations happening in AERA itself; facts are the only entity in AERA that have complete certainty (corresponding to Descartes' axiom “I think, therefore I am”).
+    \item A \textbf{composite State model (CST)} captures a set of simultaneous (timeless) Facts that the AERA system considers to be (potentially) useful and/or necessary for properly predicting an event’s consequences; used to e.g. represent a variety of subsets in the world such as spatial relations of objects, the values of a perceived object’s properties, such as its position and color, etc. %The forming of a CST at time T becomes a Fact with a timestamp T and a GUID (i.e. it is certain to the AERA executive that this CST was formed at time T). 
+    \item A \textbf{cognitive event model (CEM)} captures a (hypothesized) causal influence of a Fact on another Fact; used to represent the effect that an action or event in particular circumstances, e.g. a command initiated by AERA at some timestep, has on the state of the world at a later timestep. When a CEM fires it produces a prediction (while the production of a prediction is represented as a Fact, the confidence in the prediction itself is defeasible and is in part based on the confidence of the CEM).
+    \item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/conditions that must be met for a CEM to be relevant in a particular context at a particular time.
+
+\end{itemize}
+
+
+AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. These mechanisms have been demonstrated for control of virtual robots, language learning and use, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
+
+Both \textit{CEM}s and $M_{req}$s have a left-hand side (LHS) and a right-hand side (RHS), composed of sets of Facts and constraints (e.g., math equations). The LHS Facts describe (assumed) conditions under which the RHS Facts would be produced. Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some sensory Facts match everything in a \textit{CEM}’s LHS, a relevant $M_{req}$ allows the \textit{CTS}’s instantiation, which means the conditions for making a prediction via a \textit{CEM} are met. A successful instantiation of a \textit{CEM} means that everything in its RHS will happen  (probably – because all knowledge in AERA is defeasible). As the \textit{CEM} predicts a future state after an event’s occurrence, this is verified and marked as a “successful prediction” by AERA only if the prediction matches the state that is observed.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.99\textwidth]{AERAblockdiagram.png}
-	\caption{ The connection between a $CST$, a $CoM$, and a $M_{req}$ in AERA. } 
+	\includegraphics[width=0.99\textwidth]{AERAblockdiagram2.png}
+	\caption{The connection between $CST$, $M_{req}$, and $CEM$. The observation facts matching $CST1$ allow $M_{req}$ to trigger a prediction by instantiating $CEM1$. AERA checks whether the subsequent observations match the predicted future state.} 
 	\label{fig:AERA}
 \end{figure}
 
-The differences between AERA’s knowledge representation and Drecher’s schemas have to do with AERA following the rules of non-axiomatic logic and its support for higher-order logic. In other words,
-\begin{itemize}
-    \item The models in AERA are falsifiable, have degrees of confidence, and can be related to specific groups with certain attributes specifying their context.
-    \item The choice of models and reasoning in AERA is based on the extent of available resources (models and time).
-    \item The knowledge representation in AERA is compositional, meaning that AERA can create hierarchies of models and composite states.
-\end{itemize}
+As an example, the triad of $CST1$, $M_{req}1$, and $CEM1$ can represent the physical movement behavior of an entity when it collides with another entity (e.g., a hand). $CEM1$ represents the dynamics of the movement, connecting the collision event (left-hand side of $CEM1$) to the moved entity’s new position (right-hand side of $CEM1$). $CST1$ represents the preconditions of the behavior, such as the entities’ position, weight, etc., and the fact that the point of collision and the moved entities' position must initially be the same. $M_{req}1$ predicts that if a striking entity hits another entity with the conditions described by $CST1$, the stricken entity’s position will change a specific amount in the next time step.
 
-Yet, both AERA models and schemas represent knowledge in a similar manner, they contextualize the statements representing an action/event's consequences. 
+The interactions of the operational principles of AERA are quite intricate in their entirety; important aspects that are covered elsewhere include induction – the creation of new knowledge – unified abduction-deduction – the creation of plans and explanations – and runtime relevance computations \cite{nivel2013towards}. The unified integration of these operational principles in a single coherent architecture is what gives AERA its power, allowing its seed – initial human-provided knowledge – to be orders of magnitude smaller than what AERA can create on its own through learning from experience. 
 
 
 \subsection{The LIDA cognitive architecture}
