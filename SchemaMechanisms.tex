@@ -23,6 +23,9 @@
 % Olivier
 \usepackage{changepage}
 \usepackage{amssymb}
+% \newcommand{\doublecheck}{\stackon{\checkmark\hspace{-0.3em}}{\checkmark}}
+\newcommand{\doublecheck}{\checkmark\hspace{-0.5em}\checkmark}
+
 
 \begin{document}
 %
@@ -34,17 +37,18 @@
 %
 \author{Olivier~L.~Georgeon\inst{1}\orcidID{0000-0003-4883-8702} \and
 Filipo~S.~Perotto\inst{2}\orcidID{0000-0003-2283-4703} \and
+Kristinn~R.~Th{\'o}risson\inst{3}  \and
 Arash~Sheikhlar\inst{3} \and
 Paul~Robertson\inst{4}\orcidID{0000-0002-4477-0379}
 }
 %
-\authorrunning{Georgeon, Perotto, Schekhlar \& Robertson}
+\authorrunning{Georgeon, Perotto, Th{\'o}risson, Scheikhlar, \& Robertson}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
 \institute{UR CONFLUENCE: Sciences et Humanites (EA 1598), UCLy, France \email{ogeorgeon@univ-catholyon.fr}\\
 \and ONERA -- The French Aerospace Lab -- DTIS, Toulouse, France \email{filipo.perotto@onera.fr}
-\and Center for Analysis and Design of Intelligent Agents, Reykjavik University, Iceland \email{arash@iiim.is}
+\and Center for Analysis and Design of Intelligent Agents, Reykjavik University, Iceland \email{thorisson@ru.is}, \email{arash@iiim.is}
 \and DOLL Labs, Lexington, MA, USA\\ \email{paulr@dollabs.com}
  }
 %
@@ -212,7 +216,19 @@ The interactions of the operational principles of AERA are quite intricate in th
 
 \subsection{The LIDA cognitive architecture}
 
-The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms on top of a perceptual memory module called the Perceptual Associative Memory (PAM). Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
+The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
+Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
+Other memory modules are implemented including episodic memory, declarative memory, and spatial memory.
+Knowledge is represented as a directed graph called the \textit{node structure}. 
+
+LIDA's schemas work as templates with unbound variables in their context, action, and result. 
+Actions may have  unbound variables that qualify and modulate how an action is executed. 
+Schemas are instantiated as \textit{behaviors}. 
+
+LIDA implements \textit{affective valence}. 
+Affective valence can bias behavior selection towards desirable outcome. 
+Liking and disliking are distinguished from wanting and dreading with the argument that they relate to distinct neural pathways in the brain \cite{kringelbach_functional_2010}. 
+Wanting and dreading are qualified by \textit{incentive salience} of behaviors.   
 
 \begin{figure}
 	\centering
@@ -306,6 +322,7 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_c
 
 
 Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
+This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
 Video Demo \cite{georgeon_video_2012}.
 
 
@@ -340,6 +357,8 @@ Table \ref{tab:comp} shows a comparison of the schema mechanisms presented in th
 		Active perception &    &  &  &  & \checkmark \\
 		3D spatial schemas &    &  &  & \checkmark & \checkmark \\
 		Reflexivity &    &  & \checkmark & \checkmark &  \\
+		Defeasibility of acquired knowledge &    &  & \checkmark &  &  \\
+		Self-programming &    &  & \checkmark &  & \checkmark \\
 		\hline
 	\end{tabular}
 \end{table}
