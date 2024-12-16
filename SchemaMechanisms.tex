@@ -55,7 +55,7 @@ Paul~Robertson\inst{4}\orcidID{0000-0002-4477-0379}
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Schema mechanisms are software systems that attempt to account for the learning theories that are designated under vocable such as 
+Schema mechanisms are software implementations designed to reflect learning theories like 
 genetic epistemology, 
 constructivist psychology, %FP: constructivist epistemology, 
 and developmental learning.  
@@ -72,8 +72,10 @@ This paper reviews a selection of the latest schema mechanisms and highlights th
 \section{Introduction}
 
 
-Drawing from the earlier work of James Baldwin, Jean Piaget developed and popularized the theory of \textit{genetic epistemology} \cite{piaget_principles_1997} throughout his life to account for the genesis of intelligence and knowledge. 
-In the end of his life, he connected genetic epistemology with constructivist epistemology and the work of Ernst von Glasersfeld \cite{glasersfeld_radical_1997}. 
+% Drawing from the earlier work of James Baldwin, 
+Throughout his life, Jean Piaget developed and popularized the theory of \textit{genetic epistemology} \cite{piaget_principles_1997}  to account for the genesis of intelligence and knowledge. 
+In parallel, he pioneered \textit{developmental psychology} by establishing the foundational methods for studying mental development in children.
+Toward the end of his life, he connected genetic epistemology with constructivist epistemology and the work of Ernst von Glasersfeld \cite{glasersfeld_radical_1997}. 
 Genetic epistemology rests on the key concept of ``scheme'' which Piaget defines as follows: 
 \\
 
@@ -83,7 +85,7 @@ Genetic epistemology rests on the key concept of ``scheme'' which Piaget defines
 \\ 
 \end{adjustwidth}
 
-In this paper, we translate \textit{scheme} with the English term \textit{schema} and its plural \textit{schemas}. 
+In this paper, we translate the French term \textit{scheme} with the English term \textit{schema} and we use the plural \textit{schemas}. 
 A schema is the basic unit of knowledge that encapsulates the action and its circumstances, that is, a \textit{pattern of interaction}. 
 Genetic epistemology insists on the primacy of interaction as a condition for the emergence of perception and knowledge:
 \\
@@ -97,13 +99,25 @@ Starting from the contact zone between one's own body and the objects, these med
 It is from this dual progressive construction that the joint elaboration of both the subject and the objects depends.
 
 The initial instrument of exchange is not perception, as rationalists too easily conceded to empiricism, but rather action itself, with its much greater plasticity. 
-Certainly, perceptions play an essential role, but they partly depend on action as a whole, and some perceptual mechanisms that one might have thought to be innate or very primitive only emerge at a certain level of object construction.'' (translated from \cite{piaget_lepistemologie_2011}, p14-15)
+Certainly, perceptions play an essential role, but they partly depend on action as a whole, and some perceptual mechanisms that one might have thought to be innate or very primitive only emerge at a certain level of object construction.'' (translated from \cite{piaget_lepistemologie_2011}, p. 14-15)
 \\
 
 \end{adjustwidth}
 
+To this day, Piaget's ideas remain central to modern theories of knowledge as well as developmental psychology. 
+Indeed, genetic epistemology seems to offer a materialistic explanation of how human psychology develops from birth.
+The question whether this explanation is too reductionist remains however open. 
+To our knowledge, Piaget never claimed that his theories could be implemented as a mechanistic process in a computer. 
+The first attempt only began eleven years after his death.
 
-Guerin and McKenzie \cite{guerin_survey_2013} proposed Fig. \ref{fig:general} to picture the progressive organization of schemas as the infant develops.
+
+\section{Schema mechanisms}
+
+
+Implementing genetic epistemology as a mechanistic process involves reducing Piaget's psychological concept of schema into data structures handled by a computer. 
+This computer controls an artifact (robot or virtual agent) that interacts with its environment.
+The computer must process these data structures through some mechanism that will support the generation of increasingly intelligent behavior demonstrating the internal development of the robot.
+Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation of this developmental process shown in \ref{fig:general}.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{Figure_1_guerin.pdf}
@@ -118,11 +132,11 @@ Guerin and McKenzie \cite{guerin_survey_2013} proposed Fig. \ref{fig:general} to
 	\label{fig:general}
 \end{figure}
 
+
 Ziemke \cite{ziemke_construction_2001} examined how these views apply to robotics.
 Oudeyer \cite{oudeyer_intrinsic_2007} stressed the importance of intrinsic motivation. 
 
-
-\section{Schema mechanisms}
+\subsection{Drescher's}
 
 Drescher \cite{drescher_made-up_1991} pioneered the first schema mechanism by modeling schemas as a tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
 A schema's context is satisfied when all the positively included items are \textit{On} and all the negatively included items are \textit{Off}. 
