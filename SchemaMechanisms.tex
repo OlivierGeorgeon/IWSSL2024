@@ -141,20 +141,38 @@ Oudeyer \cite{oudeyer_intrinsic_2007} stressed the importance of intrinsic motiv
 
 \subsection{Drescher's}
 
-Drescher \cite{drescher_made-up_1991} pioneered the first schema mechanism by modeling schemas as a tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
+Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
+He pioneered the first schema mechanism in 1991 by designing these mental structures as schemas formalized as the tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
+The \textit{context} and the results are sets of binary \textit{items} that can be \textit{positively} or \textit{negatively} included. 
 A schema's context is satisfied when all the positively included items are \textit{On} and all the negatively included items are \textit{Off}. 
-The activation is a schema consists of initiating its action. An activated schema is said to \textit{succeed} if its predicted results are all in fact obtained, and to \textit{fail} otherwise. The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
-Schemas can be chained to achieve goals. 
+A schema's result asserts that, if the action is taken when the context is satisfied, then the positively included items of the results will be turned \textit{On} and its negatively included items will be turned \textit{Off}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_2_schema_drescher.png}
 	\caption{Schema from \cite{drescher_made-up_1991} Fig. 3.2.
-	The schema noted $p \!\sim\! qr/a/xy$ asserts that if action $a$ is taken in the context where item $p$ is On, $q$ is Off, and $r$ is On then the items $x$ and $y$ will be turned On.} 
+		The schema noted $p \!\sim\! qr/a/xy$ asserts that if action $a$ is taken in the context where item $p$ is On, $q$ is Off, and $r$ is On then the items $x$ and $y$ will be turned On.} 
 	\label{fig:drescher}
 \end{figure}
 
-\cite{drescher_made-up_1991}
+The agent is initialized with a set of actions, \textit{primitive items}, and \textit{primitive schemas} that encode the agent's initial ``innate'' behaviors. 
+The activation of a schema consists of initiating its action. An activated schema is said to \textit{succeed} if its predicted results are all in fact obtained, and to \textit{fail} otherwise. The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
+As the agent interacts with its environment, it records new schemas that associate the observed context together with the action taken and the observed result. 
+Schemas can be chained to achieve goals. 
+
+Drescher targeted the fundamental problem of \textit{concept invention} through the construction of new items called \textit{synthetic items}. 
+His schema mechanism finds \textit{relevant results} and then seeks conditions under which the result follows reliably.
+This is done through finding \textit{schemas of recoverability} that allow recovering the context leading to the relevant result, and then performing the action again to asses the reliability of the schema. 
+The new synthetic item is created in terms of primitive or previously created synthetic items.
+For example, returning the hand to where an object was last felt typically recovers the tactile manifestation of the object. A new concept is learned to represent this object. 
+This processes uses the mechanism's \textit{marginal attribution} facility, which ``use[s] sensitive statistical measures to alternate between discovering a highly unreliable result, and then seeking conditions with respect to which the result follows more reliably'' \cite[p. 5]{drescher_made-up_1991}.
+
+
+
+% New items called \textit{synthetic items} are learned through a process called \textit{marginal attribution}.
+
+
+
 \cite{chaput_constructivist_2004}
 \cite{guerin_piagetian_2008}
 \cite{wang_new_2012}
