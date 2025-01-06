@@ -130,7 +130,7 @@ Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representat
 	An edge has the meaning ``is a necessary precursor''. 
     Stage 1: behaviors without objects. 
     Stage 2: behaviors with single objects. 
-    Stage 3: object-object behaviors. The schemas now involve relationship among objects, and locations and transforms within space.
+    Stage 3: object-object behaviors. The schemas now involve relationships among objects, and locations and transforms within space.
     The higher (abstract) track represents representations of objects by schemas and physical properties influencing their interactions.} 
 	\label{fig:general}
 \end{figure}
@@ -156,7 +156,10 @@ A schema's result asserts that, if the action is taken when the context is satis
 \end{figure}
 
 The agent is initialized with a set of actions, \textit{primitive items}, and \textit{primitive schemas} that encode the agent's initial ``innate'' behaviors. 
-The activation of a schema consists of initiating its action. An activated schema is said to \textit{succeed} if its predicted results are all in fact obtained, and to \textit{fail} otherwise. The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
+The activation of a schema consists of initiating its action. 
+Upon completion of the action, the predicted result is compared with the actual result.
+The schema is said to \textit{succeed} if its predicted results are all obtained, and to \textit{fail} otherwise. 
+The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
 As the agent interacts with its environment, it records new schemas that associate the observed context together with the action taken and the observed result. 
 Schemas can be chained to achieve goals. 
 
@@ -166,10 +169,10 @@ and then seeks conditions under which the relevant results follow reliably.
 Such conditions are found through new schemas that allow recovering the context leading to the relevant result, and then performing the action again to asses the reliability of these new schemas. 
 These new schemas act as ``probes'' that may evoke the manifestation of a ``thing''. 
 They are only reliable if the ``thing'' is present. 
-When such a schema is found, it is considered a ``host schema'' for a newly spawn ``synthetic item'' that represents this thing. 
-Drescher notes that ``synthetic item thus works backward from a thing's manifestation to define the very thing manifested'' \cite[p. 83]{drescher_made-up_1991}.
+When such a schema is found, it is considered a ``host schema'' for a newly spawned ``synthetic item'' that represents this thing. 
+Drescher notes that ``a synthetic item thus works backward from a thing's manifestation to define the very thing manifested'' \cite[p. 83]{drescher_made-up_1991}.
 This addresses the fundamental problem of \textit{concept invention} in that 
-``a synthetic item is a new element of the system's ontology---an element fundamentally different from the prior contents of the system's conceptual vocabulary \cite[p. 81]{drescher_made-up_1991}.
+``a synthetic item is a new element of the system's ontology---an element fundamentally different from the prior contents of the system's conceptual vocabulary'' \cite[p. 81]{drescher_made-up_1991}.
 
 The designer defines the agent's goals by assigning \textit{primitive values} to items.
 The mechanism can identify subgoals as specific sets of items to be activated or deactivated; 
@@ -250,9 +253,12 @@ Key representational components of this approach include \cite{sheikhlar2024auto
 \end{itemize}
 
 
-AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. These mechanisms have been demonstrated for control of virtual robots, language learning and use, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
+AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. 
+These mechanisms have been demonstrated for control of virtual robots, learning and using language, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
 
-Both \textit{CEM}s and $M_{req}$s have a left-hand side (LHS) and a right-hand side (RHS), composed of sets of Facts and constraints (e.g., math equations). The LHS Facts describe (assumed) conditions under which the RHS Facts would be produced. Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some sensory Facts match everything in a \textit{CEM}’s LHS, a relevant $M_{req}$ allows the \textit{CTS}’s instantiation, which means the conditions for making a prediction via a \textit{CEM} are met. A successful instantiation of a \textit{CEM} means that everything in its RHS will happen  (probably – because all knowledge in AERA is defeasible). As the \textit{CEM} predicts a future state after an event’s occurrence, this is verified and marked as a “successful prediction” by AERA only if the prediction matches the state that is observed.
+Both \textit{CEM}s and $M_{req}$s have a left-hand side (LHS) and a right-hand side (RHS), composed of sets of Facts and constraints (e.g., math equations). The LHS Facts describe (assumed) conditions under which the RHS Facts would be produced. Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some sensory Facts match everything in a \textit{CEM}’s LHS, a relevant $M_{req}$ allows the \textit{CTS}’s instantiation, which means the conditions for making a prediction via a \textit{CEM} are met. A successful instantiation of a \textit{CEM} means that everything in its RHS will happen. 
+% (probably – because all knowledge in AERA is defeasible) PR and OG. 
+As the \textit{CEM} predicts a future state after an event’s occurrence, this is verified and marked as a “successful prediction” by AERA only if the prediction matches the state that is observed.
 
 \begin{figure}
 	\centering
@@ -391,26 +397,37 @@ Video Demo \cite{georgeon_video_2012}.
 
 \section{Schema mechanisms and theory of knowledge}
 
-Table \ref{tab:comp} shows a comparison of the schema mechanisms presented in this paper.
+Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in this paper.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Figure_venn.pdf}
+	\caption{Coverage of principal dimensions by existing schema mechanisms.} 
+	\label{fig:venn}
+\end{figure}
+
+
 
 \begin{table}
 	\centering
 	\caption{Comparison of schema mechanisms}\label{tab:comp}
 	\begin{tabular}{|l|c|c|c|c|c|}
 		\hline
-		&  Drescher's & Perotto's & AERA & LIDA & Georgeon's \\
+		&  Drescher & Perotto & AERA & LIDA & ECA \\
 		\hline
-		Chaining to goal & \checkmark & \checkmark & \checkmark & \checkmark &  \\
-		Marginal attribution & \checkmark & \checkmark & \checkmark & \checkmark & \\
-		Hierarchical goals &  & \checkmark & \checkmark &  &  \\
-		Non-representational datum &  &  &  & \checkmark & \checkmark \\
+		Explicit goal & \checkmark & \checkmark & \checkmark & \checkmark &  \\
+		Concept invention & \checkmark & \checkmark &  &  &  \\
+		%Marginal attribution & \checkmark & \checkmark & \checkmark & \checkmark & \\
+		%Hierarchical goals &  & \checkmark & \checkmark &  &  \\
+		Non-representational sensory signal &  &  &  & \checkmark & \checkmark \\
 		Intrinsic motivation &    &  &  & \checkmark & \checkmark \\
-		Sequential schemas &    &  &  & \checkmark & \checkmark \\
-		Active perception &    &  &  &  & \checkmark \\
+		%Sequential schemas &    &  &  & \checkmark & \checkmark \\
+		% Active perception &    &  &  &  & \checkmark \\
 		3D spatial schemas &    &  &  & \checkmark & \checkmark \\
-		Reflexivity &    &  & \checkmark & \checkmark &  \\
-		Defeasibility of acquired knowledge &    &  & \checkmark &  &  \\
-		Self-programming &    &  & \checkmark &  & \checkmark \\
+		% Reflexivity &    &  & \checkmark & \checkmark &  \\
+		% Defeasibility of acquired knowledge &    &  & \checkmark &  &  \\
+		Self-programming &    &  & &  & \checkmark \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -435,7 +452,7 @@ The player may never find the hidden combination or goal but may survive and str
 As reviewed in Section \ref{sec:benchmarks}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
 Nonetheless, the fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
 Georgeon's mechanism may constitute an illustration of that.  
-In Georgeon's schemas, the sensory data is feedback from action rather than beeing representational. 
+In Georgeon's schemas, the sensory data is feedback from action rather than being representational. 
 The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
 In essence, the agent knows its current context by possibilities of interaction rather than by representational data. 
 
