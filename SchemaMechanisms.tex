@@ -155,29 +155,32 @@ A schema's result asserts that, if the action is taken when the context is satis
 	\label{fig:drescher}
 \end{figure}
 
-The agent is initialized with a set of actions, \textit{primitive items}, and \textit{primitive schemas} that encode the agent's initial ``innate'' behaviors. 
+The agent is initialized with a set of \textit{primitive} actions, items, and schemas that encode the agent's initial ``innate'' behaviors. 
 The activation of a schema consists of initiating its action. 
 Upon completion of the action, the predicted result is compared with the actual result.
 The schema is said to \textit{succeed} if its predicted results are all obtained, and to \textit{fail} otherwise. 
 The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
-As the agent interacts with its environment, it records new schemas that associate the observed context together with the action taken and the observed result. 
-Schemas can be chained to achieve goals. 
+%As the agent interacts with its environment, it records new schemas that associate the observed context together with the action taken and the observed result. 
 
-Drescher implemented Piaget's idea of ``construction of reality'' through a mechanisms that seeks underlying invariant that make the enaction of some schemas reliable. 
-The mechanism identifies \textit{relevant results} made of items that are slightly more frequent than average, 
-and then seeks conditions under which the relevant results follow reliably. 
+%Drescher implemented Piaget's idea of ``construction of reality'' through a mechanisms that seeks underlying invariant that make the enaction of some schemas reliable. 
+The learning of new schemas is triggered by the identification of \textit{relevant results} made of items that are slightly more frequent than average. 
+When a relevant result is identified, the agent seeks conditions under which it follows reliably. 
 Such conditions are found through new schemas that allow recovering the context leading to the relevant result, and then performing the action again to asses the reliability of these new schemas. 
-These new schemas act as ``probes'' that may evoke the manifestation of a ``thing''. 
-They are only reliable if the ``thing'' is present. 
-When such a schema is found, it is considered a ``host schema'' for a newly spawned ``synthetic item'' that represents this thing. 
+
+The learning of new ``concepts'' occurs when the agent finds schemas that act as ``probes'' that may evoke the manifestation of a ``thing''. 
+These schemas are only reliable if the ``thing'' is present. 
+When such a schema is found, it is considered a ``host schema'' for a newly spawned ``synthetic item'' that represents this thing.
+Eventually, the agent finds out that a single ``thing'' may manifest itself through different host schemas. 
 Drescher notes that ``a synthetic item thus works backward from a thing's manifestation to define the very thing manifested'' \cite[p. 83]{drescher_made-up_1991}.
 This addresses the fundamental problem of \textit{concept invention} in that 
 ``a synthetic item is a new element of the system's ontology---an element fundamentally different from the prior contents of the system's conceptual vocabulary'' \cite[p. 81]{drescher_made-up_1991}.
 
-The designer defines the agent's goals by assigning \textit{primitive values} to items.
+The designer defines the agent's goals by assigning \textit{primitive values} to items (positive if desirable, negative if dreaded).
 The mechanism can identify subgoals as specific sets of items to be activated or deactivated; 
 and it constructs \textit{composite actions} as sequences of schemas used to reach a subgoal.
-Items also have \textit{instrumental values} and \textit{delegated values} that enter into play in the selection of schemas and composite actions.
+The values of a target item may be propagated to other items in the form of \textit{instrumental values} and \textit{delegated values} when attaining these other items improves the chances to reach the target item. 
+%Items also have \textit{instrumental values} and \textit{delegated values} that enter into play in the selection of schemas and composite actions.
+%Schemas can be combined and chained to form \textit{composite actions} that serve to reach desirable goal states. 
 The agent randomly alternates between explicit goal-pursuit and exploration, with probability defined by the designer.
 
 %Drescher targeted the fundamental problem of \textit{concept invention} by implementing a mechanism to find underlying invariant 
@@ -187,16 +190,38 @@ The agent randomly alternates between explicit goal-pursuit and exploration, wit
 
 %This processes uses the mechanism's \textit{marginal attribution} facility, which ``use[s] sensitive statistical measures to alternate between discovering a highly unreliable result, and then seeking conditions with respect to which the result follows more reliably'' \cite[p. 5]{drescher_made-up_1991}.
 
-
-
 % New items called \textit{synthetic items} are learned through a process called \textit{marginal attribution}.
 
+Drescher demonstrates its schema mechanism in the ``microworld'' made of the two-dimensional grid shown in Fig. \ref{fig:drescher2}.
+``The mechanism controls a simulated robot that has a body, a single hand, and a visual system. 
+The hand can touch and grasp objects, and move them about.
+The visual system maps a visual field onto a region of the world in the immediate vicinity of ther robot body'' \cite[p. 114]{drescher_made-up_1991}. 
 
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
+	\caption{Drescher's benchmark from \cite[Fig. 6.1]{drescher_made-up_1991}. The simulated robot's body is represented by the small square with a black dot. 
+		(a): The hand (black spot) can move in the $3 \times 3$ grid in front of the body.
+		(b): The visual field is the $5 \times 5$ grid in the environment made of a $7 \times 7$ grid.} 
+	\label{fig:drescher2}
+\end{figure}
+
+The mechanism initially ignores the topological relations among sensory items, but the demonstration shows that it gradually learns these relation in a process that Drescher calls the ``elaboration of the spatial substrate''. 
+Such learning of a cognitive map from sensorimotor sequences has recently been further investigated by Raju et al. \cite{raju_space_2022}.
+
+Once the spatial substrate is learned, the mechanism manages to construct synthetic items that designate objects as distinct from their current perceptions.
+Drescher gives the example of ``a synthetic item, which we might call \texttt{PalpableObjectAt(1,3)} (the name, of course, has no meaning to the mechanism). 
+The item is defined to represent whatever condition makes the schema reliable; we observers know (but the mechanism does not) that this condition is that there be an object at (1,3)'' \cite[p. 13]{drescher_made-up_1991}.
+Synthetic item \texttt{PalpableObjectAt(1,3)} may later be associated with \texttt{VisibleObjectAt(1,3)} to account for the discovery that they refer to the same thing at position \texttt{(1,3)} in the world.
 
 \cite{chaput_constructivist_2004}
 \cite{guerin_piagetian_2008}
 \cite{wang_new_2012}
 \cite{miller_building_2018}
+
+
 
 \subsection{Perotto's}
 
@@ -222,54 +247,17 @@ Schema are organized in the \textit{anticipatory tree} whose top-level schema de
 	\label{fig:perotto_tree}
 \end{figure}
 
+Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_computational_nodate}.
 
-
-\subsection{AERA}
-
-AERA\footnote{Autocatalytic Endogenous Reflective Architecture; see www.openaera.org – accessed Dec. 6th, 2024.} is a unified system that can learn about causal relations cumulatively, from experience \cite{thorisson2019cumulative,thorisson2014autonomous,nivel2013autocatalytic}. The system’s knowledge representation uniquely combines ampliative reasoning, autonomous resource management, explanation-driven compositional knowledge representation and reflection in a synergetic architecture that can grow its knowledge from a small “bootstrapping seed” \cite{thorisson2020seed}. Its compositional knowledge contains numerous peewee-size “micro-models” that can be combined in explainable ways to model experience \cite{thorisson2021explanation}. 
-
-The methodology behind AERA rests on three fundamental principles \cite{thorisson_seed-programmed_2020,thorisson2012new,nivel2009self}: 1. During learning, a learner autonomously creates new knowledge through a variety of methods including hypothesis generation and testing; 2. autonomous learning must create models of causal relations through situated goal-driven reasoning, and 3. self-programming is based on transparent operational semantics based on peewee-size uniform knowledge models. Those familiar with Piaget’s \cite{berlyne2003psychology} fundamental insight that human learning requires creation of new information will recognize the first principle. For this principle, Piaget proposed the idea of schemas – information structures that mediate between perception and action, capturing and controlling experience. An important difference between AERA’s knowledge representation and other proposals based on this idea (cf. \cite{arbib2003handbook,drescher_made-up_1991}) is its emphasis on non-axiomatic worlds and the resulting strong requirement for transversal defeasibility of acquired knowledge (cf. \cite{pollock1987defeasible}) – in other words, that since no certainty about anything learned can be guaranteed, the methods for knowledge creation cannot be based on the assumption of knowledge of a “ground truth”. The methodology behind AERA unifies this, and the above listed assumptions, in a coherent theoretical approach, with deep implications for knowledge creation in light of novelty: AERA starts out with only a tiny amount of “bootstrap” (seed) knowledge – the remainder of its knowledge, which soon vastly outsizes the seed\footnote{In our implementation of S1 – an AERA agent that learns to do TV-style interviews, the ratio of the learned knowledge over the seed knowledge, after 20 hours of learning, was ~53 \cite{thorisson2014autonomous}.}, is then generated autonomously by the system itself, based on hypotheses that are inspired and verified through experience, using ampliative reasoning mechanisms. 
-
-\begin{itemize}
-    \item The knowledge representation in AERA is peewee (relatively small) and compositional; AERA can inspect, deconstruct, and reconstruct its models, as well as create hierarchies of models of its experience.
-    \item The models in AERA are falsifiable, have degrees of confidence, and can be related to specific groups with certain attributes specifying their context.
-    \item The choice of models and reasoning methods at any point in time is dynamic, based among other things on the extent of available resources (models and time).
-
-\end{itemize}
-
-
-
-AERA’s peewee-size models, similar to e.g. Drescher’s \cite{drescher_made-up_1991} schemas and the neuro-symbolic approach presented in \cite{komrusch_symbolic_2022}, represent knowledge by contextualized programs that capture antecedental and successional states of important relationships (e.g. the relationship between a hand and an object that one wants to pick up). Unlike these, AERA places explicit representation of cause-effect relations at its core \cite{thorisson2018cumulative}. During its continuous learning, driven by a self-maintained dynamic goal hierarchy, the most useful (effective and efficient) models of cause-effect relations encountered in the environment are retained, while others are discarded. Based on predictions, informed experimentation, and strategic induction, the system autonomously creates new knowledge cumulatively, effortlessly unifying new information with old, even in light of contradictions. Further separating AERA from other approaches are its atomic elements for knowledge creation, whose operational semantics are transparent to the system’s own reasoning, meaning that they can be inspected and learned by the same explicit, defeasible unified reasoning mechanisms as used for learning about the world. 
-
-The approach uniquely unifies cognition and meta-cognition in a single, coherent architecture, enabling efficient and effective self-reflection that lays a foundation for a capacity for cognitive growth. The result is a system that can dynamically employ ampliative reasoning, at any point in time, to predict both the immediate and far future, including its own cognitive resource use (“think time”). 
-
-Key representational components of this approach include \cite{sheikhlar2024autonomous,sheikhlar2024causal}: 
-\begin{itemize}
-    \item \textbf{Facts} are statements that represent a cognitive event, e.g. operations happening in AERA itself; facts are the only entity in AERA that have complete certainty (corresponding to Descartes' axiom “I think, therefore I am”).
-    \item A \textbf{composite State model (CST)} captures a set of simultaneous (timeless) Facts that the AERA system considers to be (potentially) useful and/or necessary for properly predicting an event’s consequences; used to e.g. represent a variety of subsets in the world such as spatial relations of objects, the values of a perceived object’s properties, such as its position and color, etc. %The forming of a CST at time T becomes a Fact with a timestamp T and a GUID (i.e. it is certain to the AERA executive that this CST was formed at time T). 
-    \item A \textbf{cognitive event model (CEM)} captures a (hypothesized) causal influence of a Fact on another Fact; used to represent the effect that an action or event in particular circumstances, e.g. a command initiated by AERA at some timestep, has on the state of the world at a later timestep. When a CEM fires it produces a prediction (while the production of a prediction is represented as a Fact, the confidence in the prediction itself is defeasible and is in part based on the confidence of the CEM).
-    \item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/conditions that must be met for a CEM to be relevant in a particular context at a particular time.
-
-\end{itemize}
-
-
-AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. 
-These mechanisms have been demonstrated for control of virtual robots, learning and using language, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
-
-Both \textit{CEM}s and $M_{req}$s have a left-hand side (LHS) and a right-hand side (RHS), composed of sets of Facts and constraints (e.g., math equations). The LHS Facts describe (assumed) conditions under which the RHS Facts would be produced. Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some sensory Facts match everything in a \textit{CEM}’s LHS, a relevant $M_{req}$ allows the \textit{CTS}’s instantiation, which means the conditions for making a prediction via a \textit{CEM} are met. A successful instantiation of a \textit{CEM} means that everything in its RHS will happen. 
-% (probably – because all knowledge in AERA is defeasible) PR and OG. 
-As the \textit{CEM} predicts a future state after an event’s occurrence, this is verified and marked as a “successful prediction” by AERA only if the prediction matches the state that is observed.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.99\textwidth]{AERAblockdiagram2.png}
-	\caption{The connection between $CST$, $M_{req}$, and $CEM$. The observation facts matching $CST1$ allow $M_{req}$ to trigger a prediction by instantiating $CEM1$. AERA checks whether the subsequent observations match the predicted future state.} 
-	\label{fig:AERA}
+	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
+	\caption{Perotto's benchmark from \cite{perotto_computational_nodate} Fig.9 ``The hyper-flip problem''.} 
+	\label{fig:perotto_ben}
 \end{figure}
 
-As an example, the triad of $CST1$, $M_{req}1$, and $CEM1$ can represent the physical movement behavior of an entity when it collides with another entity (e.g., a hand). $CEM1$ represents the dynamics of the movement, connecting the collision event (left-hand side of $CEM1$) to the moved entity’s new position (right-hand side of $CEM1$). $CST1$ represents the preconditions of the behavior, such as the entities’ position, weight, etc., and the fact that the point of collision and the moved entities' position must initially be the same. $M_{req}1$ predicts that if a striking entity hits another entity with the conditions described by $CST1$, the stricken entity’s position will change a specific amount in the next time step.
 
-The interactions of the operational principles of AERA are quite intricate in their entirety; important aspects that are covered elsewhere include induction – the creation of new knowledge – unified abduction-deduction – the creation of plans and explanations – and runtime relevance computations \cite{nivel2013towards}. The unified integration of these operational principles in a single coherent architecture is what gives AERA its power, allowing its seed – initial human-provided knowledge – to be orders of magnitude smaller than what AERA can create on its own through learning from experience. 
 
 
 \subsection{The LIDA cognitive architecture}
@@ -301,6 +289,14 @@ Wanting and dreading are qualified by \textit{incentive salience} of behaviors.
 	\caption{Continuing process of selectionist and instructionalist procedural learning that was initiated by Action Selection (\cite{kugele_learning_2021} Fig. 11)} 
 	\label{fig:lida2}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_LIDA_bench.png}
+	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms (\cite{kugele_constructivist_nodate} Fig. 5)} 
+	\label{fig:lida_bench}
+\end{figure}
+
 
 
 \subsection{Georgeon's}
@@ -346,37 +342,6 @@ Older and unused schemas can be forgotten.
 In essence, the agent learns habits of interaction that are organized hierarchically, with shorter sequential habits learned first, and longer sequences of habits made of sequences of shorter habits later learned on top of them. 
 Such habit learning relates to Woolford's \textit{sensorimotor sequence reiterator} \cite{woolford_precarious_2020}.
 
-\section{Benchmarks}
-\label{sec:benchmarks}
-
-Fig. \ref{fig:drescher2} shows Drescher's experimental settings.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
-	\caption{Drescher's benchmark from \cite{drescher_made-up_1991} Fig.6.1 ``Hand and glance ranges''.} 
-	\label{fig:drescher2}
-\end{figure}
-
-Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_computational_nodate}.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
-	\caption{Perotto's benchmark from \cite{perotto_computational_nodate} Fig.9 ``The hyper-flip problem''.} 
-	\label{fig:perotto_ben}
-\end{figure}
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{Figure_LIDA_bench.png}
-	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms (\cite{kugele_constructivist_nodate} Fig. 5)} 
-	\label{fig:lida_bench}
-\end{figure}
-
 
 
 Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
@@ -388,11 +353,63 @@ Video Demo \cite{georgeon_video_2012}.
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_grid_plot.pdf}
 	\caption{Georgeon's benchmark (Adapted from \cite{georgeon_intrinsically-motivated_2012}).
-	The agent can move forward to an empty cell, bump into a wall (green cell), turn to the left or to right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
-	Sensory signal is a single-bit feedback from the action. 	
-} 
+		The agent can move forward to an empty cell, bump into a wall (green cell), turn to the left or to right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
+		Sensory signal is a single-bit feedback from the action. 	
+	} 
 	\label{fig:georgeon}
 \end{figure}
+
+
+\subsection{AERA}
+
+AERA\footnote{Autocatalytic Endogenous Reflective Architecture; see www.openaera.org – accessed Dec. 6th, 2024.} is a unified system that can learn about causal relations cumulatively, from experience \cite{thorisson2019cumulative,thorisson2014autonomous,nivel2013autocatalytic}. The system’s knowledge representation uniquely combines ampliative reasoning, autonomous resource management, explanation-driven compositional knowledge representation and reflection in a synergetic architecture that can grow its knowledge from a small “bootstrapping seed” \cite{thorisson2020seed}. Its compositional knowledge contains numerous peewee-size “micro-models” that can be combined in explainable ways to model experience \cite{thorisson2021explanation}. 
+
+The methodology behind AERA rests on three fundamental principles \cite{thorisson_seed-programmed_2020,thorisson2012new,nivel2009self}: 1. During learning, a learner autonomously creates new knowledge through a variety of methods including hypothesis generation and testing; 2. autonomous learning must create models of causal relations through situated goal-driven reasoning, and 3. self-programming is based on transparent operational semantics based on peewee-size uniform knowledge models. Those familiar with Piaget’s \cite{berlyne2003psychology} fundamental insight that human learning requires creation of new information will recognize the first principle. For this principle, Piaget proposed the idea of schemas – information structures that mediate between perception and action, capturing and controlling experience. An important difference between AERA’s knowledge representation and other proposals based on this idea (cf. \cite{arbib2003handbook,drescher_made-up_1991}) is its emphasis on non-axiomatic worlds and the resulting strong requirement for transversal defeasibility of acquired knowledge (cf. \cite{pollock1987defeasible}) – in other words, that since no certainty about anything learned can be guaranteed, the methods for knowledge creation cannot be based on the assumption of knowledge of a “ground truth”. The methodology behind AERA unifies this, and the above listed assumptions, in a coherent theoretical approach, with deep implications for knowledge creation in light of novelty: AERA starts out with only a tiny amount of “bootstrap” (seed) knowledge – the remainder of its knowledge, which soon vastly outsizes the seed\footnote{In our implementation of S1 – an AERA agent that learns to do TV-style interviews, the ratio of the learned knowledge over the seed knowledge, after 20 hours of learning, was ~53 \cite{thorisson2014autonomous}.}, is then generated autonomously by the system itself, based on hypotheses that are inspired and verified through experience, using ampliative reasoning mechanisms. 
+
+\begin{itemize}
+	\item The knowledge representation in AERA is peewee (relatively small) and compositional; AERA can inspect, deconstruct, and reconstruct its models, as well as create hierarchies of models of its experience.
+	\item The models in AERA are falsifiable, have degrees of confidence, and can be related to specific groups with certain attributes specifying their context.
+	\item The choice of models and reasoning methods at any point in time is dynamic, based among other things on the extent of available resources (models and time).
+	
+\end{itemize}
+
+
+
+AERA’s peewee-size models, similar to e.g. Drescher’s \cite{drescher_made-up_1991} schemas and the neuro-symbolic approach presented in \cite{komrusch_symbolic_2022}, represent knowledge by contextualized programs that capture antecedental and successional states of important relationships (e.g. the relationship between a hand and an object that one wants to pick up). Unlike these, AERA places explicit representation of cause-effect relations at its core \cite{thorisson2018cumulative}. During its continuous learning, driven by a self-maintained dynamic goal hierarchy, the most useful (effective and efficient) models of cause-effect relations encountered in the environment are retained, while others are discarded. Based on predictions, informed experimentation, and strategic induction, the system autonomously creates new knowledge cumulatively, effortlessly unifying new information with old, even in light of contradictions. Further separating AERA from other approaches are its atomic elements for knowledge creation, whose operational semantics are transparent to the system’s own reasoning, meaning that they can be inspected and learned by the same explicit, defeasible unified reasoning mechanisms as used for learning about the world. 
+
+The approach uniquely unifies cognition and meta-cognition in a single, coherent architecture, enabling efficient and effective self-reflection that lays a foundation for a capacity for cognitive growth. The result is a system that can dynamically employ ampliative reasoning, at any point in time, to predict both the immediate and far future, including its own cognitive resource use (“think time”). 
+
+Key representational components of this approach include \cite{sheikhlar2024autonomous,sheikhlar2024causal}: 
+\begin{itemize}
+	\item \textbf{Facts} are statements that represent a cognitive event, e.g. operations happening in AERA itself; facts are the only entity in AERA that have complete certainty (corresponding to Descartes' axiom “I think, therefore I am”).
+	\item A \textbf{composite State model (CST)} captures a set of simultaneous (timeless) Facts that the AERA system considers to be (potentially) useful and/or necessary for properly predicting an event’s consequences; used to e.g. represent a variety of subsets in the world such as spatial relations of objects, the values of a perceived object’s properties, such as its position and color, etc. %The forming of a CST at time T becomes a Fact with a timestamp T and a GUID (i.e. it is certain to the AERA executive that this CST was formed at time T). 
+	\item A \textbf{cognitive event model (CEM)} captures a (hypothesized) causal influence of a Fact on another Fact; used to represent the effect that an action or event in particular circumstances, e.g. a command initiated by AERA at some timestep, has on the state of the world at a later timestep. When a CEM fires it produces a prediction (while the production of a prediction is represented as a Fact, the confidence in the prediction itself is defeasible and is in part based on the confidence of the CEM).
+	\item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/conditions that must be met for a CEM to be relevant in a particular context at a particular time.
+	
+\end{itemize}
+
+
+AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. 
+These mechanisms have been demonstrated for control of virtual robots, learning and using language, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
+
+Both \textit{CEM}s and $M_{req}$s have a left-hand side (LHS) and a right-hand side (RHS), composed of sets of Facts and constraints (e.g., math equations). The LHS Facts describe (assumed) conditions under which the RHS Facts would be produced. Figure \ref{fig:AERA} shows how the above components lead to making a prediction. When some sensory Facts match everything in a \textit{CEM}’s LHS, a relevant $M_{req}$ allows the \textit{CTS}’s instantiation, which means the conditions for making a prediction via a \textit{CEM} are met. A successful instantiation of a \textit{CEM} means that everything in its RHS will happen. 
+% (probably – because all knowledge in AERA is defeasible) PR and OG. 
+As the \textit{CEM} predicts a future state after an event’s occurrence, this is verified and marked as a “successful prediction” by AERA only if the prediction matches the state that is observed.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.99\textwidth]{AERAblockdiagram2.png}
+	\caption{The connection between $CST$, $M_{req}$, and $CEM$. The observation facts matching $CST1$ allow $M_{req}$ to trigger a prediction by instantiating $CEM1$. AERA checks whether the subsequent observations match the predicted future state.} 
+	\label{fig:AERA}
+\end{figure}
+
+As an example, the triad of $CST1$, $M_{req}1$, and $CEM1$ can represent the physical movement behavior of an entity when it collides with another entity (e.g., a hand). $CEM1$ represents the dynamics of the movement, connecting the collision event (left-hand side of $CEM1$) to the moved entity’s new position (right-hand side of $CEM1$). $CST1$ represents the preconditions of the behavior, such as the entities’ position, weight, etc., and the fact that the point of collision and the moved entities' position must initially be the same. $M_{req}1$ predicts that if a striking entity hits another entity with the conditions described by $CST1$, the stricken entity’s position will change a specific amount in the next time step.
+
+The interactions of the operational principles of AERA are quite intricate in their entirety; important aspects that are covered elsewhere include induction – the creation of new knowledge – unified abduction-deduction – the creation of plans and explanations – and runtime relevance computations \cite{nivel2013towards}. The unified integration of these operational principles in a single coherent architecture is what gives AERA its power, allowing its seed – initial human-provided knowledge – to be orders of magnitude smaller than what AERA can create on its own through learning from experience. 
+
+
+
+
 
 
 \section{Schema mechanisms and theory of knowledge}
