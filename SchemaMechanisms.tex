@@ -26,6 +26,7 @@
 % \newcommand{\doublecheck}{\stackon{\checkmark\hspace{-0.3em}}{\checkmark}}
 \newcommand{\doublecheck}{\checkmark\hspace{-0.5em}\checkmark}
 
+\usepackage{subcaption}
 
 \begin{document}
 %
@@ -228,12 +229,16 @@ In our view, Drescher's main contribution to this question rests on the construc
 Drescher goes beyond his predecessors (e.g., \cite{harnad_symbol_1990}) who merely categorized passively-received inputs.
 His schema mechanism was the first that ``grounds its synthetic items in the reification of counterfactual assertions'' \cite[p. 90]{drescher_made-up_1991}. 
 
-Drescher, nonetheless, started to identify some limitations that may explain why it has not been possible to make this mechanism work in a more complex environment since its creation more than 30 years ago. 
+Drescher identified some limitations that may explain why nobody has made his mechanism work in a more complex environment since its creation more than 30 years ago. 
 These limitations follow from the acknowledgment that ``whatever experiences an organism or mechanism has had, there are infinitely many mutually contradictory generalizations that are consistent with those experiences. 
 Therefore, any induction apparatus must impose a choice among those consistent generalizations'' \cite[p. 174]{drescher_made-up_1991}.
 Among these choices, he acknowledges that ``Looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
 
-His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. This assumption presupposes that the world be represented as a finite set of states, which is acceptable in a microworld but not tenable in the physical world. 
+His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. 
+This assumption presupposes that the world be represented as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
+Another assumption was to model the agent's motivation through values associated with sensory items representing elements of the world. 
+Moreover, the exploration mechanism based on hysteresis and habituation also implements designer's assumptions \cite[p. 66]{drescher_made-up_1991}.  
+Other motivational principles can be imagined. 
 Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
@@ -275,9 +280,9 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_c
 
 
 
-\subsection{The LIDA cognitive architecture}
+\subsection{Learning Intelligent Decision Agent (LIDA)}
 
-The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
+The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms inspired by Drescher on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
 Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
 Other memory modules are implemented including episodic memory, declarative memory, and spatial memory.
 Knowledge is represented as a directed graph called the \textit{node structure}. 
@@ -291,24 +296,43 @@ Affective valence can bias behavior selection towards desirable outcome.
 Liking and disliking are distinguished from wanting and dreading with the argument that they relate to distinct neural pathways in the brain \cite{kringelbach_functional_2010}. 
 Wanting and dreading are qualified by \textit{incentive salience} of behaviors.   
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{Figure_LIDA1.png}
-	\caption{Initiation of LIDA's procedural learning process (\cite{kugele_learning_2021} Fig. 10)} 
-	\label{fig:lida1}
-\end{figure}
+Kugele \cite{kugele2025_constructivist} recently improved LIDA's the schema mechanism to demonstrate contstructivist learning.
+Drescher's items are replaced by \textit{amodal nodes} organised in the node structure in Percepual Associative Memory. 
+An important difference between LIDA's amodal nodes and Drescher's items is that amodal may not only represent sensory data but also events. 
+Consequently, LIDA can not only represent a particular context in terms of elements of the world state, but also in terms of sensorimotor events. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{Figure_LIDA2.png}
-	\caption{Continuing process of selectionist and instructionalist procedural learning that was initiated by Action Selection (\cite{kugele_learning_2021} Fig. 11)} 
-	\label{fig:lida2}
+	\includegraphics[width=0.8\textwidth]{Figure_LIDA.png}
+	\caption{Simplified depiction of the LIDA cognitive cycle \cite[Fig. 4]{kugele2025_constructivist}.} 
+	\label{fig:lida}
 \end{figure}
+
+
+%\begin{figure}[htbp]
+%	\centering
+%	\begin{subfigure}{0.49\textwidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{Figure_LIDA1.png}
+%		\label{fig:first}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.49\textwidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{Figure_LIDA2.png}
+%		\label{fig:second}
+%	\end{subfigure}
+%	\caption{LIDA's interaction cycle \cite[Fig. 10 and 11]{kugele_learning_2021}.
+%	Right: initiation of behavior. Left: selectionist and instructionalist procedural learning.}
+%	\label{fig:both}
+%\end{figure}
+
+Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in the multi-armed bandit environment represented in Fig \ref{fig:lida_bench}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figure_LIDA_bench.png}
-	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms (\cite{kugele_constructivist_nodate} Fig. 5)} 
+	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms \cite[Fig. 5]{kugele2025_constructivist}} 
 	\label{fig:lida_bench}
 \end{figure}
 
