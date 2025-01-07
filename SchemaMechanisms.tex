@@ -79,6 +79,7 @@ Throughout his life, Jean Piaget developed and popularized the theory of \textit
 In parallel, he pioneered \textit{developmental psychology} by establishing the foundational methods for studying mental development in children.
 Toward the end of his life, he connected genetic epistemology with constructivist epistemology and the work of Ernst von Glasersfeld \cite{glasersfeld_radical_1997}. 
 Genetic epistemology rests on the key concept of ``scheme'', closely related to the concept of ``functional circles'' proposed by Jakob von Uexküll.
+Ziemke \cite{ziemke_construction_2001} provides a broader examination of the philosophical roots of constructivist epistemology in Kant's philosophy, and Uexküll's biology.  
 Piaget defines a scheme as follows: 
 \\
 
@@ -113,6 +114,10 @@ The question whether this explanation is too reductionist remains however open.
 To our knowledge, Piaget never claimed that his theories could be implemented as a mechanistic process in a computer. 
 The first attempt only began eleven years after his death.
 
+\cite{chaput_constructivist_2004}
+\cite{guerin_piagetian_2008}
+\cite{miller_building_2018}
+
 
 \section{Schema mechanisms}
 
@@ -121,6 +126,11 @@ Implementing genetic epistemology as a mechanistic process involves reducing Pia
 This computer controls an artifact (robot or virtual agent) that interacts with its environment.
 The computer must process these data structures through some mechanism that will support the generation of increasingly intelligent behavior demonstrating the internal development of the robot.
 Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation of this developmental process shown in \ref{fig:general}.
+
+Notably, the developmental process is not targeted at reaching a predefined goal-state in a predefined problem space, nor does it aim at maximizing a predefined scalar value as in reinforcement learning.
+Instead, the problem of cognitive development in artificial systems is intertwined with the problem \textit{intrinsic motivation}, as has been argued for example by  
+Oudeyer \cite{oudeyer_intrinsic_2007}. 
+
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{Figure_1_guerin.pdf}
@@ -135,9 +145,6 @@ Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representat
 	\label{fig:general}
 \end{figure}
 
-
-Ziemke \cite{ziemke_construction_2001} examined how these views apply to robotics.
-Oudeyer \cite{oudeyer_intrinsic_2007} stressed the importance of intrinsic motivation. 
 
 \subsection{Drescher's}
 
@@ -213,14 +220,22 @@ Such learning of a cognitive map from sensorimotor sequences has recently been f
 
 Once the spatial substrate is learned, the mechanism manages to construct synthetic items that designate objects as distinct from their current perceptions.
 Drescher gives the example of ``a synthetic item, which we might call \texttt{PalpableObjectAt(1,3)} (the name, of course, has no meaning to the mechanism). 
-The item is defined to represent whatever condition makes the schema reliable; we observers know (but the mechanism does not) that this condition is that there be an object at (1,3)'' \cite[p. 13]{drescher_made-up_1991}.
-Synthetic item \texttt{PalpableObjectAt(1,3)} may later be associated with \texttt{VisibleObjectAt(1,3)} to account for the discovery that they refer to the same thing at position \texttt{(1,3)} in the world.
+The item is defined to represent whatever condition makes the schema reliable; we observers know (but the mechanism does not) that this condition is that there be an object at (1, 3)'' \cite[p. 13]{drescher_made-up_1991}.
+Synthetic item \texttt{PalpableObjectAt(1,3)} may later be associated with \texttt{VisibleObjectAt(1,3)} to account for the discovery that they refer to the same thing at position (1, 3) in the world.
 
-\cite{chaput_constructivist_2004}
-\cite{guerin_piagetian_2008}
-\cite{wang_new_2012}
-\cite{miller_building_2018}
+In summary, Drescher's schema mechanism stands among the first attempts to investigate Piaget's question of how the child can dynamically construct it's own knowledge of reality from experience of interaction.  
+In our view, Drescher's main contribution to this question rests on the construction of synthetic items to account for ``things in the world'' that the agent can discover through regularities in sequences of sensorimotor experience. 
+Drescher goes beyond his predecessors (e.g., \cite{harnad_symbol_1990}) who merely categorized passively-received inputs.
+His schema mechanism was the first that ``grounds its synthetic items in the reification of counterfactual assertions'' \cite[p. 90]{drescher_made-up_1991}. 
 
+Drescher, nonetheless, started to identify some limitations that may explain why it has not been possible to make this mechanism work in a more complex environment since its creation more than 30 years ago. 
+These limitations follow from the acknowledgment that ``whatever experiences an organism or mechanism has had, there are infinitely many mutually contradictory generalizations that are consistent with those experiences. 
+Therefore, any induction apparatus must impose a choice among those consistent generalizations'' \cite[p. 174]{drescher_made-up_1991}.
+Among these choices, he acknowledges that ``Looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
+
+His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. This assumption presupposes that the world be represented as a finite set of states, which is acceptable in a microworld but not tenable in the physical world. 
+Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
+This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
 
 \subsection{Perotto's}
@@ -299,7 +314,7 @@ Wanting and dreading are qualified by \textit{incentive salience} of behaviors.
 
 
 
-\subsection{Georgeon's}
+\subsection{Enactive Cognitive Architecture (ECA)}
 
 Similar to Perotto, Georgeon modeled schemas as tuples (pre-condition, decision, post-condition), and organized them  hierarchically. 
 
@@ -360,7 +375,7 @@ Video Demo \cite{georgeon_video_2012}.
 \end{figure}
 
 
-\subsection{AERA}
+\subsection{Autocatalytic Endogenous Reflective Architecture (AERA)}
 
 AERA\footnote{Autocatalytic Endogenous Reflective Architecture; see www.openaera.org – accessed Dec. 6th, 2024.} is a unified system that can learn about causal relations cumulatively, from experience \cite{thorisson2019cumulative,thorisson2014autonomous,nivel2013autocatalytic}. The system’s knowledge representation uniquely combines ampliative reasoning, autonomous resource management, explanation-driven compositional knowledge representation and reflection in a synergetic architecture that can grow its knowledge from a small “bootstrapping seed” \cite{thorisson2020seed}. Its compositional knowledge contains numerous peewee-size “micro-models” that can be combined in explainable ways to model experience \cite{thorisson2021explanation}. 
 
