@@ -63,9 +63,14 @@ and developmental learning.
 %The central body of reference of these theories is found in the work of Jean Piaget ranging from theory of knowledge to child psychology, and 
 These theories find roots in the work of Jakob von Uexküll on animal behavior, Ernst von Glasersfeld on epistemology, and, more centrally, Jean Piaget ranging from child psychology to theory of knowledge.
 Gary Drescher coined the generic term schema mechanism and pioneered their implementation in 1991.
-His work laid the ground to identifying the core challenges: open-ended learning, intrinsic motivation, incremental hierarchical abstraction, sensorimotor grounding, reflexivity, individuation. 
+%FP: fix the phrase "His work laid the ground to identifying the core challenges:" 
+%FP: add "creation of concepts" and "detection of regularities during interaction" in the challenges list
+His work laid the ground in the Constructivist AI field and identified the core challenges: open-ended learning, intrinsic motivation, discovering of empirical regularities, incremental hierarchical abstraction, concept invention, sensorimotor grounding, reflexivity, individuation. 
 %he modeled Piagetian sensorimot schemas as datastructures that encompass sensory data and actions, 
-This paper reviews a selection of the latest schema mechanisms and highlights their contributions to these key challenges, with the goal of unifying their different contributions toward a comprehensive theory of developmental artificial intelligence.
+This paper reviews a selection of 
+%FP: the latest schema mechanisms 
+schema mechanisms from the literature,
+and highlights their contributions to these key challenges, with the goal of unifying their different contributions toward a comprehensive theory of developmental artificial intelligence.
 
 \keywords{schema mechanism  \and genetic epistemology \and constructivist learning \and intrinsic motivation \and cognitive architectures.}
 \end{abstract}
@@ -92,7 +97,9 @@ Piaget defines a scheme as follows:
 
 In this paper, we translate the French term \textit{scheme} with the English term \textit{schema} and we use the plural \textit{schemas}. 
 A schema is the basic unit of knowledge that encapsulates the action and its circumstances, that is, a \textit{pattern of interaction}. 
-Genetic epistemology insists on the primacy of interaction as a condition for the emergence of perception and knowledge:
+Genetic epistemology insists on the primacy of interaction as a condition for the emergence of perception and knowledge, 
+%FP: add
+surpassing innatist and empiricist explanations:
 \\
 
 \begin{adjustwidth}{1cm}{1cm}
@@ -126,7 +133,7 @@ The first attempt only began eleven years after his death.
 Implementing genetic epistemology as a mechanistic process involves reducing Piaget's psychological concept of schema into data structures handled by a computer. 
 This computer controls an artifact (robot or virtual agent) that interacts with its environment.
 The computer must process these data structures through some mechanism that will support the generation of increasingly intelligent behavior demonstrating the internal development of the robot.
-Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation of this developmental process shown in \ref{fig:general}.
+Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation of this developmental process shown in the Figure~\ref{fig:general}.
 
 Notably, the developmental process is not targeted at reaching a predefined goal-state in a predefined problem space, nor does it aim at maximizing a predefined scalar value as in reinforcement learning.
 Instead, the problem of cognitive development in artificial systems is intertwined with the problem \textit{intrinsic motivation}, as has been argued for example by  
