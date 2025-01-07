@@ -305,13 +305,25 @@ Wanting and dreading are qualified by \textit{incentive salience} of behaviors.
 
 Kugele \cite{kugele2025_constructivist} recently improved LIDA's the schema mechanism to demonstrate contstructivist learning.
 Drescher's items are replaced by \textit{amodal nodes} organised in the node structure in Percepual Associative Memory. 
-An important difference between LIDA's amodal nodes and Drescher's items is that amodal may not only represent sensory data but also events. 
+An important difference between LIDA's amodal nodes and Drescher's items is that amodal nodes may not only represent sensory data but also events. 
 Consequently, LIDA can not only represent a particular context in terms of elements of the world state, but also in terms of sensorimotor events. 
+
+Fig \ref{fig:lida} shows the cognitive cycle. 
+The Dashed rounded rectangle at the bottom shows the schema mechanism as a part of the architecture. 
+The Global Workspace (right) stores a description of the current situation as a graph node. 
+The Procedural Memory module (bottom right) is the memory of schemas. 
+The graph node from Global Worskpace activates relevant schemas. 
+The Action Selection module selects an action, primitive or composite, from among the actions of the relevant schemas. 
+Once the action is selected, it is instantiated as a \textit{behavior}, or a \textit{stream of behavior} for composite actions, and their unbound variables are qualified. 
+The behavior is enacted in the Environment (left) and sensory stimuli (signal) is received by the Sensory Memory module (upper left).
+Sensory signal is processed to produce amodal nodes that represent the current situation. 
+The Attention Codled module selects some amodal nodes to broadcast in the Global Workspace Module. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{Figure_LIDA.png}
-	\caption{Simplified depiction of the LIDA cognitive cycle \cite[Fig. 4]{kugele2025_constructivist}.} 
+	\caption{Simplified depiction of the LIDA cognitive cycle \cite[Fig. 4]{kugele2025_constructivist}.
+	} 
 	\label{fig:lida}
 \end{figure}
 
@@ -334,7 +346,7 @@ Consequently, LIDA can not only represent a particular context in terms of eleme
 %	\label{fig:both}
 %\end{figure}
 
-Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in the multi-armed bandit environment represented in Fig \ref{fig:lida_bench}.
+Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in the multi-armed bandit environment represented in Fig. \ref{fig:lida_bench}.
 
 \begin{figure}
 	\centering
