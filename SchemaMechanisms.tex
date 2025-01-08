@@ -154,14 +154,16 @@ Oudeyer \cite{oudeyer_intrinsic_2007}.
 \end{figure}
 
 
-\subsection{Drescher's MARCSYS}
-
+\subsection{Drescher's}
+In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}. 
 Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
-He pioneered the first schema mechanism in 1991 by designing these mental structures as schemas formalized as the tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
+%He pioneered the first schema mechanism in 1991 by designing 
+In his work, these mental structures are designed as schemas, formalized as the tuple (context, action, result) depicted in Fig. \ref{fig:drescher}.
 The \textit{context} and the results are sets of binary \textit{items} that can be \textit{positively} or \textit{negatively} included. 
 A schema's context is satisfied when all the positively included items are \textit{On} and all the negatively included items are \textit{Off}. 
 A schema's result asserts that, if the action is taken when the context is satisfied, then the positively included items of the results will be turned \textit{On} and its negatively included items will be turned \textit{Off}.
-
+The implemented mechanism was called MARCSYST (Marginal Attribution and Representation Construction System).
+%
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_2_schema_drescher.png}
@@ -170,7 +172,7 @@ A schema's result asserts that, if the action is taken when the context is satis
 	\label{fig:drescher}
 \end{figure}
 
-The agent is initialized with a set of \textit{primitive} actions, items, and schemas that encode the agent's initial ``innate'' behaviors. 
+The agent is initialized with a set of \textit{primitive} actions and items, that represent respectivelly builtin elementary sensorimotor variables, and with a population of initial schemas, some of them are bare schemas, one for each primitive action, with empty context and result, and eventually other initial schemas that encode the agent's initial ``innate'' behaviors. 
 The activation of a schema consists of initiating its action. 
 Upon completion of the action, the predicted result is compared with the actual result.
 The schema is said to \textit{succeed} if its predicted results are all obtained, and to \textit{fail} otherwise. 
@@ -212,8 +214,6 @@ Drescher demonstrates its schema mechanism in the ``microworld'' made of the two
 The hand can touch and grasp objects, and move them about.
 The visual system maps a visual field onto a region of the world in the immediate vicinity of ther robot body'' \cite[p. 114]{drescher_made-up_1991}. 
 
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_drescher_expe.png}
@@ -250,7 +250,7 @@ Conversely, a schema mechanism may need additional built-in assumptions to cope 
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
 
-\subsection{Perotto's CALM}
+\subsection{Perotto's}
 
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism as a result of his PhD thesis~\cite{Perotto:2010:INP} and related publications~\cite{Perotto:2006:AAMAS,Perotto:2006:SGAI,Perotto:2007:EpiRob,Perotto:2013:CF}.
 The algorithm is called CALM, for \textit{Constructivist Anticipatory Learning Mechanism}.
