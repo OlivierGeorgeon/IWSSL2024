@@ -252,35 +252,45 @@ This paper reviews other schema mechanisms that make other choices in the hope t
 
 \subsection{Perotto's}
 
-Similar to Drescher's, Perotto's schemas \cite{perotto_computational_nodate} are tuples that associate a context, an action, and an expected result. 
-Perotto, however, introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in  Fig. \ref{fig:perotto}.
+In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism as a result of his PhD thesis~\cite{Perotto:2010:INP} and related publications~\cite{Perotto:2006:AAMAS,Perotto:2006:SGAI,Perotto:2007:EpiRob,Perotto:2013:CF}.
+The algorithm is called CALM, for \textit{Constructivist Anticipatory Learning Mechanism}.
+
+Perotto tacked the same challanges than Dresher, namelly: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
+Also similar to the original Sechema Mechanism, the elementary knowledge structure in CALM are schemas, which are tuples that associate a context, action, and expected results.
+Perotto, however, adopts a different approach.
+While Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
+
+In this way, CALM can be seen as a kind of model-based RL algorithm, trying to learn a model of the transitions (i.e. how the observations change depending on the context and actions), then, at each time step, computing a policy of actions that maximizes the expected discounted sum of rewards, similar to adaptive dynamic programming methods.
+The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which is able to detect probabilistic regularities.
+
+To compensate the limitation on deterministic regularities, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto}.
+The justification is some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine the transition.
+In this way, the accent is placed on the discovering of abstract or non-observable elements, that once discovered and integrated in the anticipatory knowledge, are able to make the observation deterministic. The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is different in CALM.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{Figure_perotto.png}
-	\caption{Perotto's schema from \cite{perotto_computational_nodate} Fig. 2.
+	\includegraphics[width=0.5\textwidth]{Figure_perotto.png}
+	\caption{Perotto's schema from \cite{Perotto:2013:CF} Fig. 2.
 		A schema is composed of three vectors: context containing hidden variables and observable properties $(h_1, h_2, p_1, p_2, p_3)$, action $(c_1)$, and expected result $(e)$. } 
 	\label{fig:perotto}
 \end{figure}
 
-Perotto also introduced a hierarchy of schemas called the \textit{anticipatory tree} represented in Fig. \ref{fig:perotto_tree}. 
-Schema are organized in the \textit{anticipatory tree} whose top-level schema describes the agent's highest-level goal and leaf schemas are deciders of actions in the environment.
+Another difference of CALM in relation to the original mechanism is that the schemas are organized in a structure called \textit{anticipatory tree}, represented in Fig. \ref{fig:perotto_tree}, which defines a hierarchy, like a decision tree, starting from a completely general context and action, the root node, going to the most specialized ones, the leaf nodes, which represent the schemas.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
-	\caption{Example of Perotto's anticipatory tree from \cite{perotto_computational_nodate} Fig. 10: ``Final schematic tree for solving the flip problem.''.
+	\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the flip problem.''.
  } 
 	\label{fig:perotto_tree}
 \end{figure}
 
-Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{perotto_computational_nodate}.
-
+Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2013:CF}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
-	\caption{Perotto's benchmark from \cite{perotto_computational_nodate} Fig.9 ``The hyper-flip problem''.} 
+	\caption{Perotto's benchmark from \cite{Perotto:2013:CF} Fig.9 ``The hyper-flip problem''.} 
 	\label{fig:perotto_ben}
 \end{figure}
 
