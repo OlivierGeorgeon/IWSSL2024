@@ -314,6 +314,7 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2
 
 
 \subsection{Learning Intelligent Decision Agent (LIDA)}
+\label{sec:lida}
 
 The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanism inspired by Drescher on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
 Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
@@ -343,11 +344,11 @@ The Action Selection module selects an action, primitive or composite, from amon
 Once the action is selected, it is instantiated as a \textit{behavior}, or a \textit{stream of behavior} for composite actions, and their unbound variables are qualified. 
 The behavior is enacted in the Environment (left) and sensory stimuli (signal) is received by the Sensory Memory module (upper left).
 Sensory signal is processed to produce amodal nodes that represent the current situation. 
-The Attention Codled module selects some amodal nodes to broadcast in the Global Workspace Module. 
+The Attention Codled module selects some amodal nodes to broadcast in the Global Workspace module. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{Figure_LIDA.png}
+	\includegraphics[width=0.7\textwidth]{Figure_LIDA.png}
 	\caption{Simplified depiction of the LIDA cognitive cycle \cite[Fig. 4]{kugele2025_constructivist}.
 	} 
 	\label{fig:lida}
@@ -356,7 +357,7 @@ The Attention Codled module selects some amodal nodes to broadcast in the Global
 
 Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in a multi-armed bandit environment.
 When the agent is standing (State $S$), it can take the action to sit at a one-armed bandit machine, for example Machine 1 (State $M_1$).
-The agent can then pay a deposit (state $M_1P$), and then play, which may yield a win (State $M_1W$) with probability $p(W|M_1)$, or a loss (State $M_1L$) with probability $p(L|M_1)$. The agent can choose to stand from any state.
+The agent can then pay a deposit (state $M_1P$), and then play, which may yield a win (State $M_1W$) with probability $p(W|M_1P)$, or a loss (State $M_1L$) with probability $p(L|M_1P)$. The agent can choose to stand from any state.
 Fig. \ref{fig:lida_bench} represents the state diagram of this environment in the case of two machines. 
 
 \begin{figure}
@@ -370,28 +371,41 @@ Fig. \ref{fig:lida_bench} represents the state diagram of this environment in th
 	\label{fig:lida_bench}
 \end{figure}
 
-The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{play},$ $\texttt{deposit}\}$. 
+The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{deposit},$ $\texttt{play} \}$. 
 The set of initial nodes (i.e., primitive items) is $\{\texttt{Win}, \texttt{Lose} \}$.
 Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Lose} of $-1$.   
 The difficulty comes from the fact that the agent cannot directly perceive the state of the environment.
-The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the actual states of sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
-Once this was learned, the agent chose the machine that yielded the highest payoff.
+The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
+Once this was learned, the agent determined and chose the machine that yielded the highest payoff.
 
-In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to pay deposits and to play) satisfying the motivation of maximizing the value won. 
+In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to deposit and to play) satisfying the motivation of maximizing the value won. 
 
-The agent's adaptation to the k-armed bandit environment was made possible by LIDA's distinction between sensori signal and perceptual memory that allows treating sensory signal as mere events rather than elements of the state. 
-Moreover, LIDA treats composite schemas as procedural knowledge (stream of behavior) that are handled as a whole action by the Action Execution module, which facilitates the learning of the sequence \texttt{deposit}---\texttt{play}, before finding the machine that yields the highest payoff. 
+The agent's adaptation to the k-armed bandit environment was made possible by LIDA's distinction between sensory signal and perceptual memory that allows treating sensory signal as mere events rather than elements of the state. 
+Notably, the agent did not learn the states \texttt{MiW} and \texttt{MiL} but rather the aggregated state $\texttt{Mi}$ representing sitting at Machine $i$.
+This is because the sensory item (\texttt{W} or \texttt{L}) is not useful in itself to differentiate significant states from the agent's viewpoint. 
+%Instead, they are mere feedback from the \texttt{play} action. 
+%This stands in contrast from Drescher's assumptions that use primitive items as elements of the states. 
+
+Another difference is that LIDA treats composite schemas as procedural knowledge (stream of behavior) that are handled as a whole action by the Action Execution module, which facilitates the learning of the sequence \texttt{deposit}--\texttt{play}, before finding the machine that yields the highest payoff. 
 
 \subsection{Enactive Cognitive Architecture (ECA)}
 
-Similar to Perotto, Georgeon modeled schemas as tuples (pre-condition, decision, post-condition), and organized them  hierarchically. 
+Georgeon focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria. 
+Similar to LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent a feature the state of the world.  
+Formally, schemas are tuples (pre-subschema, decision, post-subschema) in which the pre-subschema and the post-subschema are other schemas.  
 
-In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
+The mechanism is initialized with \textit{primitive schemas} that define atomic possibilities of interaction with the environment. 
+Primitive schemas are intialized with a predefined valence (equivalent to Drescher's primitive value and LIDA's affective valence) that define the agent's likes and dislikes. 
+
+In the case of a simulated agent, a primitive schema is the association of a \textit{primitive action}, for example \texttt{move-forward} or \texttt{turn}, with a \textit{primitive outcome}, for example \texttt{bump} or \texttt{no-bump}.  
+The primitive schema (\texttt{move-forward}, \texttt{no-bump}) initialized with a valence of $-1$ specifies that the mechanism should avoid pumping into obstacles. 
+
+
+%In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
 The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned lower-level schemas, 
 as illustrated in Fig. \ref{fig:agent8}. 
-The mechanism is not initialized with a top-level goal. 
-Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
-In a robot, primitive schemas are hard-coded control loops involving actuators and sensory feedback. 
+%The mechanism is not initialized with a top-level goal. 
+%Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
 
 
 \begin{figure}
@@ -430,6 +444,9 @@ Such habit learning relates to Woolford's \textit{sensorimotor sequence reiterat
 Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
 This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
 Video Demo \cite{georgeon_video_2012}.
+
+In a robot, primitive schemas are hard-coded control loops involving actuators and sensory feedback. 
+
 
 \begin{figure}
 	\centering
