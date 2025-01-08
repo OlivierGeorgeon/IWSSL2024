@@ -128,7 +128,7 @@ The first attempt only began eleven years after his death.
 
 
 \section{Schema mechanisms}
-
+\label{sec:schema}
 
 Implementing genetic epistemology as a mechanistic process involves reducing Piaget's psychological concept of schema into data structures handled by a computer. 
 This computer controls an artifact (robot or virtual agent) that interacts with its environment.
@@ -255,8 +255,8 @@ This paper reviews other schema mechanisms that make other choices in the hope t
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism as a result of his PhD thesis~\cite{Perotto:2010:INP} and related publications~\cite{Perotto:2006:AAMAS,Perotto:2006:SGAI,Perotto:2007:EpiRob,Perotto:2013:CF}.
 The algorithm is called CALM, for \textit{Constructivist Anticipatory Learning Mechanism}.
 
-Perotto tacked the same challanges than Dresher, namelly: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
-Also similar to the original Sechema Mechanism, the elementary knowledge structure in CALM are schemas, which are tuples that associate a context, action, and expected results.
+Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
+Also similar to the original Schema Mechanism, the elementary knowledge structure in CALM are schemas, which are tuples that associate a context, action, and expected results.
 Perotto, however, adopts a different approach.
 While Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
 
@@ -275,7 +275,7 @@ In this way, the accent is placed on the discovering of abstract or non-observab
 	\label{fig:perotto}
 \end{figure}
 
-Another difference of CALM in relation to the original mechanism is that the schemas are organized in a structure called \textit{anticipatory tree}, represented in Fig. \ref{fig:perotto_tree}, which defines a hierarchy, like a decision tree, starting from a completely general context and action, the root node, going to the most specialized ones, the leaf nodes, which represent the schemas.
+Another difference of CALM in relation to the original mechanism is that the schemas are organized in a structure called the \textit{anticipatory tree}, represented in Fig. \ref{fig:perotto_tree}, which defines a hierarchy, like a decision tree, starting from a completely general context and action, the root node, going to the most specialized ones, the leaf nodes, which represent the schemas.
 
 \begin{figure}
 	\centering
@@ -299,7 +299,7 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2
 
 \subsection{Learning Intelligent Decision Agent (LIDA)}
 
-The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanisms inspired by Drescher on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
+The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanism inspired by Drescher on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
 Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
 Other memory modules are implemented including episodic memory, declarative memory, and spatial memory.
 Knowledge is represented as a directed graph called the \textit{node structure}. 
@@ -308,8 +308,8 @@ LIDA's schemas work as templates with unbound variables in their context, action
 Actions may have  unbound variables that qualify and modulate how an action is executed. 
 Schemas are instantiated as \textit{behaviors}. 
 
-LIDA implements \textit{affective valence}. 
-Affective valence can bias behavior selection towards desirable outcome. 
+LIDA implements an \textit{affective valence}. 
+The affective valence can bias behavior selection towards a desirable outcome. 
 Liking and disliking are distinguished from wanting and dreading with the argument that they relate to distinct neural pathways in the brain \cite{kringelbach_functional_2010}. 
 Wanting and dreading are qualified by \textit{incentive salience} of behaviors.   
 
@@ -322,7 +322,7 @@ Fig \ref{fig:lida} shows the cognitive cycle.
 The Dashed rounded rectangle at the bottom shows the schema mechanism as a part of the architecture. 
 The Global Workspace (right) stores a description of the current situation as a graph node. 
 The Procedural Memory module (bottom right) is the memory of schemas. 
-The graph node from Global Worskpace activates relevant schemas. 
+The graph node from Global Workspace activates relevant schemas. 
 The Action Selection module selects an action, primitive or composite, from among the actions of the relevant schemas. 
 Once the action is selected, it is instantiated as a \textit{behavior}, or a \textit{stream of behavior} for composite actions, and their unbound variables are qualified. 
 The behavior is enacted in the Environment (left) and sensory stimuli (signal) is received by the Sensory Memory module (upper left).
@@ -337,24 +337,6 @@ The Attention Codled module selects some amodal nodes to broadcast in the Global
 	\label{fig:lida}
 \end{figure}
 
-
-%\begin{figure}[htbp]
-%	\centering
-%	\begin{subfigure}{0.49\textwidth}
-%		\centering
-%		\includegraphics[width=\linewidth]{Figure_LIDA1.png}
-%		\label{fig:first}
-%	\end{subfigure}
-%	\hfill
-%	\begin{subfigure}{0.49\textwidth}
-%		\centering
-%		\includegraphics[width=\linewidth]{Figure_LIDA2.png}
-%		\label{fig:second}
-%	\end{subfigure}
-%	\caption{LIDA's interaction cycle \cite[Fig. 10 and 11]{kugele_learning_2021}.
-%	Right: initiation of behavior. Left: selectionist and instructionalist procedural learning.}
-%	\label{fig:both}
-%\end{figure}
 
 Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in a multi-armed bandit environment.
 When the agent is standing (State $S$), it can take the action to sit at a one-armed bandit machine, for example Machine 1 (State $M_1$).
@@ -373,13 +355,13 @@ Fig. \ref{fig:lida_bench} represents the state diagram of this environment in th
 \end{figure}
 
 The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{play},$ $\texttt{deposit}\}$. 
-The set of initial nodes (i.e., primitive items) is $\{\texttt{Win}, \texttt{Loose} \}$.
-Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Loose} of $-1$.   
-The difficulty comes from that the agent cannot directly perceive the state of the environment.
-The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the actual states of sitting at a machine without or with paid deposit, along with the schemas representing the transition between states. 
+The set of initial nodes (i.e., primitive items) is $\{\texttt{Win}, \texttt{Lose} \}$.
+Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Lose} of $-1$.   
+The difficulty comes from the fact that the agent cannot directly perceive the state of the environment.
+The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the actual states of sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
 Once this was learned, the agent chose the machine that yielded the highest payoff.
 
-In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Loose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then keeping paying deposits and playing) satisfying the motivation of maximizing the value won. 
+In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to pay deposits and to play) satisfying the motivation of maximizing the value won. 
 
 The agent's adaptation to the k-armed bandit environment was made possible by LIDA's distinction between sensori signal and perceptual memory that allows treating sensory signal as mere events rather than elements of the state. 
 Moreover, LIDA treats composite schemas as procedural knowledge (stream of behavior) that are handled as a whole action by the Action Execution module, which facilitates the learning of the sequence \texttt{deposit}---\texttt{play}, before finding the machine that yields the highest payoff. 
@@ -433,7 +415,6 @@ Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_int
 This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
 Video Demo \cite{georgeon_video_2012}.
 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_grid_plot.pdf}
@@ -443,6 +424,29 @@ Video Demo \cite{georgeon_video_2012}.
 	} 
 	\label{fig:georgeon}
 \end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figure_petitcat.png}
+		\label{fig:first}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Figure_phenomenon.png}
+		\label{fig:second}
+	\end{subfigure}
+	\caption{Robot learning a phenomenon (synthetic item) representing a moneybox \cite[Fig. 5]{pmlr-v192-georgeon22a}.
+		Left: Photo of the robot showing its ultrasonic echo-localization sensor mounted on its pivoting head. 
+		Right: Representation of the phenomenon referring to the moneybox.
+		The phenomenon is aggregated from many sensorimotor ``manifestations'' of the moneybox through echo-localization measures. Blue triangles represent the cones of the ultrasonic signals sent by the robot over time from different positions around the moneybox.
+		The black line is the shape of the moneybox reconstructed from the echoes. 
+	}
+	\label{fig:both}
+\end{figure}
+
 
 
 \subsection{Autocatalytic Endogenous Reflective Architecture (AERA)}
@@ -551,7 +555,7 @@ These techniques, however, require that the semantics of the feedback is known b
 We propose the \textit{constructivist Mastermind analogy} that likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
 The player may never find the hidden combination or goal but may survive and strive for some time in a satisfactory \textit{knowledge niche}.
 
-As reviewed in Section \ref{sec:benchmarks}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
+As reviewed in Section \ref{sec:schema}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
 Nonetheless, the fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
 Georgeon's mechanism may constitute an illustration of that.  
 In Georgeon's schemas, the sensory data is feedback from action rather than being representational. 
