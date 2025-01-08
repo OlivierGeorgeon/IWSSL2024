@@ -346,16 +346,33 @@ The Attention Codled module selects some amodal nodes to broadcast in the Global
 %	\label{fig:both}
 %\end{figure}
 
-Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in the multi-armed bandit environment represented in Fig. \ref{fig:lida_bench}.
+Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in a multi-armed bandit environment.
+When the agent is standing (State $S$), it can take the action to sit at a one-armed bandit machine, for example Machine 1 (State $M_1$).
+The agent can then pay a deposit (state $M_1P$), and then play, which may yield a win (State $M_1W$) with probability $p(W|M_1)$, or a loss (State $M_1L$) with probability $p(L|M_1)$. The agent can choose to stand from any state.
+Fig. \ref{fig:lida_bench} represents the state diagram of this environment in the case of two machines. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figure_LIDA_bench.png}
-	\caption{The multi-armed bandit environment used to assess LIDA's schema Mechanisms \cite[Fig. 5]{kugele2025_constructivist}} 
+	\caption{State diagram of the 2-armed bandit environment \cite[Fig. 5]{kugele2025_constructivist}.
+	White nodes depict environmental states.
+	Black nodes depict actions. 
+	Links going from white state nodes into black action nodes indicate that this action is taken from that state. 
+	Dashed links leaving action nodes are labeled with the probabilities of transitioning to possible states resulting from this action.} 
 	\label{fig:lida_bench}
 \end{figure}
 
+The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{play},$ $\texttt{deposit}\}$. 
+The set of initial nodes (i.e., primitive items) is $\{\texttt{Win}, \texttt{Loose} \}$.
+Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Loose} of $-1$.   
+The difficulty comes from that the agent cannot directly perceive the state of the environment.
+The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the actual states of sitting at a machine without or with paid deposit, along with the schemas representing the transition between states. 
+Once this was learned, the agent chose the machine that yielded the highest payoff.
 
+In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Loose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then keeping paying deposits and playing) satisfying the motivation of maximizing the value won. 
+
+The agent's adaptation to the k-armed bandit environment was made possible by LIDA's distinction between sensori signal and perceptual memory that allows treating sensory signal as mere events rather than elements of the state. 
+Moreover, LIDA treats composite schemas as procedural knowledge (stream of behavior) that are handled as a whole action by the Action Execution module, which facilitates the learning of the sequence \texttt{deposit}---\texttt{play}, before finding the machine that yields the highest payoff. 
 
 \subsection{Enactive Cognitive Architecture (ECA)}
 
