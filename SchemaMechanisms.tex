@@ -154,7 +154,7 @@ Oudeyer \cite{oudeyer_intrinsic_2007}.
 \end{figure}
 
 
-\subsection{Drescher's}
+\subsection{Drescher's MARCSYS}
 
 Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
 He pioneered the first schema mechanism in 1991 by designing these mental structures as schemas formalized as the tuple (context, action, result) depicted in Fig. \ref{fig:drescher}. 
@@ -250,7 +250,7 @@ Conversely, a schema mechanism may need additional built-in assumptions to cope 
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
 
-\subsection{Perotto's}
+\subsection{Perotto's CALM}
 
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism as a result of his PhD thesis~\cite{Perotto:2010:INP} and related publications~\cite{Perotto:2006:AAMAS,Perotto:2006:SGAI,Perotto:2007:EpiRob,Perotto:2013:CF}.
 The algorithm is called CALM, for \textit{Constructivist Anticipatory Learning Mechanism}.
@@ -261,11 +261,27 @@ Perotto, however, adopts a different approach.
 While Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
 
 In this way, CALM can be seen as a kind of model-based RL algorithm, trying to learn a model of the transitions (i.e. how the observations change depending on the context and actions), then, at each time step, computing a policy of actions that maximizes the expected discounted sum of rewards, similar to adaptive dynamic programming methods.
-The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which is able to detect probabilistic regularities.
 
-To compensate the limitation on deterministic regularities, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto}.
+The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which is able to detect probabilistic regularities. 
+To compensate that limitation, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto}.
 The justification is some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine the transition.
 In this way, the accent is placed on the discovering of abstract or non-observable elements, that once discovered and integrated in the anticipatory knowledge, are able to make the observation deterministic. The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is different in CALM.
+
+For dealing with the combinatorial complexity, at the beginning, the only variables that CALM tries to understand and anticipate are those associated to positive or negative affective values (what Drescher called primitive values). Staying focused on these variables avoids wasting energy by creating models about everything. Gradually,
+the variables needed to anticipate the evolution of some important variable (relation of causality) are then also considered important, and the mechanism will seek to model their
+transformation function too.
+
+The tree is constructed step by step using 4 operations: differentiation, adjustment, integration, and abstraction.
+A schema is identified by a vector containing all possible observations and actions. 
+Starting from a completely generic schema, where all elements on that vector are set as \textit{undefined}, the agent tries to verify if some regularity persists from the current timestep to the next.
+The idea is defining a structure that is coherent with all the past experience.
+The expectation of that firs schema will be set as equivalent of the first observation. 
+In this way the schema tries to represent the most transitions that can be anticipated deterministcally with the minimum of context (i.e. the minimum of dependencies).
+
+When an observed result contredicts what was expected, the tree is expanded by differentiation: the contredicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
+When no primitive action or primitive context element can be used to differentiate a contredicted schema, the mechanism creates a synthetic element of context, representing some abstract or non-observable variable, that, if exists, can explain the incoherence. The schema is the differentiated based on this new element.
+Sometimes, it is not possible to differentiate the schema anymore, in this case, an adjustment is done, setting the contredicted expectation to undefined.
+Finally, when several schemas are adjusted, some diffferentiations become unnecessary, then the tree can be pruned, and some leaf schemas integrated in a more general one.
 
 \begin{figure}
 	\centering
