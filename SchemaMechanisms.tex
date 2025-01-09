@@ -192,7 +192,7 @@ Drescher notes that ``a synthetic item thus works backward from a thing's manife
 This addresses the fundamental problem of \textit{concept invention} in that 
 ``a synthetic item is a new element of the system's ontology---an element fundamentally different from the prior contents of the system's conceptual vocabulary'' \cite[p. 81]{drescher_made-up_1991}.
 
-The designer defines the agent's goals by assigning \textit{primitive values} to items (positive if desirable, negative if dreaded).
+The designer defines the agent's goals by assigning \textit{primitive values} (positive if desirable, negative if dreaded) to values of items (\textit{On} or \textit{Off}).
 The mechanism can identify subgoals as specific sets of items to be activated or deactivated; 
 and it constructs \textit{composite actions} as sequences of schemas used to reach a subgoal.
 The values of a target item may be propagated to other items in the form of \textit{instrumental values} and \textit{delegated values} when attaining these other items improves the chances to reach the target item. 
@@ -370,7 +370,7 @@ Fig. \ref{fig:lida_bench} represents the state diagram of this environment in th
 \end{figure}
 
 The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{deposit},$ $\texttt{play} \}$. 
-The set of initial nodes (i.e., primitive items) is $\{\texttt{Win}, \texttt{Lose} \}$.
+The set of initial nodes is $\{\texttt{Win}, \texttt{Lose} \}$, corresponding to a single primitive item in Drescher's terms.
 Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Lose} of $-1$.   
 The difficulty comes from the fact that the agent cannot directly perceive the state of the environment.
 The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
@@ -388,20 +388,35 @@ Another difference is that LIDA treats composite schemas as procedural knowledge
 
 \subsection{Enactive Cognitive Architecture (ECA)}
 
-Georgeon focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria. 
-Similar to LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent a feature the state of the world.  
-Formally, schemas are tuples (pre-subschema, decision, post-subschema) in which the pre-subschema and the post-subschema are other schemas.  
+Olivier Georgeon and colleagues focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria. 
+Similar to LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent elements of relevant states.  
 
-The mechanism is initialized with \textit{primitive schemas} that define atomic possibilities of interaction with the environment. 
-Primitive schemas are intialized with a predefined valence (equivalent to Drescher's primitive value and LIDA's affective valence) that define the agent's likes and dislikes. 
+Formally, schemas are tuples (pre-subschema, decision, post-subschema) in which the pre-subschema and the post-subschema are other schemas.  
+The mechanism is initialized with a set of \textit{primitive schemas} that define the primitive possibilities of interaction of the agent with its environment. 
+Primitive schemas are initialized with a predefined valence (equivalent to Drescher's primitive value and LIDA's affective valence) that specify the agent's ``inborn'' preferences of interaction. 
 
 In the case of a simulated agent, a primitive schema is the association of a \textit{primitive action}, for example \texttt{move-forward} or \texttt{turn}, with a \textit{primitive outcome}, for example \texttt{bump} or \texttt{no-bump}.  
-The primitive schema (\texttt{move-forward}, \texttt{no-bump}) initialized with a valence of $-1$ specifies that the mechanism should avoid pumping into obstacles. 
+The primitive schema (\texttt{move-forward}, \texttt{bump}) initialized with a negative valence specifies an agent that ``dislikes'' bumping into walls when it tries to move forward. 
 
 
 %In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
-The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned lower-level schemas, 
+The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned subschemas, 
 as illustrated in Fig. \ref{fig:agent8}. 
+Schemas are noted with the letter $i$ because they are sometimes called \textit{interactions}.
+For example, if the primitive schema $i00$, made of action $a0$ and outcome $o0$, was enacted at time $t-2$, and the primitive schema $i11$, made of action $a1$ and outcome $o1$,  was enacted at time $t-1$, then the composite schema $(i00, a1, i11)$ is learned (added to memory) or its \textit{weight} is incremented if it already existed. 
+The weight of schemas plays a similar role as their reliability in Drescher's implementation.
+
+When a new schema's post-subschema is primitive, the new schema's decision consists of performing the post-subschema's action.
+When the post-subschema is composite, the new schema's decision consists of enacting the whole sequence specified by the post-subschema. 
+This mechanism constructs a hierarchy of schemas similar to LIDA's hierarchical streams of behaviors. 
+
+At time $t$, the previously learned schemas whose pre-subschemas match the current situation are \textit{activated}.
+Activated schemas compete to propose their decisions according to a \textit{proclivity value} computed from the activated schema's weight and the post-subschema's valence. 
+
+A decision to enact a composite schema generates a stream of behavior consisting of sequentially enacting the whole sequence of primitive schemas that constitute this composite schema.  
+If the enaction of any of its primitive subschemas fails (i.e., the actual outcome differs from the schema's outcome), then the enaction of the sequence is interrupted. 
+
+
 %The mechanism is not initialized with a top-level goal. 
 %Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
 
@@ -410,51 +425,69 @@ as illustrated in Fig. \ref{fig:agent8}.
 	\centering
 	\includegraphics[width=1.0\textwidth]{Figure_3_agent8.pdf}
 	\caption{Schema learning and selection.
-		Schemas are nested tuples: (pre-schema, decision, post-schema).
+		Schemas are nested tuples: (pre-subschema, decision, post-subschema).
 		Over time, new decisions and new schemas are learned from the bottom up. 
-		Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-schema they match.
-		Activated schemas propose their post-schemas with a proclivity value calculated from the activation weight and the expected valence.
+		Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-subschema they match.
+		Activated schemas propose their post-subschemas with a proclivity value calculated from the activation weight and the expected valence.
 		The schema with the highest proclivity is selected to try to enact.} 
 	\label{fig:agent8}
 \end{figure}
 
 
-The schema learning mechanism and selection works as follows.
-At the end of time step $t$, the agent records or reinforces the schemas: 
-\begin{itemize}
-	\item[$\bullet$] $(i_{t-2}, d_{t-1}, i_{t-1})$
-	\item[$\bullet$] $((i_{t-3}, d_{t-2}, i_{t-2}), d_{t-1}, i_{t-1})$
-	\item[$\bullet$] $(i_{t-3}, d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
-	\item[$\bullet$] $((i_{t-4}, d_{t-3}, i_{t-3}), d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
-\end{itemize}
+%The schema learning mechanism and selection works as follows.
+%At the end of time step $t$, the agent records or reinforces the schemas: 
+%\begin{itemize}
+%	\item[$\bullet$] $(i_{t-2}, d_{t-1}, i_{t-1})$
+%	\item[$\bullet$] $((i_{t-3}, d_{t-2}, i_{t-2}), d_{t-1}, i_{t-1})$
+%	\item[$\bullet$] $(i_{t-3}, d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
+%	\item[$\bullet$] $((i_{t-4}, d_{t-3}, i_{t-3}), d^2, (i_{t-2}, d_{t-1}, i_{t-1}))$
+%\end{itemize}
 
-If it does not yet exist, the new decision $d^2$ is constructed different from the decision $d_{t-2}$ that was actually made at time $t-2$. 
-For example, if the agent made decision $d_{t-2} = a0$ and enacted interaction $i_{t-2}=i00$, and then made decision $d_{t-1} = a0$, and enacted interaction $i_{t-1}=i01$, the agent learns the new decision $d^2=i00a0$ consisting of trying to enact the interaction $i_t=i00$ and then do action $a_{t+1}=a0$. 
-When decision $d^2$ has been selected and successfully enacted, the mechanism learns higher-level schemas on top of it. 
-The rate of schema construction being constant, the number of schemas grows linearly with time. 
-Older and unused schemas can be forgotten.
+%If it does not yet exist, the new decision $d^2$ is constructed different from the decision $d_{t-2}$ that was actually made at time $t-2$. 
+%For example, if the agent made decision $d_{t-2} = a0$ and enacted interaction $i_{t-2}=i00$, and then made decision $d_{t-1} = a0$, and enacted interaction $i_{t-1}=i01$, the agent learns the new decision $d^2=i00a0$ consisting of trying to enact the interaction $i_t=i00$ and then do action $a_{t+1}=a0$. 
+%When decision $d^2$ has been selected and successfully enacted, the mechanism learns higher-level schemas on top of it. 
+%The rate of schema construction being constant, the number of schemas grows linearly with time. 
+%Older and unused schemas can be forgotten.
 
-In essence, the agent learns habits of interaction that are organized hierarchically, with shorter sequential habits learned first, and longer sequences of habits made of sequences of shorter habits later learned on top of them. 
-Such habit learning relates to Woolford's \textit{sensorimotor sequence reiterator} \cite{woolford_precarious_2020}.
+Georgeon \cite{georgeon_intrinsically-motivated_2012} reports an experiment in the environment shown in Fig. \ref{fig:georgeon} and shared in a video \cite{georgeon_video_2012}.
+The set of primitive actions is $\{ \texttt{move-forward},$ $\texttt{turn-left},$ $\texttt{turn-right},$ $\texttt{feel-front},$ $\texttt{feel-left},$ $\texttt{feel-right}\}$.
+The set of possible outcomes is $\{ \texttt{no-wall},$ $ \texttt{wall} \}$ corresponding to a single primitive item. 
+%The \texttt{turn} actions always yield the \texttt{no-wall} outcome.
+The schema (\texttt{move-forward}, \texttt{no-wall}) has a valence of $+5$ making it the only ``enjoyable'' interaction to the agent. 
+The schema (\texttt{move-forward}, \texttt{wall}), corresponding to bumping into wall, has a valence of $-10$ making it strongly dreaded. 
+The 6 schemas that have a \texttt{feel} action have a valence of $-1$ making them slightly costly. 
+The schemas that have a \texttt{turn} action  have a valence of $-3$ making them mildly costly. 
 
-
-
-Fig. \ref{fig:georgeon} shows Georgeon' experimental settings \cite{georgeon_intrinsically-motivated_2012}.
-This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
-Video Demo \cite{georgeon_video_2012}.
-
-In a robot, primitive schemas are hard-coded control loops involving actuators and sensory feedback. 
-
+Like in LIDA's experiment, the difficulty comes from the fact that the agent only has a single binary sensory signal and cannot directly sense the state of the environment. 
+The agent thus characterizes the state of the environment through enacted schemas. 
+Results show that after approximately a hundred interaction cycles, the agent learns to use the \texttt{feel} schemas to activerly sense the environment. 
+This active sensing provides a situation awareness that makes the agent turn to empty cells when necessary, avoid bumping into walls, and optimize its moving forward. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_grid_plot.pdf}
 	\caption{Georgeon's benchmark (Adapted from \cite{georgeon_intrinsically-motivated_2012}).
-		The agent can move forward to an empty cell, bump into a wall (green cell), turn to the left or to right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
-		Sensory signal is a single-bit feedback from the action. 	
+		The agent can move forward to an empty (white) cell, bump into a wall (green cell), turn to the left or to the right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
+		The sensory signal is a single-bit feedback from the action (``empty'' or ``wall''). 	
+		The agent progressively learns to used the ``feel'' schemas to sense its surrounding environment, not move forward when it feels a wall in front, and turn to a direction where it feels no wall, thus maximizing the ``move forward'' interaction that has a predefined positive valence.
 	} 
 	\label{fig:georgeon}
 \end{figure}
+
+In a robot, primitive actions are defined as hard-coded control loops that regulate actuators and monitor sensory feedback over a predetermined period. 
+For example, the \texttt{move-forward} action turns on the wheel engines and runs a loop that monitors the elapsed time and the collision detection sensor. 
+If a collision is detected, the schema is terminated before its predetermined duration. 
+Upon termination, the wheel engines are turned off and the outcome is sent to the schema mechanism, for example \texttt{no-bump} or \texttt{bump}.
+
+To deal with the complexity of the physical world, Georgeon and colleagues encapsulated the schema mechanism in a cognitive architecture called Enactive Cognitive Architecture (ECA) \cite{georgeon_eca_2013}.
+ECA incorporates a spatial memory module that can simulate the enaction of schemas to help select the most desirable schema in the current spato-temporal context. 
+Like in LIDA, schemas may include unbound variables that can be qualified upon their instantiation. 
+For example, the \texttt{turn} action has the variable \texttt{angle} that specifies the rotation span in the horizontal plane (yaw).
+When the schema mechanism module selects the \texttt{turn} action, the spatial memory module qualifies the angle to the desired direction.
+
+Georgeon \cite{georgeon_artificial_2024} demonstrated ECA with the robot shown in Fig. \ref{fig:robot}.
+When the robot finds reliable schemas in a consistent spatial localization, it creates a datastructure called a \textit{phenomenon} that represents the ``thing'' in the world that affords these schema.
+This is analogous to the construction of synthetic items in Drescher's schema mechanism.
 
 \begin{figure}[htbp]
 	\centering
@@ -469,14 +502,34 @@ In a robot, primitive schemas are hard-coded control loops involving actuators a
 		\includegraphics[width=\linewidth]{Figure_phenomenon.png}
 		\label{fig:second}
 	\end{subfigure}
-	\caption{Robot learning a phenomenon (synthetic item) representing a moneybox \cite[Fig. 5]{pmlr-v192-georgeon22a}.
+	\caption{Robot learning a phenomenon (synthetic item) representing a cylindrical object \cite[Fig. 5]{pmlr-v192-georgeon22a}.
 		Left: Photo of the robot showing its ultrasonic echo-localization sensor mounted on its pivoting head. 
-		Right: Representation of the phenomenon referring to the moneybox.
-		The phenomenon is aggregated from many sensorimotor ``manifestations'' of the moneybox through echo-localization measures. Blue triangles represent the cones of the ultrasonic signals sent by the robot over time from different positions around the moneybox.
-		The black line is the shape of the moneybox reconstructed from the echoes. 
+		Right: Representation of the \textit{cylindrical phenomenon}.
+		The phenomenon is aggregated from many sensorimotor ``manifestations'' of the cylindrical object through echo-localization measures. 
+		Blue triangles represent the cones of the ultrasonic signals sent by the robot over time from different positions around the moneybox.
+		The black line is the shape of the cylindrical object reconstructed from the echoes. 
 	}
-	\label{fig:both}
+	\label{fig:robot}
 \end{figure}
+
+In summary, Georgeon's schema mechanism emphases the interactional nature of schemas by resting on primitive schemas that represent events of interaction rather than encoding percepts in primitive items supposedly representing elements of the world state. 
+This design choice facilitates the hierarchical leaning of composite schemas because it does not require to construct abstract representations of elements in the world (synthetic items).
+
+In the experiment reported in Fig. \ref{fig:georgeon}, the agent manages to adapt to its environment using only schemas but no synthetic items.
+Like Drescher and Kugele, Georgeon implemented an effect of \textit{habituation} that causes reliable schemas to be preferably reused, which facilitates the construction of higher-level schemas on top of them. 
+This habituation principles has echoes in Woolford's \textit{sensorimotor sequence reiterator} \cite{woolford_precarious_2020}.
+%The learning process is funneled by ``innate'' preferences of interaction. 
+
+
+ECA makes a strong design choice by assuming that the environment has a three-dimensional Euclidean structure and is populated with physical objects. 
+This assumption is coded in the cognitive architecture through the spatial memory module and by adding unbound variables to schema that encode spatial parameters. 
+This design choice allows ECA to construct phenomena to represent ``things'' in the physical world. 
+We hypothesize that it can help avoid the scalability limitation of Drescher's implementation of synthetic items. 
+Including spatial variable in schemas and qualifying them adequately, however, raises many questions that remain open. 
+
+%learns habits of interaction that are organized hierarchically, with shorter sequential habits learned first, and longer sequences of habits made of sequences of shorter habits later learned on top of them. 
+
+
 
 
 
@@ -569,6 +622,7 @@ Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in th
 	\end{tabular}
 \end{table}
 
+This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
 
 
 Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
