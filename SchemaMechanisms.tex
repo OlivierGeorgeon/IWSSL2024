@@ -254,32 +254,42 @@ This paper reviews other schema mechanisms that make other choices in the hope t
 
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism, called \textit{Constructivist Anticipatory Learning Mechanism} (CALM), as a result of his PhD thesis~\cite{Perotto:2010:UFRGS,Perotto:2010:INP} and related publications~\cite{Perotto:2013:CF,Perotto:2006:SGAI,Perotto:2006:AAMAS,Perotto:2007:EpiRob}.
 Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
-Similar to the original Schema Mechanism, the elementary knowledge structures in CALM are schemas, represented as tuples associating context, action, and expected results.
 However, while Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
 In this way, CALM can be seen as a kind of model-based RL algorithm, trying to learn a model of the transitions (i.e. how the observations change depending on the context and actions), then, at each time step, computing a policy of actions that maximizes the expected discounted sum of rewards, similar to adaptive dynamic programming methods.
 
+Similar to the original mechanism, the elementary knowledge structures in CALM are schemas, represented as tuples associating context, action, and expected results.
 The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which can maintain unreliable regularities within the system in order to spinoff reliable schemas afterwards. 
 To compensate that limitation, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto}.
-The justification is that some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine the transition.
-In this way, the accent is placed on the discovering of abstract or non-observable elements, that once discovered and integrated in the anticipatory knowledge, are able to make the observation deterministic. The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is slightly different.
+The justification is that some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine its transition function.
+In this way, the accent is placed on the discovering of abstract or non-observable elements, that once introduced and integrated in the anticipatory system, are able to explain the observation, making the transition deterministic. 
+The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is slightly different.
 
-For dealing with the combinatorial complexity, at the beginning, the only variables that CALM tries to understand and anticipate are those associated to positive or negative affective values (what Drescher called primitive values). 
+For dealing with the combinatorial complexity, at the beginning, the only variables that CALM tries to understand and anticipate are those associated to affective values (what Drescher called primitive values).
+It is like a built-in reward function that associate positive (desirable) or negative (undesirable) values that the agent can ``feel'' immediately depending on the value of the variable (i.e. its observation, e.g. true or false if boolean).
 Staying focused on these variables avoids wasting energy by creating models about everything. 
 Gradually, the variables needed to anticipate the evolution of some important variable (relation of causality) are then considered also important, and the mechanism will seek to model their transformation function too.
 
 Differently from the original mechanism, which creates one initial schema for each action with empty context and result, CALM creates one initial schema for each item on the result vector (which corresponds to a perceptive variable) that have a non neutral affective value, with empty context and action.
-Each one of these initial schemas will be developed as an anticipatory tree, each one responsible for identifying the relevant elements and the rules that describe the transition of its associated item, allowing in this way to anticipate its behavior. 
-Each tree is constructed step by step using 4 operations: differentiation, adjustment, integration, and abstraction.
+Each one of these initial schemas will grow up, giving rise to an anticipatory tree, responsible for identifying the relevant elements and the rules that describe the transition of its associated item, allowing in this way to anticipate it. 
+Each anticipatory tree is constructed step by step using 4 operations: differentiation, adjustment, integration, and abstraction.
 Each node in the anticipatory tree is identified by a vector containing observations and actions. 
 Starting from a completely generic root node, where all elements on that vector are set as \textit{undefined}, the agent tries to verify if some regularity persists from the current time-step to the next.
 The idea is defining a structure that is coherent with the past experience.
 The expectation of that first schema will be equivalent to the first observation. 
-In this way the schema tries to represent the most transitions that can be predicted deterministcally with the minimum of context (i.e. the minimum of dependencies).
+In this way the schema tries to represent the most transitions that can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
 
 When an observed result contradicts what was expected, the tree is expanded by differentiation: the contradicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
 When no primitive action or primitive context element can be used to differentiate a contradicted schema, the mechanism creates a synthetic element of context, representing some abstract or non-observable variable, that, if exists, can explain the incoherence. The schema is the differentiated based on this new element.
 Sometimes, it is not possible to differentiate the schema anymore, in this case, an adjustment is done, setting the contradicted expectation to undefined.
 Finally, when several schemas are adjusted, some differentiations become unnecessary, then the tree can be pruned, and some leaf schemas integrated in a more general one.
+
+To be able to make differentiations, beyond the context and action vectors that identify the schema, the mechanism must store a kind of memory of the effective experienced contexts and actions observed during the past activations of the schema.
+The identity of the schema corresponding to a maximally generic situation, and the memory corresponding to a maximally specific situation.
+In order to create a new schema by differentiation, the mechanism search for an item or action in the memory of the schema that is different from the current situation that is causing the incoherence. 
+The differentiation will preserve the past experience in the old schema, identifying it with a more specialized context or more precise action, separating the new situation in another schema.
+In terms of computational complexity, the problem is how to manage that memory, because it needs to remember co-occurrences of items and actions.
+The solution given by Perotto is to explicitly limit the number of variables to observe together, starting from 1, and gradually increasing that number, which in any case will always be low, at the order of few units.
+The original mechanism proposed by Drescher faces the same problem, and is limited to observing only one additional variable.
 
 \begin{figure}
 	\centering
