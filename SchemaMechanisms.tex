@@ -296,7 +296,7 @@ Similar to the original mechanism, the elementary knowledge structures in CALM a
 \end{figure}
 
 The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which can maintain unreliable regularities within the system in order to spinoff reliable schemas afterwards. 
-To compensate that limitation, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto}.
+To compensate that limitation, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto_schema}.
 The justification is that some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine its transition function.
 In this way, the accent is placed on the discovering of abstract or non-observable elements, that once introduced and integrated in the anticipatory system, are able to explain the observation, making the transition deterministic. 
 The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is slightly different: 
@@ -325,7 +325,7 @@ The idea is defining a structure that is coherent with the past experience.
 The expectation of that first schema will be equivalent to the first observation. 
 In this way the schema tries to represent the most transitions that can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
 
-When an observed result contradicts what was expected, the tree is expanded by differentiation, like illustrated in the Figure: the contradicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
+When an observed result contradicts what was expected, the tree is expanded by differentiation, like illustrated in Fig. \ref{fig:perotto_diff}: the contradicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
 When no primitive action or primitive context element can be used to differentiate a contradicted schema, the mechanism creates a synthetic element of context, representing some abstract or non-observable variable, that, if exists, can explain the incoherence. 
 The schema is the differentiated based on this new element.
 Sometimes, it is not possible to differentiate the schema anymore, in this case, an adjustment is done, setting the contradicted expectation to undefined.
@@ -620,7 +620,7 @@ Key representational components of this approach include \cite{sheikhlar2024auto
 	\item \textbf{Facts} are statements that represent a cognitive event, e.g. operations happening in AERA itself; facts are the only entity in AERA that have complete certainty (corresponding to Descartes' axiom “I think, therefore I am”).
 	\item A \textbf{composite State model (CST)} captures a set of simultaneous (timeless) Facts that the AERA system considers to be (potentially) useful and/or necessary for properly predicting an event’s consequences; used to e.g. represent a variety of subsets in the world such as spatial relations of objects, the values of a perceived object’s properties, such as its position and color, etc. %The forming of a CST at time T becomes a Fact with a timestamp T and a GUID (i.e. it is certain to the AERA executive that this CST was formed at time T). 
 	\item A \textbf{cognitive event model (CEM)} captures a (hypothesized) causal influence of a Fact on another Fact; used to represent the effect that an action or event in particular circumstances, e.g. a command initiated by AERA at some timestep, has on the state of the world at a later timestep. When a CEM fires it produces a prediction (while the production of a prediction is represented as a Fact, the confidence in the prediction itself is defeasible and is in part based on the confidence of the CEM).
-	\item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/conditions that must be met for a CEM to be relevant in a particular context at a particular time.
+	\item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/\hspace{0pt}conditions that must be met for a CEM to be relevant in a particular context at a particular time.
 %	
 \end{itemize}
 
