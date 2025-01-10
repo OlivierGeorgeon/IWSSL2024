@@ -90,8 +90,10 @@ Piaget defines a schema as follows:
 \\
 
 \begin{adjustwidth}{1cm}{1cm}
-``A schema is a structure or organization of actions as they transfer or generalize in similar or analogous circumstances.'' 
-(\cite{piaget_naissance_1998}, p. 23).
+%``A schema is a structure or organization of actions as they transfer or generalize in similar or analogous circumstances.''
+``A schema is a structure or organization of actions as they are transferred or generalized by repetition in similar or analogous circumstances.''
+%(\cite{piaget_naissance_1998}, p. 23).
+(\cite{piaget_psychology_1969}, p.~4).
 \\ 
 \end{adjustwidth}
 
@@ -112,7 +114,7 @@ Starting from the contact zone between one's own body and the objects, these med
 It is from this dual progressive construction that the joint elaboration of both the subject and the objects depends.
 
 The initial instrument of exchange is not perception, as rationalists too easily conceded to empiricism, but rather action itself, with its much greater plasticity. 
-Certainly, perceptions play an essential role, but they partly depend on action as a whole, and some perceptual mechanisms that one might have thought to be innate or very primitive only emerge at a certain level of object construction.'' (translated from \cite{piaget_lepistemologie_2011}, p. 14-15)
+Certainly, perceptions play an essential role, but they partly depend on action as a whole, and some perceptual mechanisms that one might have thought to be innate or very primitive only emerge at a certain level of object construction.'' (translated from \cite{piaget_lepistemologie_2011}, p.~14-15)
 \\
 
 \end{adjustwidth}
@@ -124,13 +126,13 @@ by accommodating its set of schemas to surprising or disruptive experiences, dif
 \\
 
 \begin{adjustwidth}{1cm}{1cm}
-``Organization is inseparable from adaptation: they are two complementary processes of a single mechanism, organization being the internal aspect of the cycle of which adaptation constitutes the external aspect. [...] that adaptation is an equilibrium between assimilation and accommodation. [...] Intelligence is assimilation to the extent that it incorporates all the given data of experience within its framework. [...] that mental life is also accommodation to the environment. Assimilation can never be pure because by incorporating new elements into its earlier schemata the intelligence constantly modifies the latter in order to adjust them to new elements.''~\cite{piaget_origins_1955}
+``[...] Organization is inseparable from adaptation: they are two complementary processes of a single mechanism, organization being the internal aspect of the cycle of which adaptation constitutes the external aspect. [...] that adaptation is an equilibrium between assimilation and accommodation. [...] Intelligence is assimilation to the extent that it incorporates all the given data of experience within its framework. [...] that mental life is also accommodation to the environment. Assimilation can never be pure because by incorporating new elements into its earlier schemata the intelligence constantly modifies the latter in order to adjust them to new elements.''~(\cite{piaget_origins_1955}, p.~7)
 
-``In their initial directions, assimilation and accommodation are obviously opposed to one another, since assimilation is conservative and tends to subordinate the environment to the organism as it is, whereas accommodation is the source of changes and bends the organism to the successive constraints of the environment. But if in their rudiment these two functions are antagonistic, it is precisely the role of mental life in general and of intelligence in particular to intercoordinate them''.~(\cite{piaget_reality_1955}, p.352)
+``In their initial directions, assimilation and accommodation are obviously opposed to one another, since assimilation is conservative and tends to subordinate the environment to the organism as it is, whereas accommodation is the source of changes and bends the organism to the successive constraints of the environment. But if in their rudiment these two functions are antagonistic, it is precisely the role of mental life in general and of intelligence in particular to intercoordinate them.''~(\cite{piaget_reality_1955}, p.~352)
 
 ``Gradually, as the child's thought evolves, assimilation and accommodation are differentiated and become increasingly complementary. 
 In the realm of representation of the world this means, on the one hand, that accommodation, instead of remaining on the surface of experience, penetrates it more and more deeply, that is, under the chaos of appearances it seeks regularities and becomes capable of real experimentations to establish them. 
-On the other hand, assimilation, instead of reducing phenomena to the concepts inspired by personal activity, incorporates them in the system of relationships rising from the more profound activity of intelligence itself.''..~(\cite{piaget_reality_1955}, p.385)
+On the other hand, assimilation, instead of reducing phenomena to the concepts inspired by personal activity, incorporates them in the system of relationships rising from the more profound activity of intelligence itself.''~(\cite{piaget_reality_1955}, p.~385)
 
 ``The study of sensorimotor or practical intelligence in the first two years of development has taught us how the child, at first directly assimilating the external environment to his own activity, later, in order to extend this assimilation, forms an increasing number of schemata which are both more mobile and better able to intercoordinate.
 [...] The increasing coherence of the schemata thus parallels the formation of a world of objects and spatial relationships, in short, the elaboration of a solid and permanent universe.''~(\cite{piaget_reality_1955}, p.\textit{xi})
@@ -176,7 +178,10 @@ Oudeyer \cite{oudeyer_intrinsic_2007}.
 \end{figure}
 
 
-\subsection{Drescher's}
+
+%\subsection{Drescher's}
+\subsection{MARCSYST}
+
 In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}, proposing a framework to reproduce key constructivist notions in artificial intelligence, and presenting an implemented mechanism called \textit{Marginal Attribution and Representation Construction System} (MARCSYST).
 Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
 %He pioneered the first schema mechanism in 1991 by designing 
@@ -272,7 +277,7 @@ Conversely, a schema mechanism may need additional built-in assumptions to cope 
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
 
-\subsection{Perotto's}
+\subsection{CALM}
 
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism, called \textit{Constructivist Anticipatory Learning Mechanism} (CALM), as a result of his PhD thesis~\cite{Perotto:2010:UFRGS,Perotto:2010:INP} and related publications~\cite{Perotto:2013:CF,Perotto:2006:SGAI,Perotto:2006:AAMAS,Perotto:2007:EpiRob}.
 Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
@@ -339,9 +344,6 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2
 	\caption{Perotto's benchmark from \cite{Perotto:2013:CF} Fig.9 ``The hyper-flip problem''.} 
 	\label{fig:perotto_ben}
 \end{figure}
-
-
-
 
 \subsection{Learning Intelligent Decision Agent (LIDA)}
 \label{sec:lida}
@@ -612,10 +614,7 @@ As an example, the triad of $CST1$, $M_{req}1$, and $CEM1$ can represent the phy
 
 The interactions of the operational principles of AERA are quite intricate in their entirety; important aspects that are covered elsewhere include induction – the creation of new knowledge – unified abduction-deduction – the creation of plans and explanations – and runtime relevance computations \cite{nivel2013towards}. The unified integration of these operational principles in a single coherent architecture is what gives AERA its power, allowing its seed – initial human-provided knowledge – to be orders of magnitude smaller than what AERA can create on its own through learning from experience. 
 
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Schema mechanisms and theory of knowledge}
 
@@ -636,7 +635,8 @@ Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in th
 	\caption{Comparison of schema mechanisms}\label{tab:comp}
 	\begin{tabular}{|l|c|c|c|c|c|}
 		\hline
-		&  Drescher & Perotto & AERA & LIDA & ECA \\
+		%&  Drescher & Perotto & AERA & LIDA & ECA \\
+		&  MARCSYST & CALM & AERA & LIDA & ECA \\
 		\hline
 		Explicit goal & \checkmark & \checkmark & \checkmark & \checkmark &  \\
 		Concept invention & \checkmark & \checkmark &  &  &  \\
