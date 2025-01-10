@@ -75,11 +75,11 @@ and highlights their contributions to these key challenges, with the goal of uni
 \keywords{schema mechanism  \and genetic epistemology \and constructivist learning \and intrinsic motivation \and cognitive architectures.}
 \end{abstract}
 %
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \section{Introduction}
-
-
+\label{sec:intro}
+%
 % Drawing from the earlier work of James Baldwin, 
 Throughout his life, Jean Piaget developed and popularized the theory of \textit{genetic epistemology} \cite{piaget_principles_1997}  to account for the genesis of intelligence and knowledge. 
 In parallel, he pioneered \textit{developmental psychology} by establishing the foundational methods for studying mental development in children~\cite{piaget_origins_1955,piaget_reality_1955}.
@@ -150,20 +150,16 @@ The first attempt only began eleven years after his death.
 \cite{guerin_piagetian_2008}
 \cite{miller_building_2018}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 \section{Schema mechanisms}
 \label{sec:schema}
-
+%
 Implementing genetic epistemology as a mechanistic process involves reducing Piaget's psychological concept of schema into data structures handled by a computer. 
 This computer controls an artifact (robot or virtual agent) that interacts with its environment.
 The computer must process these data structures through some mechanism that will support the generation of increasingly intelligent behavior demonstrating the internal development of the robot.
 Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representation of this developmental process shown in the Figure~\ref{fig:general}.
-
-Notably, the developmental process is not targeted at reaching a predefined goal-state in a predefined problem space, nor does it aim at maximizing a predefined scalar value as in reinforcement learning.
-Instead, the problem of cognitive development in artificial systems is intertwined with the problem \textit{intrinsic motivation}, as has been argued for example by  
-Oudeyer \cite{oudeyer_intrinsic_2007}. 
-
-
+%
 \begin{figure}
 	\includegraphics[width=\textwidth]{Figure_1_guerin.pdf}
 	\caption{Conceptual diagram of infant development from \cite{guerin_survey_2013} Fig. 1.
@@ -177,10 +173,14 @@ Oudeyer \cite{oudeyer_intrinsic_2007}.
 	\label{fig:general}
 \end{figure}
 
+Notably, the developmental process is not targeted at reaching a predefined goal-state in a predefined problem space, nor does it aim at maximizing a predefined scalar value as in reinforcement learning.
+Instead, the problem of cognitive development in artificial systems is intertwined with the problem \textit{intrinsic motivation}, as has been argued for example by  
+Oudeyer \cite{oudeyer_intrinsic_2007}. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\subsection{Drescher's}
-\subsection{MARCSYST}
+\subsection{Marginal Attribution and Representation Construction System (MARCSYST)}
 
 In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}, proposing a framework to reproduce key constructivist notions in artificial intelligence, and presenting an implemented mechanism called \textit{Marginal Attribution and Representation Construction System} (MARCSYST).
 Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
@@ -276,8 +276,10 @@ Other motivational principles can be imagined.
 Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{CALM}
+%\subsection{Perotto's}
+\subsection{Constructivist Anticipatory Learning Mechanism (CALM)}
 
 In the early 2010s, Filipo S. Perotto proposed his own version of a schema mechanism, called \textit{Constructivist Anticipatory Learning Mechanism} (CALM), as a result of his PhD thesis~\cite{Perotto:2010:UFRGS,Perotto:2010:INP} and related publications~\cite{Perotto:2013:CF,Perotto:2006:SGAI,Perotto:2006:AAMAS,Perotto:2007:EpiRob}.
 Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
@@ -345,6 +347,9 @@ Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2
 	\label{fig:perotto_ben}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Kugele's}
 \subsection{Learning Intelligent Decision Agent (LIDA)}
 \label{sec:lida}
 
@@ -386,7 +391,6 @@ The Attention Codled module selects some amodal nodes to broadcast in the Global
 	\label{fig:lida}
 \end{figure}
 
-
 Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in a multi-armed bandit environment.
 When the agent is standing (State $S$), it can take the action to sit at a one-armed bandit machine, for example Machine 1 (State $M_1$).
 The agent can then pay a deposit (state $M_1P$), and then play, which may yield a win (State $M_1W$) with probability $p(W|M_1P)$, or a loss (State $M_1L$) with probability $p(L|M_1P)$. The agent can choose to stand from any state.
@@ -420,6 +424,9 @@ This is because the sensory item (\texttt{W} or \texttt{L}) is not useful in its
 
 Another difference is that LIDA treats composite schemas as procedural knowledge (stream of behavior) that are handled as a whole action by the Action Execution module, which facilitates the learning of the sequence \texttt{deposit}--\texttt{play}, before finding the machine that yields the highest payoff. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Georgeon's}
 \subsection{Enactive Cognitive Architecture (ECA)}
 
 Olivier Georgeon and colleagues focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria. 
@@ -431,7 +438,6 @@ Primitive schemas are initialized with a predefined valence (equivalent to Dresc
 
 In the case of a simulated agent, a primitive schema is the association of a \textit{primitive action}, for example \texttt{move-forward} or \texttt{turn}, with a \textit{primitive outcome}, for example \texttt{bump} or \texttt{no-bump}.  
 The primitive schema (\texttt{move-forward}, \texttt{bump}) initialized with a negative valence specifies an agent that ``dislikes'' bumping into walls when it tries to move forward. 
-
 
 %In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
 The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned subschemas, 
@@ -450,10 +456,8 @@ Activated schemas compete to propose their decisions according to a \textit{proc
 A decision to enact a composite schema generates a stream of behavior consisting of sequentially enacting the whole sequence of primitive schemas that constitute this composite schema.  
 If the enaction of any of its primitive subschemas fails (i.e., the actual outcome differs from the schema's outcome), then the enaction of the sequence is interrupted. 
 
-
 %The mechanism is not initialized with a top-level goal. 
 %Instead, it is initialized with a predefined set of low-level primitive schemas that define the agent's basic possibilities of interaction. 
-
 
 \begin{figure}
 	\centering
@@ -466,7 +470,6 @@ If the enaction of any of its primitive subschemas fails (i.e., the actual outco
 		The schema with the highest proclivity is selected to try to enact.} 
 	\label{fig:agent8}
 \end{figure}
-
 
 %The schema learning mechanism and selection works as follows.
 %At the end of time step $t$, the agent records or reinforces the schemas: 
@@ -563,10 +566,9 @@ Including spatial variable in schemas and qualifying them adequately, however, r
 
 %learns habits of interaction that are organized hierarchically, with shorter sequential habits learned first, and longer sequences of habits made of sequences of shorter habits later learned on top of them. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
+%\subsection{Thorisson's}
 \subsection{Autocatalytic Endogenous Reflective Architecture (AERA)}
 
 AERA\footnote{Autocatalytic Endogenous Reflective Architecture; see www.openaera.org – accessed Dec. 6th, 2024.} is a unified system that can learn about causal relations cumulatively, from experience \cite{thorisson2019cumulative,thorisson2014autonomous,nivel2013autocatalytic}. The system’s knowledge representation uniquely combines ampliative reasoning, autonomous resource management, explanation-driven compositional knowledge representation and reflection in a synergetic architecture that can grow its knowledge from a small “bootstrapping seed” \cite{thorisson2020seed}. Its compositional knowledge contains numerous peewee-size “micro-models” that can be combined in explainable ways to model experience \cite{thorisson2021explanation}. 
@@ -580,8 +582,6 @@ The methodology behind AERA rests on three fundamental principles \cite{thorisso
 	
 \end{itemize}
 
-
-
 AERA’s peewee-size models, similar to e.g. Drescher’s \cite{drescher_made-up_1991} schemas and the neuro-symbolic approach presented in \cite{komrusch_symbolic_2022}, represent knowledge by contextualized programs that capture antecedental and successional states of important relationships (e.g. the relationship between a hand and an object that one wants to pick up). Unlike these, AERA places explicit representation of cause-effect relations at its core \cite{thorisson2018cumulative}. During its continuous learning, driven by a self-maintained dynamic goal hierarchy, the most useful (effective and efficient) models of cause-effect relations encountered in the environment are retained, while others are discarded. Based on predictions, informed experimentation, and strategic induction, the system autonomously creates new knowledge cumulatively, effortlessly unifying new information with old, even in light of contradictions. Further separating AERA from other approaches are its atomic elements for knowledge creation, whose operational semantics are transparent to the system’s own reasoning, meaning that they can be inspected and learned by the same explicit, defeasible unified reasoning mechanisms as used for learning about the world. 
 
 The approach uniquely unifies cognition and meta-cognition in a single, coherent architecture, enabling efficient and effective self-reflection that lays a foundation for a capacity for cognitive growth. The result is a system that can dynamically employ ampliative reasoning, at any point in time, to predict both the immediate and far future, including its own cognitive resource use (“think time”). 
@@ -592,9 +592,8 @@ Key representational components of this approach include \cite{sheikhlar2024auto
 	\item A \textbf{composite State model (CST)} captures a set of simultaneous (timeless) Facts that the AERA system considers to be (potentially) useful and/or necessary for properly predicting an event’s consequences; used to e.g. represent a variety of subsets in the world such as spatial relations of objects, the values of a perceived object’s properties, such as its position and color, etc. %The forming of a CST at time T becomes a Fact with a timestamp T and a GUID (i.e. it is certain to the AERA executive that this CST was formed at time T). 
 	\item A \textbf{cognitive event model (CEM)} captures a (hypothesized) causal influence of a Fact on another Fact; used to represent the effect that an action or event in particular circumstances, e.g. a command initiated by AERA at some timestep, has on the state of the world at a later timestep. When a CEM fires it produces a prediction (while the production of a prediction is represented as a Fact, the confidence in the prediction itself is defeasible and is in part based on the confidence of the CEM).
 	\item A \textbf{requirement model ($M_{req}$)} captures the (predicted) requirements/conditions that must be met for a CEM to be relevant in a particular context at a particular time.
-	
+%	
 \end{itemize}
-
 
 AERA’s programming paradigm allows the system itself to inspect these types of information structures, use them “for parts” to create variations, as well as create new ones from scratch. AERA’s programming language, Replicode, allows it to autonomously use these building blocks for self-programming, in the form of coherent plans, predictions, and goals that it can pursue \cite{nivel2013towards,nivel2013replicode,thorisson2012new}. 
 These mechanisms have been demonstrated for control of virtual robots, learning and using language, and multimodal interaction \cite{thorisson2014autonomous,sheikhlar2024autonomous}). 
