@@ -30,7 +30,7 @@
 
 \begin{document}
 %
-\title{State-of-the-art Schema Mechanisms for Developmental Artificial Intelligence}
+\title{Schema Mechanisms 2.0 for Developmental Artificial Intelligence}
 %
 \titlerunning{Schema Mechanisms}
 % If the paper title is too long for the running head, you can set
@@ -57,8 +57,8 @@ Paul~Robertson\inst{4}\orcidID{0000-0002-4477-0379}
 %
 \begin{abstract}
 Schema mechanisms are software frameworks designed to reflect learning theories like 
-genetic epistemology, 
-constructivist psychology, %FP: constructivist epistemology, 
+genetic / constructivist epistemology, 
+%constructivist psychology, %FP: 
 and developmental learning.  
 %The central body of reference of these theories is found in the work of Jean Piaget ranging from theory of knowledge to child psychology, and 
 These theories find roots in the work of Jakob von Uexküll on animal behavior, Ernst von Glasersfeld on epistemology, and, more centrally, Jean Piaget ranging from child psychology to theory of knowledge.
@@ -263,7 +263,7 @@ In our view, Drescher's main contribution to this question rests on the construc
 Drescher goes beyond his predecessors (e.g., \cite{harnad_symbol_1990}) who merely categorized passively-received inputs.
 His schema mechanism was the first that ``grounds its synthetic items in the reification of counterfactual assertions'' \cite[p. 90]{drescher_made-up_1991}. 
 
-Drescher identified some limitations that may explain why nobody has made his mechanism work in a more complex environment since its creation more than 30 years ago. 
+Drescher identified some limitations that may explain why nobody has made his mechanism work in a more complex environment since its creation almost 40 years ago. 
 These limitations follow from the acknowledgment that ``whatever experiences an organism or mechanism has had, there are infinitely many mutually contradictory generalizations that are consistent with those experiences. 
 Therefore, any induction apparatus must impose a choice among those consistent generalizations'' \cite[p. 174]{drescher_made-up_1991}.
 Among these choices, he acknowledges that ``Looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
@@ -271,8 +271,8 @@ Among these choices, he acknowledges that ``Looking for persistence is built int
 His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. 
 This assumption presupposes that the world be represented as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
 Another assumption was to model the agent's motivation through values associated with sensory items representing elements of the world. 
-Moreover, the exploration mechanism based on hysteresis and habituation also implements designer's assumptions \cite[p. 66]{drescher_made-up_1991}.  
-Other motivational principles can be imagined. 
+Moreover, the exploration mechanism based on hysteresis and habituation also implements designer's assumptions \cite[p. 66]{drescher_made-up_1991};  
+other motivational principles can be imagined. 
 Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
 
@@ -405,7 +405,7 @@ Drescher's items are replaced by \textit{amodal nodes} organised in the node str
 An important difference between LIDA's amodal nodes and Drescher's items is that amodal nodes may not only represent sensory data but also events. 
 Consequently, LIDA can not only represent a particular context in terms of elements of the world state, but also in terms of sensorimotor events. 
 
-Fig \ref{fig:lida} shows the cognitive cycle. 
+Fig. \ref{fig:lida} shows the cognitive cycle. 
 The Dashed rounded rectangle at the bottom shows the schema mechanism as a part of the architecture. 
 The Global Workspace (right) stores a description of the current situation as a graph node. 
 The Procedural Memory module (bottom right) is the memory of schemas. 
@@ -425,6 +425,8 @@ The Attention Codled module selects some amodal nodes to broadcast in the Global
 \end{figure}
 
 Kugele \cite{kugele2025_constructivist} demonstrated constructivist procedural learning within LIDA in a multi-armed bandit environment.
+Different versions of k-armed-bandit environments have been used previously, for example to demonstrate the theory of \textit{active inference} \cite{smith_step-by-step_2022}, 
+but Kugele added new difficulties by requiring the agent to sit and to make a deposit before playing.  
 When the agent is standing (State $S$), it can take the action to sit at a one-armed bandit machine, for example Machine 1 (State $M_1$).
 The agent can then pay a deposit (state $M_1P$), and then play, which may yield a win (State $M_1W$) with probability $p(W|M_1P)$, or a loss (State $M_1L$) with probability $p(L|M_1P)$. The agent can choose to stand from any state.
 Fig. \ref{fig:lida_bench} represents the state diagram of this environment in the case of two machines. 
@@ -444,7 +446,7 @@ The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1}
 The set of initial nodes is $\{\texttt{Win}, \texttt{Lose} \}$, corresponding to a single primitive item in Drescher's terms.
 Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Lose} of $-1$.   
 The difficulty comes from the fact that the agent cannot directly perceive the state of the environment.
-The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
+The results show that after 25,000 interaction cycles, the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
 Once this was learned, the agent determined and chose the machine that yielded the highest payoff.
 
 In summary, LIDA allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to deposit and to play) satisfying the motivation of maximizing the value won. 
@@ -688,8 +690,18 @@ AERA considers both external events and cognitive events as actual facts that AE
 
 \section{Conclusion}
 
-Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in this paper.
+All the schema mechanisms have in common that they take a dynamic approach to constructing synthetic items from experience of interaction.
+Compared to more classical approaches such as statistical symbol grounding \cite{harnad_symbol_1990} or active inference \cite{friston_active_2017}, this dynamic approach takes into account counterfactual sequences of interaction during the construction of concepts. 
+In doing so, schema mechanisms account for Piaget's core idea quoted in the indroduction that action constitutes the initial instrument by which knowledge is constructed. 
 
+The four new schema mecanisms presented here, CALM, LIDA, ECA, and AERA, bring a new idea to the picture: the capacity to deal with sensory signal (primitive items) that are not ``percepts representing elements of the state'', but mere feedback from action or events of interaction.  
+In so doing, these four new schema mechanisms address a limitation pointed out by Bettoni when he wrote that 
+``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' \cite[p. 6]{bettoni_made-up_1993}  in which  sensory ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of `original' objects, attributes, relations etc. in the world'' \cite[p. 1]{bettoni_made-up_1993}.
+
+Basing schemas on events of interaction is particularly important when designing the agent's control system. 
+Drescher defines the agent goals by assigning primitive values to elements of the state, which makes the agents seek goal states that are defined externally to them---a form of extrinsic motivation. 
+On the other hand, the new schema mechanisms assign values to events of interaction---a form of interactional motivation \cite{georgeon_interactional_2012}. 
+The agent is not motivated to reach a goal state but to enact preferred interactions: with CALM: moving left and right, with LIDA: triggering wins, with ECA: moving forward, and with AERA: grabbing objects. 
 
 \begin{figure}
 	\centering
@@ -699,58 +711,57 @@ Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in th
 \end{figure}
 
 
+%Table \ref{tab:comp} shows a comparison by the schema mechanisms presented in this paper.
 
-\begin{table}
-	\centering
-	\caption{Comparison of schema mechanisms}\label{tab:comp}
-	\begin{tabular}{|l|c|c|c|c|c|}
-		\hline
+%\begin{table}
+%	\centering
+%	\caption{Comparison of schema mechanisms}\label{tab:comp}
+%	\begin{tabular}{|l|c|c|c|c|c|}
+%		\hline
 		%&  Drescher & Perotto & AERA & LIDA & ECA \\
-		&  MARCSYST & CALM & AERA & LIDA & ECA \\
-		\hline
-		Explicit goal & \checkmark & \checkmark & \checkmark & \checkmark &  \\
-		Concept invention & \checkmark & \checkmark &  &  &  \\
+%		&  MARCSYST & CALM & AERA & LIDA & ECA \\
+%		\hline
+%		Explicit goal & \checkmark & \checkmark & \checkmark & \checkmark &  \\
+%		Concept invention & \checkmark & \checkmark &  &  &  \\
 		%Marginal attribution & \checkmark & \checkmark & \checkmark & \checkmark & \\
 		%Hierarchical goals &  & \checkmark & \checkmark &  &  \\
-		Non-representational sensory signal &  &  &  & \checkmark & \checkmark \\
-		Intrinsic motivation &    &  &  & \checkmark & \checkmark \\
+%		Non-representational sensory signal &  &  &  & \checkmark & \checkmark \\
+%		Intrinsic motivation &    &  &  & \checkmark & \checkmark \\
 		%Sequential schemas &    &  &  & \checkmark & \checkmark \\
 		% Active perception &    &  &  &  & \checkmark \\
-		3D spatial schemas &    &  &  & \checkmark & \checkmark \\
+%		3D spatial schemas &    &  &  & \checkmark & \checkmark \\
 		% Reflexivity &    &  & \checkmark & \checkmark &  \\
 		% Defeasibility of acquired knowledge &    &  & \checkmark &  &  \\
-		Self-programming &    &  & &  & \checkmark \\
-		\hline
-	\end{tabular}
-\end{table}
+%		Self-programming &    &  & &  & \checkmark \\
+%		\hline
+%	\end{tabular}
+%\end{table}
 
 This experimentation demonstrates a self-programming effect \cite{georgeon_cash_2019}.
 
 
-Bettoni  has criticized Drescher's schema mechanism in stating that ``Drescher's Constructivism is not Piaget's Constructivism, mainly because of its tacit acceptance of \textit{cognitive dogmatism}'' (\cite{bettoni_made-up_1993}, p. 6).
-Bettoni describes cognitive dogmatism as taking for granted that ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of `original' objects, attributes, relations etc. in the world'' (\cite{bettoni_made-up_1993}, p. 1).
-Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
 
+%Indeed, theories of enaction as well as of radical constructivism have insisted that we should not take the sensory signals as representational items of an alleged reality. 
 
-The game of Mastermind provides an emblematic example in which the observation is not representational. 
-Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'') by proposing guesses (``actions''), which Player 1 responds to with feedback pegs (``observation''). Black pegs indicate a correct color in the correct position, while white pegs indicate a correct color in the wrong position.
-Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
-The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
+%The game of Mastermind provides an emblematic example in which the observation is not representational. 
+%Player 2 attempts to infer a hidden combination of colored pegs (``hidden state'') by proposing guesses (``actions''), which Player 1 responds to with feedback pegs (``observation''). Black pegs indicate a correct color in the correct position, while white pegs indicate a correct color in the wrong position.
+%Since the observation depends on the action, there exist no function or stochastic distribution that map the state to the observation. 
+%The absence of such function or distribution is expressed in cognitive terms by that the observation is not ``representational'' of the state.
 
-Software to play Mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
-These techniques, however, require that the semantics of the feedback is known beforehand. 
-We propose the \textit{constructivist Mastermind analogy} that likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
-The player may never find the hidden combination or goal but may survive and strive for some time in a satisfactory \textit{knowledge niche}.
+%Software to play Mastermind have been proposed using diverse techniques such as entropy measure and evolutionary algorithms \cite{cotta_entropy-driven_2010}.
+%These techniques, however, require that the semantics of the feedback is known beforehand. 
+%We propose the \textit{constructivist Mastermind analogy} that likens a general learner to someone playing a giant game of mastermind where they start with no knowledge of the hidden combination and even the semantics of actions and feedback.
+%The player may never find the hidden combination or goal but may survive and strive for some time in a satisfactory \textit{knowledge niche}.
 
-As reviewed in Section \ref{sec:schema}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
-Nonetheless, the fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
-Georgeon's mechanism may constitute an illustration of that.  
-In Georgeon's schemas, the sensory data is feedback from action rather than being representational. 
-The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
-In essence, the agent knows its current context by possibilities of interaction rather than by representational data. 
+%As reviewed in Section \ref{sec:schema}, most schema mechanisms have been tested in settings in which the sensory signal is representational.
+%Nonetheless, the fact that they have not been tested with non-representational sensory signal does not mean that they would not work or could not be adapted to such settings. 
+%Georgeon's mechanism may constitute an illustration of that.  
+%In Georgeon's schemas, the sensory data is feedback from action rather than being representational. 
+%The pre-condition and post-condition of schemas are are just other schemas all the way down to non-representational primitive schemas. 
+%In essence, the agent knows its current context by possibilities of interaction rather than by representational data. 
 
-Georgeon's schema mechanism is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the expected valence of each decision. 
-The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
+%Georgeon's schema mechanism is not targeted at reaching a predefined goal. Since sensory data does not represent the environment's state, the agent cannot have a goal represented as an environment state. Instead, the agent's behavior is driven by the expected valence of each decision. 
+%The calculation of expected valence may incorporate predefined preferences for some primitive schemas or different intrinsic motivation principles such as an estimation of information gained. 
 
 %\section{Conclusion}
 
