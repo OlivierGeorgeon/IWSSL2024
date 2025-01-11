@@ -359,14 +359,26 @@ The original mechanism proposed by Drescher faces the same problem, and is limit
 %	\label{fig:perotto_tree}
 %\end{figure}
 %
-Fig. \ref{fig:perotto_ben} shows Perotto's experimental settings \cite{Perotto:2013:CF}.
+Fig. \ref{fig:perotto_ben} shows the environment used to demonstrate CALM \cite{Perotto:2013:CF}.
+The set of possible actions is $\{\texttt{left},$ $\texttt{right},$ $\texttt{up}\}$.
+The set of possible sensory signals is $\{\texttt{0}, \texttt{1}\}$, corresponding to a single primitive item in Drescher's terms.
+The difficulty comes from the fact that the agent cannot directly perceive the state of the world. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
-	\caption{Perotto's benchmark from \cite{Perotto:2013:CF} Fig.9 ``The hyper-flip problem''.} 
+	\caption{CALM's benchmark from \cite[Fig. 9]{Perotto:2013:CF} ``The hyper-flip problem''.} 
 	\label{fig:perotto_ben}
 \end{figure}
+
+
+In summary, CALM was used to control an agent that received only a binary sensory signal that does not directly represent the state of the environment.
+This contrasts with Drescher's experiment in which primitive items represent elements of the state of the world. 
+CALM is able to reconstruct \textit{non observable properties} from sequences of actions and feedback.
+Similar to Drescher's synthetic itemps, non observable properties describe the underlying state of the world that cause this feedback. 
+
+Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the decision tree.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -435,7 +447,8 @@ The difficulty comes from the fact that the agent cannot directly perceive the s
 The results show that the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
 Once this was learned, the agent determined and chose the machine that yielded the highest payoff.
 
-In summary, LIDA's schema mechanism allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to deposit and to play) satisfying the motivation of maximizing the value won. 
+In summary, LIDA allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to deposit and to play) satisfying the motivation of maximizing the value won. 
+This is similar to CALM but in a more complex environment.
 
 The agent's adaptation to the k-armed bandit environment was made possible by LIDA's distinction between sensory signal and perceptual memory that allows treating sensory signal as mere events rather than elements of the state. 
 Notably, the agent did not learn the states \texttt{MiW} and \texttt{MiL} but rather the aggregated state $\texttt{Mi}$ representing sitting at Machine $i$.
@@ -516,7 +529,7 @@ The schema (\texttt{move-forward}, \texttt{wall}), corresponding to bumping into
 The 6 schemas that have a \texttt{feel} action have a valence of $-1$ making them slightly costly. 
 The schemas that have a \texttt{turn} action  have a valence of $-3$ making them mildly costly. 
 
-Like in LIDA's experiment, the difficulty comes from the fact that the agent only has a single binary sensory signal and cannot directly sense the state of the environment. 
+Like in the experiments with CALM and LIDA presented above, the difficulty comes from the fact that the agent only has a single binary sensory signal and cannot directly sense the state of the environment. 
 The agent thus characterizes the state of the environment through enacted schemas. 
 Results show that after approximately a hundred interaction cycles, the agent learns to use the \texttt{feel} schemas to activerly sense the environment. 
 This active sensing provides a situation awareness that makes the agent turn to empty cells when necessary, avoid bumping into walls, and optimize its moving forward. 
