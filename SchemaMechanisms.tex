@@ -690,35 +690,46 @@ AERA considers both external events and cognitive events as actual facts that AE
 
 \section{Conclusion}
 
-All schema mechanisms share a dynamic approach to constructing synthetic items from experience of interaction.
-Compared to more classical approaches such as statistical symbol grounding \cite{harnad_symbol_1990} or active inference \cite{friston_active_2017}, this dynamic approach takes into account counterfactual sequences of interaction during the construction of concepts. 
-In this process, schema mechanisms account for Piaget's core idea as quoted in the introduction, that action serves as the initial instrument for constructing knowledge. 
+Schema mechanisms are characterized by their dynamic approach to constructing concepts from experience of interaction.
+Compared to more classical techniques such as statistical symbol grounding \cite{harnad_symbol_1990} or active inference \cite{friston_active_2017}, this dynamic approach takes into account counterfactual sequences of interactions for the construction of concepts. 
+This makes schema mechanisms particularly reflect Piaget's core idea that sensorimotor schemas serve as the initial instruments for constructing knowledge. 
 
-The four new schema mecanisms presented here, CALM, LIDA, ECA, and AERA, bring an additional  idea to the picture: the capacity to deal with sensory signals (primitive items) that are not ``percepts representing elements of the state'', but mere feedback from action or events of interaction.  
+The four new schema mecanisms presented here, CALM, LIDA, ECA, and AERA, bring an additional  idea to the picture: the capacity to deal with sensory signals (primitive items) that are not ``percepts representing elements of the world'', but mere feedback from action or events of interaction.  
 In so doing, these four new schema mechanisms address a limitation pointed out by Bettoni when he wrote that 
 ``Drescher's constructivism is not Piaget's constructivism, mainly because of its tacit acceptance of cognitive dogmatism'' \cite[p. 6]{bettoni_made-up_1993}.
 We interpret this critique as suggesting that using primitive items that represent elements of the state falls within cognitive dogmatism because it implements the assumption that the agent has direct access to the ontology of the world.
-In contrast, constructing schemas from interactional events aligns with Piaget's idea that knowledge arises from an
+In contrast, constructing schemas from interactional events better reflects Piaget's idea that knowledge arises from an
 initial ``complete un-differentiation between the subject and the object''. 
 
 %U  in which  sensory ``patterns and structures of objects, attributes, relations, etc. [...] be as much as possible true copies of `original' objects, attributes, relations etc. in the world'' \cite[p. 1]{bettoni_made-up_1993}.
 
 Basing schemas on interactional events is particularly important when designing the agent's control system. 
-While Drescher's agents sought goal states defined in the environment---a form of \textit{extrinsic motivation} 
-that is inherently prone to scalability issues as the complexity of the environment grows,
-the new schema mechanisms seek rewarding interactions as seen in the experiments reported above: CALM: moving left and right, LIDA: obtaining payout, ECA: moving forward, and AERA: grabbing objects. 
+Drescher's agents sought goal states defined in the environment---a form of \textit{extrinsic motivation} 
+that is inherently prone to scalability issues as the complexity of the environment grows.
+In contrast, the new schema mechanisms seek rewarding interactions as illustrated in the experiments above: CALM: moving left and right, LIDA: winning, ECA: moving forward, and AERA: grabbing objects. 
 This is a form of \textit{interactional motivation} \cite{georgeon_interactional_2012} whose complexity may not grow as the complexity of the environment grows, allowing easier transfer to robots in the open world.
 
 LIDA and ECA have demonstrated interactional motivation using both negatively valenced primitive schemas (e.g., LIDA: deposit, ECA: feel and turn) and positively valenced ones (LIDA: win, ECA: move forward).
-They learn composite actions that consists of enacting sequences involving both (LIDA: deposit--play, ECA: turn--move forward), which allows the emergence of behaviors adapted to delayed reward.
+They learn composite actions made of sequences of both kinds of schemas (LIDA: deposit--play, ECA: turn--move forward), which allows the emergence of behaviors adapted to delayed reward.
 %This is made possible by the fact that both systems can enact sequences as a whole. 
-These sequences work as programs that can be re-executed,  which leads to a kind of self-programming called motor-sensory self-programming \cite{georgeon_cash_2019}.
+These sequences work as short programs that the agent can re-execute,  which leads to self-programming---an important aspect of constructivist epistemology \cite{georgeon_cash_2019}.
 
-CALM has more focused on the construction of hierarchies of synthetic items, exploring Piaget's idea of assimilation and accommodation. 
-AREA has focused on international simulation, which facilitates the qualification of unbound variables of actions during the instantiation of behavior. 
-Altogether, the four new schema mechanism extend our vision of how Piaget's ideas can be translated into artificial intelligence. 
+CALM has focused on the construction of hierarchies of synthetic items, exploring Piaget's idea of assimilation and accommodation. 
+%AREA has focused on international simulation, which facilitates the qualification of unbound variables of actions during the instantiation of behavior. 
+LIDA, ECA, and AERA have encapsulated the schema mechanism within a cognitive architecture. 
+They handle schemas with unbound variables, reducing the number of schemas and helping manage complexity, albeit at the cost of potentially diminishing generality. 
+These cognitive architectures internally simulate the enaction of the schemas before selection and qualification. 
+AERA has further explored this direction by allowing reflexivity upon internal events. 
+Altogether, the four new schema mechanisms extend our vision of how Piaget's ideas can be translated into artificial intelligence. 
 Because they incorporate significantly more of Piaget's constructivist epistemology than Drescher's original version, we propose to call them schema mechanisms 2.0. 
 Fig. \ref{fig:venn} synthesizes their contributions. 
+
+LIDA and ECA have implemented a three-dimensional spatial memory module and an intuitive physic engine to handle schemas that have physical properties. 
+This is a strong commitment that reduces generality but may open the way to applying schema mechanisms to autonomous robots in the physical world. 
+
+
+
+
 
 \begin{figure}
 	\centering
@@ -793,7 +804,6 @@ Fig. \ref{fig:venn} synthesizes their contributions.
 %\end{adjustwidth}
 
 %Future studies on schema mechanisms will have to address this second stage to tackle fundamental questions of knowledge abstraction. 
-%We expect this will involve a cognitive architecture that has the capacity to represent spatial properties of schemas, and to simulate the enaction of schema in different spatial frames of reference. LIDA and ECA \cite{georgeon_artificial_2024} constitute initial attempts in this direction . 
 
 
 \begin{credits}
