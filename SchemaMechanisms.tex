@@ -36,7 +36,7 @@
 %
 \title{Schema Mechanisms 2.0 for Developmental Artificial Intelligence}
 %
-\titlerunning{Schema Mechanisms}
+\titlerunning{Schema Mechanisms 2.0}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
@@ -60,21 +60,28 @@ Paul~Robertson\inst{4}\orcidID{0000-0002-4477-0379}
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Schema mechanisms are software frameworks designed to reflect learning theories like 
-genetic / constructivist epistemology, 
-%constructivist psychology, %FP: 
-and developmental learning.  
+Schema mechanisms are software frameworks designed to reflect learning theories like genetic epistemology, constructivist epistemology, and developmental learning.
+Building on Gary Drescher’s pioneering implementation from 1991, this paper reviews four contemporary schema mechanisms: CALM, LIDA, ECA, and AERA. 
+While maintaining Drescher’s Piagetian-inspired view that sensorimotor schemas serve as the foundation for knowledge construction, these new mechanisms extend the constructivist approach by grounding schemas in interactional events rather than static world perceptions. 
+This shift introduces an interactional motivation framework and integrates hierarchical abstraction, internal simulation, and physical space into schemas, paving the way for their application in autonomous robotics operating in open environments. 
+We believe that these advancements mark the emergence of a new generation of schema mechanisms, which we refer to as Schema Mechanisms 2.0.
+
+
+
+%Gary Drescher pioneered their implementation in 1991, laying the foundation for the field of Constructivist AI.
+%and identified the core challenges: open-ended learning, intrinsic motivation, discovering of empirical regularities, incremental hierarchical abstraction, concept invention, sensorimotor grounding, reflexivity, individuation. 
+
 %The central body of reference of these theories is found in the work of Jean Piaget ranging from theory of knowledge to child psychology, and 
-These theories find roots in the work of Jakob von Uexküll on animal behavior, Ernst von Glasersfeld on epistemology, and, more centrally, Jean Piaget ranging from child psychology to theory of knowledge.
-Gary Drescher coined the generic term schema mechanism and pioneered their implementation in 1991.
+%These theories find roots in the work of Jakob von Uexküll on animal behavior, Ernst von Glasersfeld on epistemology, and, more centrally, Jean Piaget ranging from child psychology to theory of knowledge.
+%Gary Drescher coined the generic term schema mechanism and pioneered their implementation in 1991.
 %FP: fix the phrase "His work laid the ground to identifying the core challenges:" 
 %FP: add "creation of concepts" and "detection of regularities during interaction" in the challenges list
-His work laid the ground in the Constructivist AI field and identified the core challenges: open-ended learning, intrinsic motivation, discovering of empirical regularities, incremental hierarchical abstraction, concept invention, sensorimotor grounding, reflexivity, individuation. 
+
+%His work laid the ground in the Constructivist AI field and identified the core challenges: open-ended learning, intrinsic motivation, discovering of empirical regularities, incremental hierarchical abstraction, concept invention, sensorimotor grounding, reflexivity, individuation. 
 %he modeled Piagetian sensorimot schemas as datastructures that encompass sensory data and actions, 
-This paper reviews a selection of 
 %FP: the latest schema mechanisms 
-schema mechanisms from the literature,
-and highlights their contributions to these key challenges, with the goal of unifying their different contributions toward a comprehensive theory of developmental artificial intelligence.
+%schema mechanisms from the literature, and highlights their contributions to these key challenges, with the goal of unifying their different contributions toward a comprehensive theory of developmental artificial intelligence.
+
 
 \keywords{schema mechanism  \and genetic epistemology \and constructivist learning \and intrinsic motivation \and cognitive architectures.}
 \end{abstract}
