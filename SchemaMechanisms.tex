@@ -322,16 +322,16 @@ Gradually, the variables needed to anticipate the evolution of some important va
 
 Differently from the original mechanism, which creates one initial schema for each action with empty context and result, CALM creates one initial schema for each item on the result vector (which corresponds to a perceptive variable) that have a non neutral affective value, with empty context and action.
 Each one of these initial schemas will grow up, giving rise to an anticipatory tree, responsible for identifying the relevant elements and the rules that describe the transition of its associated item, allowing in this way to anticipate it. 
-Each anticipatory tree is constructed step by step using 4 operations: differentiation, adjustment, integration, and abstraction.
+Each anticipatory tree is constructed step by step using 4 operations: \textit{differentiation}, \textit{adjustment}, \textit{integration}, and \textit{abstraction}.
 Each node in the anticipatory tree is identified by a vector containing observations and actions. 
 Starting from a completely generic root node, where all elements on that vector are set as \textit{undefined}, the agent tries to verify if some regularity persists from the current time-step to the next.
 The idea is defining a structure that is coherent with the past experience.
 The expectation of that first schema will be equivalent to the first observation. 
-In this way the schema tries to represent the most transitions that can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
+In this way the schema tries to represent as many transitions as they can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
 
 When an observed result contradicts what was expected, the tree is expanded by differentiation, like illustrated in Fig. \ref{fig:perotto_diff}: the contradicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
 When no primitive action or primitive context element can be used to differentiate a contradicted schema, the mechanism creates a synthetic element of context, representing some abstract or non-observable variable, that, if exists, can explain the incoherence. 
-The schema is the differentiated based on this new element.
+The schema is then differentiated by this new element.
 Sometimes, it is not possible to differentiate the schema anymore, in this case, an adjustment is done, setting the contradicted expectation to undefined.
 Finally, when several schemas are adjusted, some differentiations become unnecessary, then the tree can be pruned, and some leaf schemas integrated in a more general one.
 %Another difference of CALM in relation to the original mechanism is that 
@@ -353,36 +353,34 @@ In order to create a new schema by differentiation, the mechanism search for an 
 The differentiation will preserve the past experience in the old schema, identifying it with a more specialized context or more precise action, separating the new situation in another schema.
 In terms of computational complexity, the problem is how to manage that memory, because it needs to remember co-occurrences of items and actions.
 The solution given by Perotto is to explicitly limit the number of variables to observe together, starting from 1, and gradually increasing that number, which in any case will always be low, at the order of few units.
-The original mechanism proposed by Drescher faces the same problem, and is limited to observing only one additional variable.
+The original mechanism proposed by Drescher faces the same problem, and is limited to observe only one additional variable at time.
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
-%	\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the flip problem.''.
-% } 
-%	\label{fig:perotto_tree}
-%\end{figure}
-%
-Fig. \ref{fig:perotto_ben} shows the environment used to demonstrate CALM \cite{Perotto:2013:CF}.
-The set of possible actions is $\{\texttt{left},$ $\texttt{right},$ $\texttt{up}\}$.
+Fig. \ref{fig:perotto_ben} shows the simple flip problem~\cite{Singh:2003:ICML}, used to demonstrate CALM's capability to create an abstract variable for representing a relevant non-observable condition of the environment~\cite{Perotto:2007:EpiRob}.
+The set of possible actions is $\{\texttt{l},$ $\texttt{r},$ $\texttt{u}\}$, standing for \textit{go left}, \textit{go right}, and \textit{unchanged}.
 The set of possible sensory signals is $\{\texttt{0}, \texttt{1}\}$, corresponding to a single primitive item in Drescher's terms.
-The difficulty comes from the fact that the agent cannot directly perceive the state of the world. 
+The difficulty comes from the fact that the agent cannot directly perceive the underlying state of the world. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
-	\caption{CALM's benchmark from \cite[Fig. 9]{Perotto:2013:CF} ``The hyper-flip problem''.} 
+	%\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
+	\includegraphics[width=0.55\textwidth]{Figure_flip_problem.png}
+	\caption{CALM can solve the flip problem, initially proposed in~\cite{Singh:2003:ICML}.} 
 	\label{fig:perotto_ben}
 \end{figure}
-
 
 In summary, CALM was used to control an agent that received only a binary sensory signal that does not directly represent the state of the environment.
 This contrasts with Drescher's experiment in which primitive items represent elements of the state of the world. 
 CALM is able to reconstruct \textit{non observable properties} from sequences of actions and feedback.
-Similar to Drescher's synthetic itemps, non observable properties describe the underlying state of the world that cause this feedback. 
+Similar to Drescher's synthetic items, non observable properties describe the underlying state of the world that cause this feedback. 
+Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the anticipatory trees, which are finally mixed together, as shown in the Figure~\ref{fig:perotto_tree}, which represents the final stable solution for the hyper-flip problem.
 
-Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the decision tree.
-
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
+	%\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the hyper-flip problem.''.} 
+	\caption{Final schematic tree for deterministically describing the transition function corresponding to the flip problem~\cite{Perotto:2013:CF}. Note that the underlying non-observable left and right states of the problem are represented by $\blacklozenge$ and $\clubsuit$ values of the abstract sythetic variable. A \textit{Markovian Decision Process} with 4 states ($\blacklozenge 0, \blacklozenge 1, \clubsuit 0, \clubsuit 1$) and a deterministic transition function can be derived from that tree if an immediate reward function is given (e.g. $R(0) = -1, R(1) = +1$), allowing to extract an optimal policy of actions using dynamic programming techniques.} 
+	\label{fig:perotto_tree}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
