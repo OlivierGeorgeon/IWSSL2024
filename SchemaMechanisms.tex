@@ -396,21 +396,27 @@ Another addition to Dresher's mechanism is that CALM organizes non observable pr
 \subsection{Learning Intelligent Decision Agent (LIDA)}
 \label{sec:lida}
 
-The LIDA cognitive architecture \cite{kugele_learning_2021}  implements a schema mechanism inspired by Drescher on top of a perceptual memory module called the Perceptual Associative Memory (PAM). 
+The \textit{Learning Intelligent Decision Agent} (LIDA) is a broad cognitive architecture serving both as a conceptual and as a computational framework for modeling the mind~\cite{franklin_foundational_2007,franklin_2013_lida}.
+A recent version of the LIDA cognitive architecture \cite{kugele_learning_2021} implements a schema mechanism inspired by Drescher on top of a perceptual memory module called the \textit{Perceptual Associative Memory} (PAM). 
 Percepts are not directly received from the environment but constructed in the PAM through an active sensorimotor process. 
 Other memory modules are implemented including episodic memory, declarative memory, and spatial memory.
 Knowledge is represented as a directed graph called the \textit{node structure}. 
 
 LIDA's schemas work as templates with unbound variables in their context, action, and result. 
-Actions may have  unbound variables that qualify and modulate how an action is executed. 
+Actions may have unbound variables that qualify and modulate how an action is executed. 
 Schemas are instantiated as \textit{behaviors}. 
 
-LIDA implements an \textit{affective valence}. 
-The affective valence can bias behavior selection towards a desirable outcome. 
+%FP:
+LIDA implements an \textit{affective valence} 
+which drives 
+%The affective valence can bias 
+behavior selection towards desirable outcomes. 
 Liking and disliking are distinguished from wanting and dreading with the argument that they relate to distinct neural pathways in the brain \cite{kringelbach_functional_2010}. 
 Wanting and dreading are qualified by \textit{incentive salience} of behaviors.   
 
-Kugele \cite{kugele2025_constructivist} recently improved LIDA's the schema mechanism to demonstrate contstructivist learning.
+%FP:
+Kugele \cite{kugele2025_constructivist} recently presented an improved version of LIDA into which the
+%LIDA's schema mechanism to demonstrate contstructivist learning.
 Drescher's items are replaced by \textit{amodal nodes} organised in the node structure in Percepual Associative Memory. 
 An important difference between LIDA's amodal nodes and Drescher's items is that amodal nodes may not only represent sensory data but also events. 
 Consequently, LIDA can not only represent a particular context in terms of elements of the world state, but also in terms of sensorimotor events. 
