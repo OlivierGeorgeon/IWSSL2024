@@ -28,6 +28,10 @@
 
 \usepackage{subcaption}
 
+\usepackage{ulem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 %
 \title{Schema Mechanisms 2.0 for Developmental Artificial Intelligence}
@@ -122,11 +126,11 @@ Certainly, perceptions play an essential role, but they partly depend on action 
 For Piaget, the intelligence is related to the ability to gradually organize and complexify the set of schemas. 
 That increasing organization of internal structures are guided by two forces: 
 by assimilating new experiences to existing schemas, the mind tries to integrate observations and interactions in terms of already constructed cognitive structures, extending or generalizing their scope, and
-by accommodating its set of schemas to surprising or disruptive experiences, differentiating, specializing, complexifying its internal relations, the mind create new intellectual resources for better understanding and mastering its interactions: 
+by accommodating its set of schemas to surprising or disruptive experiences, differentiating, specializing, complexifying its internal relations, the mind creates new intellectual resources for better understanding and mastering its interactions: 
 \\
 
 \begin{adjustwidth}{1cm}{1cm}
-``[...] Organization is inseparable from adaptation: they are two complementary processes of a single mechanism, organization being the internal aspect of the cycle of which adaptation constitutes the external aspect. [...] that adaptation is an equilibrium between assimilation and accommodation. [...] Intelligence is assimilation to the extent that it incorporates all the given data of experience within its framework. [...] that mental life is also accommodation to the environment. Assimilation can never be pure because by incorporating new elements into its earlier schemata the intelligence constantly modifies the latter in order to adjust them to new elements.''~(\cite{piaget_origins_1955}, p.~7)
+``[...] Organization is inseparable from adaptation: they are two complementary processes of a single mechanism, organization being the internal aspect of the cycle of which adaptation constitutes the external aspect. [...] that adaptation is an equilibrium between assimilation and accommodation. [...] Intelligence is assimilation to the extent that it incorporates all the given data of experience within its framework. [...] That mental life is also accommodation to the environment. Assimilation can never be pure because by incorporating new elements into its earlier schemata the intelligence constantly modifies the latter in order to adjust them to new elements.''~(\cite{piaget_origins_1955}, p.~7)
 
 ``In their initial directions, assimilation and accommodation are obviously opposed to one another, since assimilation is conservative and tends to subordinate the environment to the organism as it is, whereas accommodation is the source of changes and bends the organism to the successive constraints of the environment. But if in their rudiment these two functions are antagonistic, it is precisely the role of mental life in general and of intelligence in particular to intercoordinate them.''~(\cite{piaget_reality_1955}, p.~352)
 
@@ -142,13 +146,14 @@ On the other hand, assimilation, instead of reducing phenomena to the concepts i
 
 To this day, Piaget's ideas remain central to modern theories of knowledge as well as developmental psychology. 
 Indeed, genetic epistemology seems to offer a materialistic explanation of how human psychology develops from birth.
-The question whether this explanation is too reductionist remains however open. 
-To our knowledge, Piaget never claimed that his theories could be implemented as a mechanistic process in a computer. 
-The first attempt only began eleven years after his death.
+The question whether this explanation is too reductionist remains however open.
+%FP: suggestion, we can maybe cut out this last phrase? but you can undone my modification if you like it in this way  :)
+\sout{To our knowledge, Piaget never claimed that his theories could be implemented as a mechanistic process in a computer. 
+The first attempt only began eleven years after his death.}
 
-%\cite{chaput_constructivist_2004}
-%\cite{guerin_piagetian_2008}
-%\cite{miller_building_2018}
+%FP:
+%*** What to do with this references? \cite{chaput_constructivist_2004,guerin_piagetian_2008,miller_building_2018} ***
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -185,12 +190,11 @@ Oudeyer \cite{oudeyer_intrinsic_2007}.
 In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}, proposing a framework to reproduce key constructivist notions in artificial intelligence, and presenting an implemented mechanism called \textit{Marginal Attribution and Representation Construction System} (MARCSYST).
 Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
 %He pioneered the first schema mechanism in 1991 by designing 
-In his work, these mental structures are designed as schemas, formalized as the tuple (context, action, result) depicted in Fig. \ref{fig:drescher}.
-The \textit{context} and the results are sets of binary \textit{items} that can be \textit{positively} or \textit{negatively} included. 
+In his work, these mental structures are designed as schemas, formalized as the tuple $\langle \textit{context}, \textit{action}, \textit{result} \rangle$ depicted in Fig. \ref{fig:drescher}.
+The \textit{context} and the \textit{result} are sets of binary \textit{items} that can be \textit{positively} or \textit{negatively} included. 
 A schema's context is satisfied when all the positively included items are \textit{On} and all the negatively included items are \textit{Off}. 
-A schema's result asserts that, if the action is taken when the context is satisfied, then the positively included items of the results will be turned \textit{On} and its negatively included items will be turned \textit{Off}.
+A schema's result asserts that, if the \textit{action} is taken when the context is satisfied, then the positively included items of the results will be turned \textit{On} and its negatively included items will be turned \textit{Off}.
 
-%
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figure_2_schema_drescher.png}
@@ -199,8 +203,8 @@ A schema's result asserts that, if the action is taken when the context is satis
 	\label{fig:drescher}
 \end{figure}
 
-The agent is initialized with a set of \textit{primitive} actions and items, that represent respectivelly builtin elementary sensorimotor variables, and with a population of initial schemas, some of them are bare schemas, one for each primitive action, with empty context and result, and eventually other initial schemas that encode the agent's initial ``innate'' behaviors. 
-The activation of a schema consists of initiating its action. 
+The agent is initialized with a set of \textit{primitive} actions and items, that represent respectivelly builtin elementary sensorimotor variables, and with a population of initial schemas, some of them are \textit{bare schemas}, one for each primitive action, with empty context and result, and eventually other initial schemas that encode the agent's initial ``innate'' behaviors. 
+The \textit{activation} of a schema consists of initiating its action. 
 Upon completion of the action, the predicted result is compared with the actual result.
 The schema is said to \textit{succeed} if its predicted results are all obtained, and to \textit{fail} otherwise. 
 The ratio of success and failure is called \textit{reliability} and is memorized for each schema.  
@@ -258,7 +262,7 @@ Drescher gives the example of ``a synthetic item, which we might call \texttt{Pa
 The item is defined to represent whatever condition makes the schema reliable; we observers know (but the mechanism does not) that this condition is that there be an object at (1, 3)'' \cite[p. 13]{drescher_made-up_1991}.
 Synthetic item \texttt{PalpableObjectAt(1,3)} may later be associated with \texttt{VisibleObjectAt(1,3)} to account for the discovery that they refer to the same thing at position (1, 3) in the world.
 
-In summary, Drescher's schema mechanism stands among the first attempts to investigate Piaget's question of how the child can dynamically construct it's own knowledge of reality from experience of interaction.  
+In summary, Drescher's schema mechanism stands among the first attempts to investigate Piaget's question of how the child's mind can dynamically construct its own knowledge of reality from experience of interaction.  
 In our view, Drescher's main contribution to this question rests on the construction of synthetic items to account for ``things in the world'' that the agent can discover through regularities in sequences of sensorimotor experience. 
 Drescher goes beyond his predecessors (e.g., \cite{harnad_symbol_1990}) who merely categorized passively-received inputs.
 His schema mechanism was the first that ``grounds its synthetic items in the reification of counterfactual assertions'' \cite[p. 90]{drescher_made-up_1991}. 
@@ -266,11 +270,12 @@ His schema mechanism was the first that ``grounds its synthetic items in the rei
 Drescher identified some limitations that may explain why nobody has made his mechanism work in a more complex environment since its creation almost 40 years ago. 
 These limitations follow from the acknowledgment that ``whatever experiences an organism or mechanism has had, there are infinitely many mutually contradictory generalizations that are consistent with those experiences. 
 Therefore, any induction apparatus must impose a choice among those consistent generalizations'' \cite[p. 174]{drescher_made-up_1991}.
-Among these choices, he acknowledges that ``Looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
+Among these choices, he acknowledges that ``looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
 
 His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. 
-This assumption presupposes that the world be represented as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
-Another assumption was to model the agent's motivation through values associated with sensory items representing elements of the world. 
+This assumption presupposes that the world is defined as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
+Another assumption made by Drescer was to model the agent's motivation through positive and negative values associated with sensory items.
+%FP: "representing elements of the world." in fact Drescehr does not suppose that the items represent elements of the external world - they can be proprioceptive.
 Moreover, the exploration mechanism based on hysteresis and habituation also implements designer's assumptions \cite[p. 66]{drescher_made-up_1991};  
 other motivational principles can be imagined. 
 Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
@@ -285,8 +290,8 @@ In the early 2010s, Filipo S. Perotto proposed his own version of a schema mecha
 Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
 However, while Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
 In this way, CALM can be seen as a kind of model-based RL algorithm, trying to learn a model of the transitions (i.e. how the observations change depending on the context and actions), then, at each time step, computing a policy of actions that maximizes the expected discounted sum of rewards, similar to adaptive dynamic programming methods.
-Similar to the original mechanism, the elementary knowledge structures in CALM are schemas, represented in the Figure~\ref{fig:perotto_schema} as tuples associating context, action, and expected results.
-%
+Like MARCSYST, the elementary knowledge structures in CALM are schemas, illustrated in the Figure~\ref{fig:perotto_schema}, represented by tuples associating context, action, and expected result.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{Figure_perotto.png}
@@ -295,15 +300,15 @@ Similar to the original mechanism, the elementary knowledge structures in CALM a
 	\label{fig:perotto_schema}
 \end{figure}
 
-The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original Schema Mechanism, which can maintain unreliable regularities within the system in order to spinoff reliable schemas afterwards. 
+The main drawback is that CALM can only identify regularities if they are deterministic, differently from the original schema mechanism, which can maintain unreliable regularities within the system in order to spinoff reliable schemas afterwards. 
 To compensate that limitation, CALM introduces a new distinction between two kinds of context variables: hidden variables and observable variables as shown in the Fig. \ref{fig:perotto_schema}.
 The justification is that some regularities appear as non-deterministic because the agent cannot perceive all the contextual elements necessary to precisely determine its transition function.
 In this way, the accent is placed on the discovering of abstract or non-observable elements, that once introduced and integrated in the anticipatory system, are able to explain the observation, making the transition deterministic. 
 The idea is, in fact, quite similar to what Dresher called synthetic items in the original mechanism, but the way to create them is slightly different: 
-when an expected result is contradicted, and no elements from context or action can explain the incoherence between the prediction and the observed result, then the mechanisms supposes the existence of an abstract variable that, if known, would be able do distinguish between the two situations.
-The observed result then serves as a mean to deduce the value of that non-observable variable, i.e. when the result correspond to the old expectation, is that because the non-observable variable was in the corresponding state, and if the result is the new one, then the abstract variable was in the opposite state.
+when an expected result is contradicted, and no elements from context or action can explain the incoherence between the prediction and the observed result, then the mechanism supposes the existence of an abstract variable that, if known, would be able do distinguish between the two situations.
+The observed result then serves as a mean to deduce the value of that abstract variable, i.e. when the result corresponds to the old expectation, it is because the non-observable condition was present, and if the result is the new one, then the non-observable condition was absent, which corresponds to the state of the abstract variable perceived a posteriori.
 Finally, by searching in the previous step, the mechanism can try to anticipate the contexts and actions that changes that abstract variable, like illustrated in the Figure \ref{fig:perotto_abstraction}.
-%
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figure_perotto_abstract.png}
@@ -318,16 +323,16 @@ Gradually, the variables needed to anticipate the evolution of some important va
 
 Differently from the original mechanism, which creates one initial schema for each action with empty context and result, CALM creates one initial schema for each item on the result vector (which corresponds to a perceptive variable) that have a non neutral affective value, with empty context and action.
 Each one of these initial schemas will grow up, giving rise to an anticipatory tree, responsible for identifying the relevant elements and the rules that describe the transition of its associated item, allowing in this way to anticipate it. 
-Each anticipatory tree is constructed step by step using 4 operations: differentiation, adjustment, integration, and abstraction.
+Each anticipatory tree is constructed step by step using 4 operations: \textit{differentiation}, \textit{adjustment}, \textit{integration}, and \textit{abstraction}.
 Each node in the anticipatory tree is identified by a vector containing observations and actions. 
 Starting from a completely generic root node, where all elements on that vector are set as \textit{undefined}, the agent tries to verify if some regularity persists from the current time-step to the next.
 The idea is defining a structure that is coherent with the past experience.
 The expectation of that first schema will be equivalent to the first observation. 
-In this way the schema tries to represent the most transitions that can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
+In this way the schema tries to represent as many transitions as they can be predicted deterministically with the minimum of context (i.e. the minimum of dependencies).
 
 When an observed result contradicts what was expected, the tree is expanded by differentiation, like illustrated in Fig. \ref{fig:perotto_diff}: the contradicted generic schema gives rise to two different children, specializing either one element of context or one element of the action vector, in order to explain the surprise, making the model coherent again.
 When no primitive action or primitive context element can be used to differentiate a contradicted schema, the mechanism creates a synthetic element of context, representing some abstract or non-observable variable, that, if exists, can explain the incoherence. 
-The schema is the differentiated based on this new element.
+The schema is then differentiated by this new element.
 Sometimes, it is not possible to differentiate the schema anymore, in this case, an adjustment is done, setting the contradicted expectation to undefined.
 Finally, when several schemas are adjusted, some differentiations become unnecessary, then the tree can be pruned, and some leaf schemas integrated in a more general one.
 %Another difference of CALM in relation to the original mechanism is that 
@@ -349,36 +354,34 @@ In order to create a new schema by differentiation, the mechanism search for an 
 The differentiation will preserve the past experience in the old schema, identifying it with a more specialized context or more precise action, separating the new situation in another schema.
 In terms of computational complexity, the problem is how to manage that memory, because it needs to remember co-occurrences of items and actions.
 The solution given by Perotto is to explicitly limit the number of variables to observe together, starting from 1, and gradually increasing that number, which in any case will always be low, at the order of few units.
-The original mechanism proposed by Drescher faces the same problem, and is limited to observing only one additional variable.
+The original mechanism proposed by Drescher faces the same problem, and is limited to observe only one additional variable at time.
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
-%	\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the flip problem.''.
-% } 
-%	\label{fig:perotto_tree}
-%\end{figure}
-%
-Fig. \ref{fig:perotto_ben} shows the environment used to demonstrate CALM \cite{Perotto:2013:CF}.
-The set of possible actions is $\{\texttt{left},$ $\texttt{right},$ $\texttt{up}\}$.
+Fig. \ref{fig:perotto_ben} shows the simple flip problem~\cite{Singh:2003:ICML}, used to demonstrate CALM's capability to create an abstract variable for representing a relevant non-observable condition of the environment~\cite{Perotto:2007:EpiRob}.
+The set of possible actions is $\{\texttt{l},$ $\texttt{r},$ $\texttt{u}\}$, standing for \textit{go left}, \textit{go right}, and \textit{unchanged}.
 The set of possible sensory signals is $\{\texttt{0}, \texttt{1}\}$, corresponding to a single primitive item in Drescher's terms.
-The difficulty comes from the fact that the agent cannot directly perceive the state of the world. 
+The difficulty comes from the fact that the agent cannot directly perceive the underlying state of the world. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
-	\caption{CALM's benchmark from \cite[Fig. 9]{Perotto:2013:CF} ``The hyper-flip problem''.} 
+	%\includegraphics[width=0.3\textwidth]{Figure_perotto_benchmark.png}
+	\includegraphics[width=0.55\textwidth]{Figure_flip_problem.png}
+	\caption{CALM can solve the flip problem, initially proposed in~\cite{Singh:2003:ICML}.} 
 	\label{fig:perotto_ben}
 \end{figure}
-
 
 In summary, CALM was used to control an agent that received only a binary sensory signal that does not directly represent the state of the environment.
 This contrasts with Drescher's experiment in which primitive items represent elements of the state of the world. 
 CALM is able to reconstruct \textit{non observable properties} from sequences of actions and feedback.
-Similar to Drescher's synthetic itemps, non observable properties describe the underlying state of the world that cause this feedback. 
+Similar to Drescher's synthetic items, non observable properties describe the underlying state of the world that cause this feedback. 
+Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the anticipatory trees, which are finally mixed together, as shown in the Figure~\ref{fig:perotto_tree}, which represents the final stable solution for the hyper-flip problem.
 
-Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the decision tree.
-
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
+	%\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the hyper-flip problem.''.} 
+	\caption{Final schematic tree for deterministically describing the transition function corresponding to the flip problem~\cite{Perotto:2013:CF}. Note that the underlying non-observable left and right states of the problem are represented by $\blacklozenge$ and $\clubsuit$ values of the abstract sythetic variable. A \textit{Markovian Decision Process} with 4 states ($\blacklozenge 0, \blacklozenge 1, \clubsuit 0, \clubsuit 1$) and a deterministic transition function can be derived from that tree if an immediate reward function is given (e.g. $R(0) = -1, R(1) = +1$), allowing to extract an optimal policy of actions using dynamic programming techniques.} 
+	\label{fig:perotto_tree}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
