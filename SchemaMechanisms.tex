@@ -740,8 +740,8 @@ that is inherently prone to scalability issues as the complexity of the environm
 In contrast, the new schema mechanisms seek rewarding interactions as illustrated in the experiments above: CALM: moving left and right, LIDA: winning, ECA: moving forward, and AERA: grabbing objects. 
 This is a form of \textit{interactional motivation} \cite{georgeon_interactional_2012} whose complexity may not grow as the complexity of the environment grows, allowing easier transfer to robots in the open world.
 
-LIDA and ECA have demonstrated interactional motivation using both negatively valenced primitive schemas (e.g., LIDA: deposit, ECA: feel and turn) and positively valenced ones (LIDA: win, ECA: move forward).
-They learn composite actions made of sequences of both kinds of schemas (LIDA: deposit--play, ECA: turn--move forward), which allows the emergence of behaviors adapted to delayed reward.
+LIDA and ECA have demonstrated interactional motivation using both negatively valenced primitive schemas (e.g., LIDA: \texttt{deposit}, ECA: \texttt{feel} and \texttt{turn}) and positively valenced ones (LIDA: \texttt{win}, ECA: \texttt{move-forward}).
+They learn composite actions made of sequences of both kinds of schemas (LIDA: $\langle$\texttt{deposit}, \texttt{win}$\rangle$, ECA: $\langle$\texttt{turn}, \texttt{move forward}$\rangle$), which allows the emergence of behaviors adapted to delayed reward.
 %This is made possible by the fact that both systems can enact sequences as a whole. 
 These sequences work as short programs that the agent can re-execute,  which leads to self-programming---an important aspect of constructivist epistemology \cite{georgeon_cash_2019}.
 
