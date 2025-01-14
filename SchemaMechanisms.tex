@@ -210,7 +210,11 @@ A schema's result asserts that, if the \textit{action} is taken when the context
 	\label{fig:drescher}
 \end{figure}
 
-The agent is initialized with a set of \textit{primitive} actions and items, that represent respectivelly builtin elementary sensorimotor variables, and with a population of initial schemas, some of them are \textit{bare schemas}, one for each primitive action, with empty context and result, and eventually other initial schemas that encode the agent's initial ``innate'' behaviors. 
+The agent is initialized with a set of \textit{primitive} items and actions that represent builtin elementary sensorimotor variables. 
+For each primitive action, a \textit{bare schema} with empty context and result is created. 
+The designer may also add other initial schemas that encode the agent's ``innate'' behaviors. 
+%The agent is initialized with a set of \textit{primitive} ivactions and items, that represent respectivelly builtin elementary sensorimotor variables, and with a population of initial schemas, some of them are \textit{bare schemas}, one for each primitive action, with empty context and result, and eventually other initial schemas that encode the agent's initial ``innate'' behaviors. 
+
 The \textit{activation} of a schema consists of initiating its action. 
 Upon completion of the action, the predicted result is compared with the actual result.
 The schema is said to \textit{succeed} if its predicted results are all obtained, and to \textit{fail} otherwise. 
@@ -222,7 +226,7 @@ The learning of new schemas is triggered by the identification of \textit{releva
 When a relevant result is identified, the agent seeks conditions under which it follows reliably. 
 Such conditions are found through new schemas that allow recovering the context leading to the relevant result, and then performing the action again to asses the reliability of these new schemas. 
 
-The learning of new ``concepts'' occurs when the agent finds schemas that act as ``probes'' that may evoke the manifestation of a ``thing''. 
+After learning new schemas, the agent can learn new ``concepts'' when it identifies schemas that act as ``probes'' that may evoke the manifestation of a ``thing''. 
 These schemas are only reliable if the ``thing'' is present. 
 When such a schema is found, it is considered a ``host schema'' for a newly spawned ``synthetic item'' that represents this thing.
 Eventually, the agent finds out that a single ``thing'' may manifest itself through different host schemas. 
@@ -261,7 +265,7 @@ The visual system maps a visual field onto a region of the world in the immediat
 	\label{fig:drescher2}
 \end{figure}
 
-The mechanism initially ignores the topological relations among sensory items, but the demonstration shows that it gradually learns these relation in a process that Drescher calls the ``elaboration of the spatial substrate''. 
+The mechanism initially ignores the topological relations among sensory items, but the demonstration shows that it gradually learns these relations in a process that Drescher calls the ``elaboration of the spatial substrate''. 
 Such learning of a cognitive map from sensorimotor sequences has recently been further investigated by Raju et al. \cite{raju_space_2022}.
 
 Once the spatial substrate is learned, the mechanism manages to construct synthetic items that designate objects as distinct from their current perceptions.
@@ -277,13 +281,13 @@ His schema mechanism was the first that ``grounds its synthetic items in the rei
 Drescher identified some limitations that may explain why nobody has made his mechanism work in a more complex environment since its creation almost 40 years ago. 
 These limitations follow from the acknowledgment that ``whatever experiences an organism or mechanism has had, there are infinitely many mutually contradictory generalizations that are consistent with those experiences. 
 Therefore, any induction apparatus must impose a choice among those consistent generalizations'' \cite[p. 174]{drescher_made-up_1991}.
-Among these choices, he acknowledges that ``looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
+%Among these choices, he acknowledges that ``looking for persistence is built into the schema mechanism's synthetic item facility; thus, the significance of persistence is innate to the mechanism, rather than being acquired'' \cite[p. 84]{drescher_made-up_1991}.
 
-His schema mechanism may lack generality, for example by assuming that a sensory item ``is a state element. Each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991}. 
-This assumption presupposes that the world is defined as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
-Another assumption made by Drescer was to model the agent's motivation through positive and negative values associated with sensory items.
+Due to specific design choices, Drescher's schema mechanism may lack generality.
+For example the assumption that a sensory item ``is a state element'' and ``each item represents some condition in the world'' \cite[p. 56]{drescher_made-up_1991} presupposes that the world is defined as a predefined set of states, which is acceptable in a microworld but difficult in the physical world. 
+Another assumption was to model the agent's motivation through positive and negative values associated with sensory items.
 %FP: "representing elements of the world." in fact Drescehr does not suppose that the items represent elements of the external world - they can be proprioceptive.
-Moreover, the exploration mechanism based on hysteresis and habituation also implements designer's assumptions \cite[p. 66]{drescher_made-up_1991};  
+The exploration mechanism based on hysteresis and habituation may also lack generality;  
 other motivational principles can be imagined. 
 Conversely, a schema mechanism may need additional built-in assumptions to cope with the complexity of the physical world.
 This paper reviews other schema mechanisms that make other choices in the hope to move forward towards a general schema mechanism that could work in the real world.
@@ -301,7 +305,7 @@ Like MARCSYST, the elementary knowledge structures in CALM are schemas, illustra
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{Figure_perotto.png}
+	\includegraphics[width=0.5\textwidth]{Figure_4_CALM_schema.pdf}
 	\caption{Perotto's schema from \cite{Perotto:2013:CF} Fig. 2.
 		A schema is composed of three vectors: context containing hidden variables and observable properties $(h_1, h_2, p_1, p_2, p_3)$, action $(c_1)$, and expected result $(e)$. } 
 	\label{fig:perotto_schema}
@@ -318,7 +322,7 @@ Finally, by searching in the previous step, the mechanism can try to anticipate 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{Figure_perotto_abstract.png}
+	\includegraphics[width=0.7\textwidth]{Figure_5_CALM_dynamics.pdf}
 	\caption{Predicting the dynamics of a non-observable property; (a) a real experienced sequence: $0 + c = 0$ or $0 + c = 1$? (b) the use of a synthetic element to explain the logic behind the observed transformations: $\blacklozenge 0 + c = 0$ and $\clubsuit 0 + c = 1$; $1 + c = \blacklozenge$ and $0 + c = \clubsuit$.} 
 	\label{fig:perotto_abstraction}
 \end{figure}
@@ -384,7 +388,7 @@ Another addition to Dresher's mechanism is that CALM organizes non observable pr
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{Figure_perotto_tree.png}
+	\includegraphics[width=0.7\textwidth]{Figure_8_CALM_tree.pdf}
 	%\caption{Example of Perotto's anticipatory tree from \cite{Perotto:2013:CF} Fig. 10: ``Final schematic tree for solving the hyper-flip problem.''.} 
 	\caption{Final schematic tree for deterministically describing the transition function corresponding to the flip problem~\cite{Perotto:2013:CF}. Note that the underlying non-observable left and right states of the problem are represented by $\blacklozenge$ and $\clubsuit$ values of the abstract sythetic variable. A \textit{Markovian Decision Process} with 4 states ($\blacklozenge 0, \blacklozenge 1, \clubsuit 0, \clubsuit 1$) and a deterministic transition function can be derived from that tree if an immediate reward function is given (e.g. $R(0) = -1, R(1) = +1$), allowing to extract an optimal policy of actions using dynamic programming techniques.} 
 	\label{fig:perotto_tree}
