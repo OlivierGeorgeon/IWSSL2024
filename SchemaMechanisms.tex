@@ -151,9 +151,20 @@ On the other hand, assimilation, instead of reducing phenomena to the concepts i
 
 \end{adjustwidth}
 
-To this day, Piaget's ideas remain central to modern theories of knowledge as well as developmental psychology. 
-Indeed, genetic epistemology seems to offer a materialistic explanation of how human psychology develops from birth.
-The question whether this explanation is too reductionist remains however open.
+Schema mechanisms attempt to reflect the key insights of genetic epistemology effectively expressed by these words of Piaget regarding the primary role of sensorimotor experience and organization of mental structures. 
+Indeed, genetic epistemology appears to provide a materialistic explanation of how the human mind develops from birth, potentially lending itself to computational implementation.
+
+Over the past decades, Piaget's theories have remained central to contemporary theories of knowledge development, continually questioned and shaped by active debates.
+Some shortcomings have been identified, including an underestimation of infants' abilities and an insufficient consideration for cultural and social factors (e.g., \cite{soran_university_piagets_2019}).
+The relationship between constructivist and nativist theories remains a topic of debate, raising questions about the innate knowledge and prerequisites that should be incorporated into any computational implementation \cite[p. 41]{drescher_made-up_1991}.
+The ongoing research on schema mechanisms examined in this paper contributes to these debates.
+
+
+
+
+
+%To this day, nonetheless, Piaget's ideas remain central to modern theories of knowledge as well as developmental psychology. 
+
 %FP: suggestion, we can maybe cut out this last phrase? but you can undone my modification if you like it in this way  :)
 %\sout{To our knowledge, Piaget never claimed that his theories could be implemented as a mechanistic process in a computer. 
 %The first attempt only began eleven years after his death.}
@@ -187,14 +198,15 @@ Guerin and McKenzie \cite{guerin_survey_2013} proposed the graphical representat
 
 Notably, the developmental process is not targeted at reaching a predefined goal-state in a predefined problem space, nor does it aim at maximizing a predefined scalar value as in reinforcement learning.
 Instead, the problem of cognitive development in artificial systems is intertwined with the problem \textit{intrinsic motivation}, as has been argued for example by  
-Oudeyer \cite{oudeyer_intrinsic_2007}. 
+Oudeyer and colleagues \cite{oudeyer_intrinsic_2007}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\subsection{Drescher's}
-\subsection{Marginal Attribution and Representation Construction System (MARCSYST)}
+\subsection{Drescher's Schema Mechanism}
+%\subsection{Marginal Attribution and Representation Construction System (MARCSYST)}
 
-In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}, proposing a framework to reproduce key constructivist notions in artificial intelligence, and presenting an implemented mechanism called \textit{Marginal Attribution and Representation Construction System} (MARCSYST).
+In the early 1990s, Gary Drescher pioneered the first schema mechanism as a result of his PhD thesis~\cite{Drescher:1989} and associated publications~\cite{Drescher:1987,Drescher:1993}, which gave rise to a successful book~\cite{drescher_made-up_1991}, proposing a framework to reproduce key constructivist notions in artificial intelligence.
+%, and presenting an implemented mechanism called \textit{Marginal Attribution and Representation Construction System} (MARCSYST).
 %Drescher notes that ``a constructivist account of the development of intelligence holds that the difference between the mind of an adult, and that of an infant, lies in mental structures built by the individual'' \cite[p. 41]{drescher_made-up_1991}.
 %He pioneered the first schema mechanism in 1991 by designing 
 %In his work, these mental structures are designed as schemas, 
@@ -229,7 +241,7 @@ Such conditions are found through new schemas that allow recovering the context 
 
 After learning new schemas, the agent can learn new ``concepts'' when it identifies schemas that act as ``probes'' that may evoke the manifestation of a ``thing''. 
 These schemas are only reliable if the ``thing'' is present. 
-When such a schema is found, it is considered a ``host schema'' for a newly spawned ``synthetic item'' that represents this thing.
+When such a schema is found, it is considered a \textit{host schema} for a newly spawned \textit{synthetic item} that represents this thing.
 Eventually, the agent finds out that a single ``thing'' may manifest itself through different host schemas. 
 Drescher notes that ``a synthetic item thus works backward from a thing's manifestation to define the very thing manifested'' \cite[p. 83]{drescher_made-up_1991}.
 This addresses the fundamental problem of \textit{concept invention} in that 
@@ -255,7 +267,7 @@ The agent randomly alternates between explicit goal-pursuit and exploration, wit
 Drescher demonstrates its schema mechanism in the ``microworld'' made of the two-dimensional grid shown in Fig. \ref{fig:drescher2}.
 ``The mechanism controls a simulated robot that has a body, a single hand, and a visual system. 
 The hand can touch and grasp objects, and move them about.
-The visual system maps a visual field onto a region of the world in the immediate vicinity of ther robot body'' \cite[p. 114]{drescher_made-up_1991}. 
+The visual system maps a visual field onto a region of the world in the immediate vicinity of the robot body'' \cite[p. 114]{drescher_made-up_1991}. 
 
 \begin{figure}
 	\centering
@@ -302,7 +314,7 @@ In the early 2010s, Filipo S. Perotto proposed his own version of a schema mecha
 Perotto tackled the same challenges as Dresher, namely: learning a model of the regularities observed by an agent while interacting with the environment, and extending the representational vocabulary to allow the agent to overpass the raw sensorimotor perception by the creation of more abstract concepts.
 However, while Dresher's mechanism is closer to the 1980s symbolic planning languages and structures, Perotto's background lied on reinforcement learning~\cite{Sutton:2018} and multiagent systems.
 In this way, CALM can be seen as a kind of model-based RL algorithm, trying to learn a model of the transitions (i.e. how the observations change depending on the context and actions), then, at each time step, computing a policy of actions that maximizes the expected discounted sum of rewards, similar to adaptive dynamic programming methods.
-Like MARCSYST, the elementary knowledge structures in CALM are schemas, illustrated in the Figure~\ref{fig:perotto_schema}, represented by tuples associating context, action, and expected result.
+Like Drescher's schema mechanism, the elementary knowledge structures in CALM are schemas, illustrated in the Figure~\ref{fig:perotto_schema}, represented by tuples associating context, action, and expected result.
 
 \begin{figure}
 	\centering
@@ -755,6 +767,9 @@ Altogether, the four new schema mechanisms extend our vision of how Piaget's ide
 Because they incorporate significantly more of Piaget's constructivist epistemology than Drescher's original version, we propose to call them schema mechanisms 2.0. 
 Fig. \ref{fig:venn} synthesizes their contributions. 
 
+None of the current schema mechanisms have yet passed the sensorimotor stage of development---the first defined by Piaget. 
+The question whether a computer implementations of schema mechanism is overly reductionist compared to biologically systems remains open.
+Some promising implementations with robots have nonetheless been made. 
 LIDA and ECA have implemented a three-dimensional spatial memory module and an intuitive physic engine to handle schemas that have physical properties. 
 This is a strong commitment that reduces generality but may open the way to applying schema mechanisms to autonomous robots in the physical world. 
 
@@ -838,7 +853,8 @@ This is a strong commitment that reduces generality but may open the way to appl
 
 
 \begin{credits}
-\subsubsection{\ackname} .
+\subsubsection{\ackname}
+This article benefited from discussions with Gary Drescher, Sean Kugele, and Jeff Thompson.
 
 \subsubsection{\discintname}
 The authors have no competing interests to declare that are
