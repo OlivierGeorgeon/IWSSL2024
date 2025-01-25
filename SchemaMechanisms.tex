@@ -407,7 +407,8 @@ In summary, CALM was used to control an agent that received only a binary sensor
 This contrasts with Drescher's experiment in which primitive items represent elements of the state of the world. 
 CALM is able to reconstruct \textit{non observable properties} from sequences of actions and feedback.
 Similar to Drescher's synthetic items, non observable properties describe the underlying state of the world that cause this feedback. 
-Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the anticipatory trees, which are finally mixed together, as shown in the Figure~\ref{fig:perotto_tree}, which represents the final stable solution for the hyper-flip problem.
+Another addition to Dresher's mechanism is that CALM organizes non observable properties (i.e., synthetic items) hierarchically in the anticipatory trees, which are finally mixed together, as shown in the Figure~\ref{fig:perotto_tree}, which represents the final stable solution for the %OG hyper-
+flip problem.
 
 \begin{figure}
 	\centering
@@ -444,19 +445,19 @@ Wanting and dreading are qualified by \textit{incentive salience} of behaviors.
 %FP:
 Kugele \cite{kugele_constructivist_2025} recently presented an improved version of LIDA into which the
 %LIDA's schema mechanism to demonstrate contstructivist learning.
-Drescher's items are replaced by \textit{amodal nodes} organised in the node structure in Percepual Associative Memory. 
-An important difference between LIDA's amodal nodes and Drescher's items is that amodal nodes may not only represent sensory data but also events. 
+primitive items are replaced by \textit{amodal nodes} organized in the node structure in Perceptual Associative Memory. 
+An important difference between LIDA's amodal nodes and Drescher's primitive items is that amodal nodes may not only represent sensory data but also events. 
 Consequently, LIDA can not only represent a particular context in terms of elements of the world state, but also in terms of sensorimotor events. 
 
 Fig. \ref{fig:lida} shows the cognitive cycle. 
-The Dashed rounded rectangle at the bottom shows the schema mechanism as a part of the architecture. 
+The dashed rounded rectangle at the bottom shows the schema mechanism as a part of the architecture. 
 The Global Workspace (right) stores a description of the current situation as a graph node. 
 The Procedural Memory module (bottom right) is the memory of schemas. 
 The graph node from Global Workspace activates relevant schemas. 
 The Action Selection module selects an action, primitive or composite, from among the actions of the relevant schemas. 
 Once the action is selected, it is instantiated as a \textit{behavior}, or a \textit{stream of behavior} for composite actions, and their unbound variables are qualified. 
-The behavior is enacted in the Environment (left) and sensory stimuli (signal) is received by the Sensory Memory module (upper left).
-Sensory signal is processed to produce amodal nodes that represent the current situation. 
+The behavior is enacted in the Environment (left) and sensory stimuli (signals) are received by the Sensory Memory module (upper left).
+Sensory signals are processed to produce amodal nodes that represent the current situation. 
 The Attention Codled module selects some amodal nodes to broadcast in the Global Workspace module. 
 
 \begin{figure}
@@ -488,8 +489,8 @@ Fig. \ref{fig:lida_bench} represents the state diagram of this environment in th
 The set of possible actions for k machines is $\{ \texttt{stand}, \texttt{sitM1},..., \texttt{sitMk},$ $\texttt{deposit},$ $\texttt{play} \}$. 
 The set of initial nodes is $\{\texttt{Win}, \texttt{Lose} \}$, corresponding to a single primitive item in Drescher's terms.
 Node \texttt{Win} is associated with the affective valence (i.e., primitive value) of $+1$, and Node \texttt{Lose} of $-1$.   
-The difficulty comes from the fact that the agent cannot directly perceive the state of the environment.
-The results show that after 25,000 interaction cycles, the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{Mk}, \texttt{M1P}, ...,  \texttt{MkP} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
+As in the flip problem presented above, the agent cannot directly perceive the state of the environment.
+The results obtained in an 8-armed-bandit environment show that after 25,000 interaction cycles, the agent successfully constructed the amodal nodes (i.e., synthetic items) $\{ \texttt{S}, \texttt{M1},  ..., \texttt{M8}, \texttt{M1P}, ...,  \texttt{M8P} \}$ that represent the states of standing or sitting at a machine without or with a paid deposit, along with the schemas representing the transition between states. 
 Once this was learned, the agent determined and chose the machine that yielded the highest payoff.
 
 In summary, LIDA allowed an agent that receives only a binary sensory signal (\texttt{Win} or \texttt{Lose}) to learn the structure of this environment, and to find adapted behaviors (sitting at the most favorable machine, and then continuing to deposit and to play) satisfying the motivation of maximizing the value won. 
@@ -508,21 +509,21 @@ Another difference is that LIDA treats composite schemas as procedural knowledge
 %\subsection{Georgeon's}
 \subsection{Enactive Cognitive Architecture (ECA)}
 
-Olivier Georgeon and colleagues focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria \cite{georgeon_intrinsically-motivated_2012} . 
-Similar to LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent elements of relevant states.  
+Olivier Georgeon and colleagues also studied problems in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria \cite{georgeon_intrinsically-motivated_2012} . 
+Similar to CALM and LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent elements of relevant states.  
 
-Formally, schemas are tuples (pre-subschema, decision, post-subschema) in which the pre-subschema and the post-subschema are other schemas.  
+Formally, schemas are tuples $\langle$pre-subschema, decision, post-subschema$\rangle$ in which the pre-subschema and the post-subschema are other schemas.  
 The mechanism is initialized with a set of \textit{primitive schemas} that define the primitive possibilities of interaction of the agent with its environment. 
 Primitive schemas are initialized with a predefined valence (equivalent to Drescher's primitive value and LIDA's affective valence) that specify the agent's ``inborn'' preferences of interaction. 
 
 In the case of a simulated agent, a primitive schema is the association of a \textit{primitive action}, for example \texttt{move-forward} or \texttt{turn}, with a \textit{primitive outcome}, for example \texttt{bump} or \texttt{no-bump}.  
-The primitive schema (\texttt{move-forward}, \texttt{bump}) initialized with a negative valence specifies an agent that ``dislikes'' bumping into walls when it tries to move forward. 
+The primitive schema $\langle$\texttt{move-forward}, \texttt{bump}$\rangle$ initialized with a negative valence specifies an agent that ``dislikes'' bumping into walls when it tries to move forward. 
 
 %In contrast with Drescher's and Perotto's mechanisms, however, pre-conditions and post-conditions are not properties of the world (hidden or observed) but are other schemas learned previously. 
 The mechanism learns new schemas from the bottom up, with higher-level schemas made of a sequence of two previously-learned subschemas, 
 as illustrated in Fig. \ref{fig:agent8}. 
 Schemas are noted with the letter $i$ because they are sometimes called \textit{interactions}.
-For example, if the primitive schema $i00$, made of action $a0$ and outcome $o0$, was enacted at time $t-2$, and the primitive schema $i11$, made of action $a1$ and outcome $o1$,  was enacted at time $t-1$, then the composite schema $(i00, a1, i11)$ is learned (added to memory) or its \textit{weight} is incremented if it already existed. 
+For example, if the primitive schema $i00$, made of action $a0$ and outcome $o0$, was enacted at time $t-2$, and the primitive schema $i11$, made of action $a1$ and outcome $o1$,  was enacted at time $t-1$, then the composite schema $\langle i00, a1, i11 \rangle$ is learned (added to memory) or its \textit{weight} is incremented if it already existed. 
 The weight of schemas plays a similar role as their reliability in Drescher's implementation.
 
 When a new schema's post-subschema is primitive, the new schema's decision consists of performing the post-subschema's action.
@@ -542,7 +543,7 @@ If the enaction of any of its primitive subschemas fails (i.e., the actual outco
 	\centering
 	\includegraphics[width=1.0\textwidth]{Figure_3_agent8.pdf}
 	\caption{Schema learning and selection.
-		Schemas are nested tuples: (pre-subschema, decision, post-subschema).
+		Schemas are nested tuples: $\langle$pre-subschema, decision, post-subschema$\rangle$.
 		Over time, new decisions and new schemas are learned from the bottom up. 
 		Recently enacted schemas (in gray) activate the previously-learned higher-level schema whose pre-subschema they match.
 		Activated schemas propose their post-subschemas with a proclivity value calculated from the activation weight and the expected valence.
@@ -569,8 +570,8 @@ Georgeon \cite{georgeon_small_2012} reports an experiment in the environment sho
 The set of primitive actions is $\{ \texttt{move-forward},$ $\texttt{turn-left},$ $\texttt{turn-right},$ $\texttt{feel-front},$ $\texttt{feel-left},$ $\texttt{feel-right}\}$.
 The set of possible outcomes is $\{ \texttt{no-wall},$ $ \texttt{wall} \}$ corresponding to a single primitive item. 
 %The \texttt{turn} actions always yield the \texttt{no-wall} outcome.
-The schema (\texttt{move-forward}, \texttt{no-wall}) has a valence of $+5$ making it the only ``enjoyable'' interaction to the agent. 
-The schema (\texttt{move-forward}, \texttt{wall}), corresponding to bumping into wall, has a valence of $-10$ making it strongly dreaded. 
+The schema $\langle$\texttt{move-forward}, \texttt{no-wall}$\rangle$ has a valence of $+5$ making it the only ``enjoyable'' interaction to the agent. 
+The schema $\langle$\texttt{move-forward}, \texttt{wall}$\rangle$, corresponding to bumping into wall, has a valence of $-10$ making it strongly dreaded. 
 The 6 schemas that have a \texttt{feel} action have a valence of $-1$ making them slightly costly. 
 The schemas that have a \texttt{turn} action  have a valence of $-3$ making them mildly costly. 
 
@@ -629,9 +630,9 @@ This is analogous to the construction of synthetic items in Drescher's schema me
 	\label{fig:robot}
 \end{figure}
 
-In summary, Georgeon's schema mechanism emphases the interactional nature of schemas by resting on primitive schemas that represent events of interaction rather than encoding percepts in primitive items supposedly representing elements of the world state. 
-This design choice facilitates the hierarchical leaning of composite schemas because it does not require to construct abstract representations of elements in the world (synthetic items).
 
+In summary, ECA's schema mechanism uses schemas as atomic elements for constructing higher-level schemas instead of sensory signals, synthetic items, and actions.
+This design choice facilitates the hierarchical leaning of composite schemas because they are not based on abstract representations of elements in the world.
 In the experiment reported in Fig. \ref{fig:georgeon}, the agent manages to adapt to its environment using only schemas but no synthetic items.
 Like Drescher and Kugele, Georgeon implemented an effect of \textit{habituation} that causes reliable schemas to be preferably reused, which facilitates the construction of higher-level schemas on top of them. 
 This habituation principles has echoes in Woolford's \textit{sensorimotor sequence reiterator} \cite{woolford_precarious_2020}.
@@ -722,7 +723,8 @@ Results show that, after several trials unsuccessfully testing the learned model
 
 In summary, AERA introduces the capacity for the schema mechanism to process events that have en external cause in addition to those caused by the actions initiated by the agent.
 This is done by distinguishing the context in which the event occurs, represented by Composite State models (CSTs), from the hypothetical causal effects of the event stored in Cognitive Event Models (CEMs).
-The agent can thus construct hypothetical causal models as it passively observes other agents interacting with the world (including other agents), or as it observes its own interactions while being tele-operated.
+The agent can thus construct hypothetical causal models as it passively observes other agents interacting with the world %(including other agents),
+ or as it observes its own interactions while being tele-operated.
 The agent can then test the hypothetical causal models by itself to evaluate their reliability. 
 
 Both the events caused by the agent's actions and those passively observed generate the instantiation of cognitive events and the generation of \textit{prediction facts}.  
