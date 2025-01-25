@@ -508,7 +508,7 @@ Another difference is that LIDA treats composite schemas as procedural knowledge
 %\subsection{Georgeon's}
 \subsection{Enactive Cognitive Architecture (ECA)}
 
-Olivier Georgeon and colleagues focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria. 
+Olivier Georgeon and colleagues focused on cases similar to Section \ref{sec:lida} in which the agent receives little sensory information and must find behaviors that satisfy its predefined motivational criteria \cite{georgeon_intrinsically-motivated_2012} . 
 Similar to LIDA, Georgeon's schemas are based on events of interaction that do not necessarily represent elements of relevant states.  
 
 Formally, schemas are tuples (pre-subschema, decision, post-subschema) in which the pre-subschema and the post-subschema are other schemas.  
@@ -565,7 +565,7 @@ If the enaction of any of its primitive subschemas fails (i.e., the actual outco
 %The rate of schema construction being constant, the number of schemas grows linearly with time. 
 %Older and unused schemas can be forgotten.
 
-Georgeon \cite{georgeon_intrinsically-motivated_2012} reports an experiment in the environment shown in Fig. \ref{fig:georgeon} and shared in a video \cite{georgeon_video_2012}.
+Georgeon \cite{georgeon_small_2012} reports an experiment in the environment shown in Fig. \ref{fig:georgeon} and shared in a video \cite{georgeon_video_2012}.
 The set of primitive actions is $\{ \texttt{move-forward},$ $\texttt{turn-left},$ $\texttt{turn-right},$ $\texttt{feel-front},$ $\texttt{feel-left},$ $\texttt{feel-right}\}$.
 The set of possible outcomes is $\{ \texttt{no-wall},$ $ \texttt{wall} \}$ corresponding to a single primitive item. 
 %The \texttt{turn} actions always yield the \texttt{no-wall} outcome.
@@ -576,13 +576,13 @@ The schemas that have a \texttt{turn} action  have a valence of $-3$ making them
 
 Like in the experiments with CALM and LIDA presented above, the difficulty comes from the fact that the agent only has a single binary sensory signal and cannot directly sense the state of the environment. 
 The agent thus characterizes the state of the environment through enacted schemas. 
-Results show that after approximately a hundred interaction cycles, the agent learns to use the \texttt{feel} schemas to activerly sense the environment. 
+Results show that after approximately a hundred interaction cycles, the agent learns to use the \texttt{feel} schemas to actively sense the environment. 
 This active sensing provides a situation awareness that makes the agent turn to empty cells when necessary, avoid bumping into walls, and optimize its moving forward. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{Figure_grid_plot.pdf}
-	\caption{Georgeon's benchmark (Adapted from \cite{georgeon_intrinsically-motivated_2012}).
+	\caption{The small loop Challenge \cite{georgeon_small_2012}.
 		The agent can move forward to an empty (white) cell, bump into a wall (green cell), turn to the left or to the right by 90°, or ``feel'' the cell in front, to the left, or to the right. 
 		The sensory signal is a single-bit feedback from the action (``empty'' or ``wall''). 	
 		The agent progressively learns to used the ``feel'' schemas to sense its surrounding environment, not move forward when it feels a wall in front, and turn to a direction where it feels no wall, thus maximizing the ``move forward'' interaction that has a predefined positive valence.
@@ -601,7 +601,8 @@ Like in LIDA, schemas may include unbound variables that can be qualified upon t
 For example, the \texttt{turn} action has the variable \texttt{angle} that specifies the rotation span in the horizontal plane (yaw).
 When the schema mechanism module selects the \texttt{turn} action, the spatial memory module qualifies the angle to the desired direction.
 
-Georgeon \cite{georgeon_artificial_2024} demonstrated ECA with the robot shown in Fig. \ref{fig:robot}.
+%Georgeon \cite{georgeon_artificial_2024} demonstrated 
+ECA was demonstrated with the robot shown in Fig. \ref{fig:robot} \cite{georgeon_artificial_2024}.
 When the robot finds reliable schemas in a consistent spatial localization, it creates a datastructure called a \textit{phenomenon} that represents the ``thing'' in the world that affords these schema.
 This is analogous to the construction of synthetic items in Drescher's schema mechanism.
 
